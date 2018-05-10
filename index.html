@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Catch us</title>
     <link rel="stylesheet" href="styles/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -20,9 +21,9 @@
             <img src="" alt="logo">
         </section>
         <section class="login">
-            <input type="text" placeholder="email">
-            <input type="password" placeholder="password">
-            <button class="login-button">로그인</button>
+            <input type="text" id="user-email" placeholder="email">
+            <input type="password" id="user-pw" placeholder="password">
+            <button class="login-button" onclick="signIn()">로그인</button>
             <button class="signup-button" onclick="onLoadSignUpPage()">회원가입</button>
         </section>
         <section class="service-info">
@@ -69,6 +70,7 @@
     <footer>
     </footer>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+    <script src="./scripts/main.js"></script>
     <script src="./scripts/firebase.js"></script>
     <script src="./scripts/loadPage.js"></script>
 </body>

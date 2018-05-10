@@ -40,6 +40,7 @@ function writeExpertData(uid, info){
         }
     });
 }
+
 // 전문가 테스트 정보
 // var info = {
 //     "additionalInfo" : {
