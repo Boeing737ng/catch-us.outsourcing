@@ -41,6 +41,9 @@ header a:hover {
 }
 /*********** header ends **********/
 /*********** Main **********/
+.main-wrapper {
+    min-height: calc(100vh - 210px);
+}
 section.logo {
     margin: 30px auto;
     width: 240px;
@@ -79,11 +82,11 @@ button.signup-button {
 
 section.service-info {
     width: 100%;
-    margin: 50px auto;
+    margin: 50px auto 100px;
 }
 .info-wrapper {
     text-align: center;
-    width: 60%;
+    width: 900px;
     margin: auto;
 }
 .information {
@@ -113,11 +116,18 @@ section.service-info {
     top: 50%;
     transform: translate(0,-50%);
 }
-footer {
+/* footer {
+    margin-top: -50px;
     padding: 10px 0;
     border-top: 2px solid #051E5A;
     position: absolute;
     bottom: 0;
+    width: 100%;
+} */
+footer {
+    margin-top: -50px;
+    padding: 10px 0;
+    border-top: 2px solid #051E5A;
     width: 100%;
 }
 footer span {
