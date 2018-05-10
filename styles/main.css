@@ -14,6 +14,9 @@ button:hover {
 a {
     text-decoration: none;
 }
+.light-font {
+    font-weight: 300;
+}
 /*********** header **********/
 header {
     background-color: #051E5A;
@@ -23,7 +26,6 @@ header {
 header a {
     margin-right: 37px;
     color: #fff;
-    font-weight: 300;
 }
 header a:hover {
     font-weight: 400;
@@ -36,6 +38,12 @@ header a:hover {
 }
 /*********** header ends **********/
 /*********** Main **********/
+section.logo {
+    margin: 30px auto;
+    width: 240px;
+    height: 100px;
+    border: 1px solid red;
+}
 section.login {
     text-align: center;
 }
@@ -51,16 +59,18 @@ section.login input {
     border-radius: 5px;
 }
 button.login-button {
-    width: 262px;
+    width: 264px;
     height: 30px;
-    background-color: none;
+    background-color: #C8D9F3;
+    border: none;
     border-radius: 5px;
 }
 button.signup-button {
     display: inline-block;
-    width: 128px;
+    width: 130px;
     height: 30px;
-    background-color: none;
+    background-color: #EAEAEA;
+    border: none;
     border-radius: 5px;
 }
 
