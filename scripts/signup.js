@@ -4,45 +4,76 @@ function firebaseSignup(email, password){
 }
 
 // 의뢰인 회원가입
-function clientSignup(email, password, info){
-    firebaseSignup(email, password).then(function(user){
-        writeClientData(user.user.uid, info);
+function clientSignup(){
+    var clientInfo = getClientInfo()
+    firebaseSignup(
+        clientInfo["email"],
+        clientInfo["password"]
+    ).then(function(user){
+        writeClientData(user.user.uid, clientInfo["personalInfo"]);
     })
 }
 
 function writeClientData(uid, info){
     firebase.database().ref("Users/" + uid).set({
-        personalInfo:{
-            type:"Client",
-            nicName:info
-        }
+        personalInfo : info
     });
+}
+
+function getClientInfo(){
+    var singUpInfo = {
+        email : $("#client-email").value,
+        password : $("#client-pwd").value,
+        personalInfo:{
+            type : "Client",
+            nickname : $("#client-nickname").value
+        }
+    }
+
+    return singUpInfo
 }
 
 // 전문가 회원가입
 function expertSignup(email, password, info){
-    firebaseSignup(email, password).then(function(user){
-        writeExpertData(user.user.uid, info);
+    var expertInfo = getExpertInfo()
+    firebaseSignup(
+        expertInfo["email"],
+        expertInfo["password"]
+    ).then(function(user){
+        writeExpertData(user.user.uid, expertInfo["personalInfo"]);
     })
 }
 
 function writeExpertData(uid, info){
     firebase.database().ref("Users/" + uid).set({
-        personalInfo:{
-            type : "Expert",
-            name : info["name"],
-            affiliation : info["affiliation"],
-            phoneNum : info["phoneNum"],
-            address : info["address"],
-            qualificationDate : info["qualificationDate"],
-            agentNum : info["agentNum"],
-            fieldList : info["fieldList"],
-            profileUrl : info["profileUrl"],
-            additionalInfo : info["additionalInfo"]
-        }
+        personalInfo : info
     });
 }
 
+function getExpertInfo(){
+    var singUpInfo = {
+        email : $("#expert-email").value,
+        password : $("#expert-pwd").value,
+        personalInfo:{
+            type : "Expert",
+            name : $("#expert-name").value,
+            affiliation : $("#expert-affiliation").value,
+            phoneNum : $("#expert-phone").value,
+            address : $("#expert-address").value,
+            qualificationDate : $("#expert-qualification").value,
+            agentNum : $("#expert-agent-num").value,
+            fieldList : $("#expert-field").value,
+            profileUrl : $("#expert-profile").value,
+            additionalInfo : {
+                Career : $("#expert-career").value,
+                Reward : $("#expert-reward").value,
+                Intro : $("#expert-intro").value
+            }
+        }
+    }
+    
+    return singUpInfo
+}
 // 전문가 테스트 정보
 // var info = {
 //     "additionalInfo" : {
