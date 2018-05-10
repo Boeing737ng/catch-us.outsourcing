@@ -67,11 +67,50 @@ button.login-button {
 }
 button.signup-button {
     display: inline-block;
-    width: 130px;
+    width: 264px;
     height: 30px;
     background-color: #EAEAEA;
     border: none;
     border-radius: 5px;
 }
+
+section.service-info {
+    width: 100%;
+    margin: 50px auto;
+}
+.info-wrapper {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+.information {
+    text-align: center;
+    display: inline-block;
+}
+.information:first-child {
+    float: left;
+}
+.information:last-child {
+    float: right;
+}
+.info-header {
+    display: block;
+    margin-bottom: 30px;
+}
+.info-body {
+    margin: auto;
+    color: #fff;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: #051E5A;
+}
+.info-text {
+    position: relative;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
+
 
 /*********** Main ends **********/
