@@ -17,6 +17,9 @@ a {
 .light-font {
     font-weight: 300;
 }
+.bold {
+    font-weight: bold;
+}
 /*********** header **********/
 header {
     background-color: #051E5A;
@@ -110,7 +113,19 @@ section.service-info {
     top: 50%;
     transform: translate(0,-50%);
 }
-
+footer {
+    padding: 10px 0;
+    border-top: 2px solid #051E5A;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+footer span {
+    margin: 5px 0;
+}
+.footer-head {
+    margin-left: 20px;
+}
 
 
 /*********** Main ends **********/
