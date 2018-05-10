@@ -136,6 +136,38 @@ footer span {
 .footer-head {
     margin-left: 20px;
 }
-
-
 /*********** Main ends **********/
+/********** Signup **********/
+.signup-wrapper {
+    padding-top: 15px;
+    margin: 50px auto;
+    width: 600px;
+    height: auto;
+    border: 1px solid #051E5A;
+    border-radius: 10px;
+}
+.signup-wrapper section {
+    display: none; /* Does not display anything when page is loaded first */
+}
+.signup-header {
+    margin: auto;
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #051E5A;
+}
+.signup-option {
+    text-align: center;
+    box-align: center;
+    width: 250px;
+    margin: 15px auto;
+}
+.signup-option button {
+    width: 120px;
+    height: 30px;
+    border: 1px solid #051E5A;
+    border-radius: 5px;
+}
+/********** Signup ends **********/
+
