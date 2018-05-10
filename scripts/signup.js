@@ -11,8 +11,9 @@ function clientSignup(email, password, info){
 }
 
 function writeClientData(uid, info){
-    firebase.database().ref("Clients/" + uid).set({
+    firebase.database().ref("Users/" + uid).set({
         personalInfo:{
+            type:"Client",
             nicName:info
         }
     });
@@ -26,8 +27,9 @@ function expertSignup(email, password, info){
 }
 
 function writeExpertData(uid, info){
-    firebase.database().ref("Experts/" + uid).set({
+    firebase.database().ref("Users/" + uid).set({
         personalInfo:{
+            type : "Expert",
             name : info["name"],
             affiliation : info["affiliation"],
             phoneNum : info["phoneNum"],
