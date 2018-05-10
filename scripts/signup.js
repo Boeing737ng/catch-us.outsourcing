@@ -28,15 +28,15 @@ function expertSignup(email, password, info){
 function writeExpertData(uid, info){
     firebase.database().ref("Experts/" + uid).set({
         personalInfo:{
-            name:info["name"],
-            affiliation:info["affiliation"],
-            phoneNum:info["phoneNum"],
-            address:info["address"],
-            qualificationDate:info["qualificationDate"],
-            agentNum:info["agentNum"],
-            fieldList:info["fieldList"],
-            profileUrl:info["profileUrl"],
-            additionalInfo:info["additionalInfo"]
+            name : info["name"],
+            affiliation : info["affiliation"],
+            phoneNum : info["phoneNum"],
+            address : info["address"],
+            qualificationDate : info["qualificationDate"],
+            agentNum : info["agentNum"],
+            fieldList : info["fieldList"],
+            profileUrl : info["profileUrl"],
+            additionalInfo : info["additionalInfo"]
         }
     });
 }
