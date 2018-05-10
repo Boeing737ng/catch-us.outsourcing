@@ -5,7 +5,16 @@ html,body {
     width: 100%;
     height: 100%;
 }
-
+input:focus, button:focus {
+    outline: none;
+}
+button:hover {
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+}
+/*********** header **********/
 header {
     background-color: #051E5A;
     width: 100%;
@@ -14,7 +23,10 @@ header {
 header a {
     margin-right: 37px;
     color: #fff;
-    text-decoration: none;
+    font-weight: 300;
+}
+header a:hover {
+    font-weight: 400;
 }
 .link-container {
     position: relative;
@@ -22,3 +34,34 @@ header a {
     float: right;
     transform: translate(0,-50%);
 }
+/*********** header ends **********/
+/*********** Main **********/
+section.login {
+    text-align: center;
+}
+section.login * {
+    display: block;
+    margin: 0 auto 7px;
+}
+section.login input {
+    width: 255px;
+    padding-left: 5px;
+    height: 30px;
+    border: 1px solid #4C4C4C;
+    border-radius: 5px;
+}
+button.login-button {
+    width: 262px;
+    height: 30px;
+    background-color: none;
+    border-radius: 5px;
+}
+button.signup-button {
+    display: inline-block;
+    width: 128px;
+    height: 30px;
+    background-color: none;
+    border-radius: 5px;
+}
+
+/*********** Main ends **********/
