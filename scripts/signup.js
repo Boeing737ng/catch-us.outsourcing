@@ -1,16 +1,58 @@
-
-function firebase_signup(email, password){
+// 기본 회원가입
+function firebaseSignup(email, password){
     return firebase.auth().createUserWithEmailAndPassword(email, password);
 }
 
-function client_signup(email, password, info){
-    firebase_signup(email, password).then(function(user){
-        write_client_data(user.user.uid, info);
+// 의뢰인 회원가입
+function clientSignup(email, password, info){
+    firebaseSignup(email, password).then(function(user){
+        writeClientData(user.user.uid, info);
     })
 }
 
-function write_client_data(uid, info){
-    firebase.database().ref('Clients/' + uid).set({
-        Nicname:info
+function writeClientData(uid, info){
+    firebase.database().ref("Clients/" + uid).set({
+        personalInfo:{
+            nicName:info
+        }
     });
 }
+
+// 전문가 회원가입
+function expertSignup(email, password, info){
+    firebaseSignup(email, password).then(function(user){
+        writeExpertData(user.user.uid, info);
+    })
+}
+
+function writeExpertData(uid, info){
+    firebase.database().ref("Experts/" + uid).set({
+        personalInfo:{
+            name:info["name"],
+            affiliation:info["affiliation"],
+            phoneNum:info["phoneNum"],
+            address:info["address"],
+            qualificationDate:info["qualificationDate"],
+            agentNum:info["agentNum"],
+            fieldList:info["fieldList"],
+            profileUrl:info["profileUrl"],
+            additionalInfo:info["additionalInfo"]
+        }
+    });
+}
+
+// var info = {
+//     "additionalInfo" : {
+//         "Career" : "경력사항", 
+//         "Reward" : "논문,수상 등", 
+//         "Intro" : "간단소개"
+//     },
+//     "address" : "대전",
+//     "affiliation" : "칠사공",
+//     "agentNum" : "111992",
+//     "fieldList" : ["기계", "컴퓨터", "전자"],
+//     "name" : "김승태",
+//     "phoneNum" : "010-0000-0000",
+//     "profileUrl" : "www.asdf.com",
+//     "qualificationDate" : "2010"
+// }
