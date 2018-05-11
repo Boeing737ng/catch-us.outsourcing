@@ -168,6 +168,12 @@ footer span {
     height: 30px;
     border: 1px solid #051E5A;
     border-radius: 5px;
+    transition: 300ms;
+}
+
+.signup-option button:hover {
+    background-color: #051E5A;
+    color: #fff;
 }
 /********** Signup ends **********/
 
