@@ -22,3 +22,11 @@ function onLoadManagertPage(){
 function onLoadBoardPage(){
     location.href = rootURL+"pages/board.html";
 }
+
+function showLoading(){
+    $(".animationload")[0].style.display = "block";
+}
+
+function noneLoading(){
+    $(".animationload")[0].style.display = "none";
+}

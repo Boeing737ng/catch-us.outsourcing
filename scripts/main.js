@@ -5,10 +5,12 @@ function signIn(){
     password = $("#user-pw")[0].value;
     firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
         firebase.database().ref('Users/'+user.user.uid+"/personalInfo/type").on('value', function(snapshot) {
-            if(snapshot.val() == "Expert"){
+            if(snapshot.node_.value_ == "Expert"){
                 console.log("전문가 로그인");
-            }else if(snapshot.val == "Client"){
+                onLoadExpertPage();
+            }else if(snapshot.node_.value_ == "Client"){
                 console.log("의뢰인 로그인");
+                onLoadClitentPage();
             }
         });
     });

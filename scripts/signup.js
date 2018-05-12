@@ -7,17 +7,29 @@ function firebaseSignup(email, password){
 
 // 의뢰인 회원가입
 function clientSignup(){
-    var clientInfo = getClientInfo()
+    var clientInfo = getClientInfo();
+    showLoading();
     firebaseSignup(
         clientInfo["email"],
         clientInfo["password"]
-    ).then(function(user){
-        writeClientData(user.user.uid, clientInfo["personalInfo"])
-        .then(function(){
-            alert("회원가입이 완료되었습니다.");
-            onLoadMainPage();
-        });
-    })
+    ).then(
+        function(user){
+            writeClientData(user.user.uid, clientInfo["personalInfo"])
+            .then(
+                function(){
+                alert("회원가입이 완료되었습니다.");
+                onLoadMainPage();
+                }, 
+                function(error){
+                    console.log("clientSignup second err : ", errer);
+                    noneLoading();
+                });
+        },
+        function(errer){
+            console.log("clientSignup firest err : ", errer);
+            noneLoading();
+        }
+    )
 }
 
 function writeClientData(uid, info){
@@ -45,19 +57,37 @@ function expertSignup(){
     firebaseSignup(
         expertInfo["email"],
         expertInfo["password"]
-    ).then(function(user){
-        // $('#expert-profile').get(0).files[0]
-        upLoadProfile(user.user.uid).then(function(snapshot){
-            console.log(snapshot)
-            expertInfo["personalInfo"]["profileUrl"] = snapshot.task.uploadUrl_;
-            console.log(expertInfo);
-            writeExpertData(user.user.uid, expertInfo["personalInfo"])
-            .then(function(){
-                alert("회원가입이 완료되었습니다.");
-                onLoadMainPage();
-            });
-        });
-    })
+    ).then(
+        function(user){
+            // $('#expert-profile').get(0).files[0]
+            upLoadProfile(user.user.uid).then(
+                function(snapshot){
+                    console.log(snapshot)
+                    expertInfo["personalInfo"]["profileUrl"] = snapshot.task.uploadUrl_;
+                    console.log(expertInfo);
+                    writeExpertData(user.user.uid, expertInfo["personalInfo"])
+                    .then(
+                        function(){
+                            alert("회원가입이 완료되었습니다.");
+                            onLoadMainPage();
+                        },
+                        function(error){
+                            console.log("expertSignup third err : ", error);
+                            noneLoading();
+                        }
+                    );
+                },
+                function(){
+                    console.log("expertSignup second err : ", error);
+                   noneLoading(); 
+                }
+            );
+        },
+        function(error){
+            console.log("expertSignup first err : ", error);
+            noneLoading();
+        }
+    )
 }
 
 function writeExpertData(uid, info){
