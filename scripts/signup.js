@@ -51,13 +51,17 @@ function expertSignup(){
             console.log(snapshot)
             expertInfo["personalInfo"]["profileUrl"] = snapshot.task.uploadUrl_;
             console.log(expertInfo);
-            writeExpertData(user.user.uid, expertInfo["personalInfo"]);
+            writeExpertData(user.user.uid, expertInfo["personalInfo"])
+            .then(function(){
+                alert("회원가입이 완료되었습니다.");
+                onLoadMainPage();
+            });
         });
     })
 }
 
 function writeExpertData(uid, info){
-    firebase.database().ref("Users/" + uid).set({
+    return firebase.database().ref("Users/" + uid).set({
         personalInfo : info
     });
 }
