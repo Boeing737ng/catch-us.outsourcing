@@ -14,7 +14,7 @@ function clientSignup(){
         clientInfo["password"]
     ).then(
         function(user){
-            writeClientData(user.user.uid, clientInfo["personalInfo"])
+            writeClientData(user.user.uid, clientInfo)
             .then(
                 function(){
                 alert("회원가입이 완료되었습니다.");
@@ -34,7 +34,8 @@ function clientSignup(){
 
 function writeClientData(uid, info){
     return firebase.database().ref("Users/" + uid).set({
-        personalInfo : info
+        email : info["email"],
+        personalInfo : info["personalInfo"]
     });
 }
 
@@ -65,7 +66,7 @@ function expertSignup(){
                     console.log(snapshot)
                     expertInfo["personalInfo"]["profileUrl"] = snapshot.task.uploadUrl_;
                     console.log(expertInfo);
-                    writeExpertData(user.user.uid, expertInfo["personalInfo"])
+                    writeExpertData(user.user.uid, expertInfo)
                     .then(
                         function(){
                             alert("회원가입이 완료되었습니다.");
@@ -92,7 +93,8 @@ function expertSignup(){
 
 function writeExpertData(uid, info){
     return firebase.database().ref("Users/" + uid).set({
-        personalInfo : info
+        email : info["email"],
+        personalInfo : info["personalInfo"]
     });
 }
 

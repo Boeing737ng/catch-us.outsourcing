@@ -11,10 +11,10 @@ function signIn(){
             .on(
                 'value', 
                 function(snapshot) {
-                    if(snapshot.node_.value_ == "Expert"){
+                    if(snapshot.val() == "Expert"){
                         console.log("전문가 로그인");
                         onLoadExpertPage();
-                    }else if(snapshot.node_.value_ == "Client"){
+                    }else if(snapshot.val() == "Client"){
                         console.log("의뢰인 로그인");
                         onLoadClitentPage();
                     }
