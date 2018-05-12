@@ -216,6 +216,7 @@ footer span {
 .file-wrapper input {
     width: calc(100%-150px);
     display: inline-block;
+    vertical-align: top;
 }
 .image-wrapper {
     display: inline-block;
