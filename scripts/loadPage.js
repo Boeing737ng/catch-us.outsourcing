@@ -1,4 +1,7 @@
 var rootURL = "http://localhost/catch-us/";
+function onLoadMainPage(){
+    location.href = rootURL;
+}
 
 function onLoadSignUpPage(){
     location.href = rootURL+"pages/signup.html";

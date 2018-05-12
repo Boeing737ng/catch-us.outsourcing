@@ -1,3 +1,5 @@
+var storageRef = firebase.storage().ref();
+
 // 기본 회원가입
 function firebaseSignup(email, password){
     return firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -10,23 +12,27 @@ function clientSignup(){
         clientInfo["email"],
         clientInfo["password"]
     ).then(function(user){
-        writeClientData(user.user.uid, clientInfo["personalInfo"]);
+        writeClientData(user.user.uid, clientInfo["personalInfo"])
+        .then(function(){
+            alert("회원가입이 완료되었습니다.");
+            onLoadMainPage();
+        });
     })
 }
 
 function writeClientData(uid, info){
-    firebase.database().ref("Users/" + uid).set({
+    return firebase.database().ref("Users/" + uid).set({
         personalInfo : info
     });
 }
 
 function getClientInfo(){
     var singUpInfo = {
-        email : $("#client-email").value,
-        password : $("#client-pwd").value,
+        email : $("#client-email")[0].value,
+        password : $("#client-pwd")[0].value,
         personalInfo:{
             type : "Client",
-            nickname : $("#client-nickname").value
+            nickname : $("#client-nickname")[0].value
         }
     }
 
@@ -34,13 +40,19 @@ function getClientInfo(){
 }
 
 // 전문가 회원가입
-function expertSignup(email, password, info){
+function expertSignup(){
     var expertInfo = getExpertInfo()
     firebaseSignup(
         expertInfo["email"],
         expertInfo["password"]
     ).then(function(user){
-        writeExpertData(user.user.uid, expertInfo["personalInfo"]);
+        // $('#expert-profile').get(0).files[0]
+        upLoadProfile(user.user.uid).then(function(snapshot){
+            console.log(snapshot)
+            expertInfo["personalInfo"]["profileUrl"] = snapshot.task.uploadUrl_;
+            console.log(expertInfo);
+            writeExpertData(user.user.uid, expertInfo["personalInfo"]);
+        });
     })
 }
 
@@ -52,27 +64,37 @@ function writeExpertData(uid, info){
 
 function getExpertInfo(){
     var singUpInfo = {
-        email : $("#expert-email").value,
-        password : $("#expert-pwd").value,
+        email : $("#expert-email")[0].value,
+        password : $("#expert-pwd")[0].value,
         personalInfo:{
             type : "Expert",
-            name : $("#expert-name").value,
-            affiliation : $("#expert-affiliation").value,
-            phoneNum : $("#expert-phone").value,
-            address : $("#expert-address").value,
-            qualificationDate : $("#expert-qualification").value,
-            agentNum : $("#expert-agent-num").value,
-            fieldList : $("#expert-field").value,
-            profileUrl : $("#expert-profile").value,
+            name : $("#expert-name")[0].value,
+            affiliation : $("#expert-affiliation")[0].value,
+            phoneNum : $("#expert-phone")[0].value,
+            address : $("#expert-address")[0].value,
+            qualificationDate : $("#expert-qualification")[0].value,
+            agentNum : $("#expert-agent-num")[0].value,
+            // fieldList : $("#expert-field")[0].value,
+            profileUrl : '',
             additionalInfo : {
-                Career : $("#expert-career").value,
-                Reward : $("#expert-reward").value,
-                Intro : $("#expert-intro").value
+                Career : $("#expert-career")[0].value,
+                Reward : $("#expert-reward")[0].value,
+                Intro : $("#expert-intro")[0].value
             }
         }
     }
     
     return singUpInfo
+}
+
+function upLoadProfile(uid){
+    const file = $('#expert-profile').get(0).files[0];
+    fileNames = file.name.split(".");
+    const name = uid+"."+fileNames[fileNames.length-1];
+    const metadata = {
+        contentType: file.type
+    };
+    return storageRef.child(name).put(file, metadata);
 }
 // 전문가 테스트 정보
 // var info = {
