@@ -1,19 +1,35 @@
 console.log("Catch-us 외주 개발 (김승태, 최기현)")
 var s;
 function signIn(){
+    showLoading();
     email = $("#user-email")[0].value;
     password = $("#user-pw")[0].value;
-    firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
-        firebase.database().ref('Users/'+user.user.uid+"/personalInfo/type").on('value', function(snapshot) {
-            if(snapshot.node_.value_ == "Expert"){
-                console.log("전문가 로그인");
-                onLoadExpertPage();
-            }else if(snapshot.node_.value_ == "Client"){
-                console.log("의뢰인 로그인");
-                onLoadClitentPage();
-            }
-        });
-    });
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(
+        function(user){
+            firebase.database().ref('Users/'+user.user.uid+"/personalInfo/type")
+            .on(
+                'value', 
+                function(snapshot) {
+                    if(snapshot.node_.value_ == "Expert"){
+                        console.log("전문가 로그인");
+                        onLoadExpertPage();
+                    }else if(snapshot.node_.value_ == "Client"){
+                        console.log("의뢰인 로그인");
+                        onLoadClitentPage();
+                    }
+                },
+                function(error){
+                    console.log("signIn second err : ", error);
+                    noneLoading();
+                }
+            );
+        },
+        function(error){
+            console.log("signIn first err : ", error);
+            noneLoading();
+        }
+    );
 }
 
 function readURL(input) {
