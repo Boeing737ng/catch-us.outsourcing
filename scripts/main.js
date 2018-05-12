@@ -14,6 +14,16 @@ function signIn(){
     });
 }
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#pre-profile').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+}
+
 $("#client-button").click(function() {
     document.getElementById("client-signup").style.display = "block";
     document.getElementById("expert-signup").style.display = "none";
@@ -22,4 +32,7 @@ $("#client-button").click(function() {
 $("#expert-button").click(function() {
     document.getElementById("client-signup").style.display = "none";
     document.getElementById("expert-signup").style.display = "block";
+});
+$("#expert-profile").change(function() {
+    readURL(this);
 });

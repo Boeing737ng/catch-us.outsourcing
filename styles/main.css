@@ -5,7 +5,7 @@ html,body {
     width: 100%;
     height: 100%;
 }
-input:focus, button:focus {
+input:focus, button:focus, textarea:focus {
     outline: none;
 }
 button:hover {
@@ -145,6 +145,7 @@ footer span {
     height: auto;
     border: 1px solid #051E5A;
     border-radius: 10px;
+    text-align: center;
 }
 .signup-wrapper section {
     display: none; /* Does not display anything when page is loaded first */
@@ -175,5 +176,78 @@ footer span {
     background-color: #051E5A;
     color: #fff;
 }
+#client-signup {
+    text-align: center;
+}
+.signup-input {
+    width: 190px;
+    display: block;
+    padding: 5px 0 5px 5px;
+    margin: 40px auto;
+    border: none;
+    border-bottom: 1px solid #051E5A;
+    font-size: 15px;
+}
+.layout-wrapper {
+    overflow: auto;
+    width: 70%;
+    margin: auto;
+}
+.signup-layout {
+    display: inline-block;
+    vertical-align: top;
+}
+.signup-layout:first-child {
+    float: left;
+}
+.signup-layout:last-child {
+    float: right;
+}
+.file-wrapper {
+    width: 75%;
+    margin: 20px auto;
+    text-align: left;
+}
+.file-wrapper img {
+    text-align: left;
+    width: 100%;
+    height: 100%;
+}
+.file-wrapper input {
+    width: calc(100%-150px);
+    display: inline-block;
+}
+.image-wrapper {
+    display: inline-block;
+    width: 120px;
+    height: 150px;
+    border: 1px solid #051E5A;
+    margin-bottom: 15px;
+}
+#expert-signup textarea {
+    width: 75%;
+    max-width: 75%;
+    min-width: 75%;
+    max-height: 300px;
+    min-height: 150px;
+    margin: auto;
+}
+#expert-signup p {
+    text-align: left;
+    width: 75%;
+    margin: 5px auto;
+    font-size: 15px;
+}
+.signup-complete {
+    display: block;
+    width: 80px;
+    height: 30px;
+    border: none;
+    margin: 30px auto;
+    border-radius: 5px;
+    background-color: #051E5A;
+    color: #fff;
+}
+
 /********** Signup ends **********/
 
