@@ -6,9 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Q & A Upload</title>
     <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-    <input type="text" placeholder="Title">
-    <textarea name="" id="" cols="30" rows="10" placeholder="contents"></textarea>
+    <input id="question-title" type="text" placeholder="Title">
+    <textarea name="" id="question-content" cols="30" rows="10" placeholder="contents"></textarea>
+    <button>확인</button>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+    <script src="../scripts/firebase.js"></script>
+    <script src="../scripts/loadPage.js"></script>
+    <script src="../scripts/question.js"></script>
 </body>
 </html>

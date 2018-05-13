@@ -23,6 +23,10 @@ function onLoadBoardPage(){
     location.href = rootURL+"pages/board.html";
 }
 
+function onLoadQuestionUploadPage(){
+    location.href = rootURL+"pages/question-upload.html";
+}
+
 function showLoading(){
     $(".animationload")[0].style.display = "block";
 }
