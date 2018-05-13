@@ -1,8 +1,9 @@
 var currentUid = '';
-var questionList = [];
+// var questionList = [];
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         currentUid = user.uid;
+        // loadQuestionList();
     } else {
         onLoadMainPage();
     }
@@ -11,8 +12,15 @@ firebase.auth().onAuthStateChanged(function (user) {
 function uploadQuestion(){
     var uploadInfo = {}
     uploadInfo[currentUid] = getUploadInfo();
-    return firebase.database().ref("Questions/" + Date.now()).set(
+    firebase.database().ref("Questions/" + Date.now()).set(
         uploadInfo
+    ).then(
+        function(){
+            onLoadBoardPage();
+        },
+        function(error){
+            console.log("uploadQuestion err : "+error);
+        }
     );
 }
 
@@ -40,25 +48,25 @@ function getCurrentEmail(){
     return firebase.auth().currentUser.email;
 }
 
-function getQuestionList(){
-    var questionsObj = firebase.database().ref("/Questions");
-    return questionsObj.orderByKey().once('value');
-}
+// function getQuestionList(){
+//     var questionsObj = firebase.database().ref("/Questions");
+//     return questionsObj.orderByKey().once('value');
+// }
 
-function loadQuestionList(){
-    getQuestionList().then(function(snapshot){
-        questionObj = snapshot.val();
-        // console.log(questionObj)
-        for(key in questionObj){
-            questionValues = Object.values(questionObj[key])[0];
-            // console.log(Object.values(questionObj[key])[0]);
-            questionRow = [
-                key,
-                questionValues["title"], 
-                questionValues["email"], 
-                questionValues["date"]
-            ];
-            questionList.push(questionRow);
-        }
-    });
-}
+// function loadQuestionList(){
+//     getQuestionList().then(function(snapshot){
+//         questionObj = snapshot.val();
+//         // console.log(questionObj)
+//         for(key in questionObj){
+//             questionValues = Object.values(questionObj[key])[0];
+//             // console.log(Object.values(questionObj[key])[0]);
+//             questionRow = [
+//                 key,
+//                 questionValues["title"], 
+//                 questionValues["email"], 
+//                 questionValues["date"]
+//             ];
+//             questionList.push(questionRow);
+//         }
+//     });
+// }
