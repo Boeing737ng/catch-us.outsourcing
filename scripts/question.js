@@ -10,18 +10,20 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function uploadQuestion(){
-    var uploadInfo = {}
-    uploadInfo[currentUid] = getUploadInfo();
-    firebase.database().ref("Questions/" + Date.now()).set(
-        uploadInfo
-    ).then(
-        function(){
-            onLoadBoardPage();
-        },
-        function(error){
-            console.log("uploadQuestion err : "+error);
-        }
-    );
+    if(confirm("게시물을 등록하시겠습니까?")){
+        var uploadInfo = {};
+        uploadInfo[currentUid] = getUploadInfo();
+        firebase.database().ref("Questions/" + Date.now()).set(
+            uploadInfo
+        ).then(
+            function(){
+                onLoadBoardPage();
+            },
+            function(error){
+                console.log("uploadQuestion err : "+error);
+            }
+        );
+    }
 }
 
 function getUploadInfo(){    
