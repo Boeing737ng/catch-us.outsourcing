@@ -38,7 +38,7 @@ function loadQuestionList(){
     });
 }
 
-function Table(page){
+function makeQuestionTable(page){
     var idx = (page-1)*pageViewLength+1;
     $(".questions").remove()
     viewPage = questionList.slice((page-1)*pageViewLength, page*pageViewLength);
