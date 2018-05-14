@@ -13,16 +13,27 @@
     <div class="animationload">
         <div class="osahanloading"></div>
     </div>
-    <table id="table-wrapper">
-        <tr>
-            <td>NO.</td>
-            <td>TITLE</td>
-            <td>MAIL ADDRESS</td>
-            <td>DATE</td>
-        </tr>
-    </table>
-    <div id="paging-wrapper"></div>
-    <button onclick="onLoadQuestionUploadPage()">글쓰기</button>
+    <div class="main-wrapper">
+        <section>
+            <h3>Q & A</h3>
+        </section>
+        <section class="table-content">
+            <div class="upload-wrapper">
+                <button onclick="onLoadQuestionUploadPage()">글쓰기</button>
+            </div>
+            <div class="table-wrapper">
+                <table id="question-table">
+                    <tr class="table-header">
+                        <td>NO.</td>
+                        <td>TITLE</td>
+                        <td>MAIL ADDRESS</td>
+                        <td>DATE</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="paging-wrapper"></div>
+        </section>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="../scripts/firebase.js"></script>
     <script src="../scripts/loadPage.js"></script>

@@ -43,7 +43,7 @@ function makeQuestionTable(page){
     $(".questions").remove()
     viewPage = questionList.slice((page-1)*pageViewLength, page*pageViewLength);
     viewPage.forEach(function(row){
-        $("#table-wrapper").append(
+        $("#question-table").append(
             "<tr class=\'questions\'>"+
             "<td>"+idx+"</td>"+
             "<td><a href=\'./question?qidx="+row[0]+"\'>"+row[1]+"</a></td>"+
