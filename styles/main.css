@@ -312,7 +312,6 @@ footer span {
     height: auto;
 }
 #question-title, #question-content {
-    display: inline;
     width: 100%;
     font-size: 15px;
     border: 1px solid #BFBFBF;
