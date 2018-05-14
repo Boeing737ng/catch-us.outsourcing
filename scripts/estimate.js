@@ -12,6 +12,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         currentUid = user.uid;
     } else {
+        alert("로그인이 필요합니다.");
         onLoadMainPage();
     }
 });
@@ -34,19 +35,6 @@ function getArea(){
     return $("#sido_code option:selected").text()+" "+$("#sigoon_code option:selected").text()+" "+$("#dong_code option:selected").text()
 }
 
-function uploadEstimate(){
-    firebase.database().ref("Users/"+ currentUid +"/Estimates/"+ Date.now()).set(
-        getEstimateInfo()
-    ).then(
-        function(){
-            console.log("aaaa");
-        },
-        function(error){
-            console.log("uploadQuestion err : "+error);
-        }
-    );
-}
-
 function getCurrentDate(){
     var curDate = new Date()
     var year = curDate.getFullYear()
@@ -55,4 +43,17 @@ function getCurrentDate(){
     month < 10 ? "0"+month : ""+month;
     date < 10 ? "0"+date : ""+date;
     return year+"-"+month+"-"+date;
+}
+
+function uploadEstimate(){
+    firebase.database().ref("Users/"+ currentUid +"/Estimates/"+ Date.now()).set(
+        getEstimateInfo()
+    ).then(
+        function(){
+            onLoadClitentPage();
+        },
+        function(error){
+            console.log("uploadEstimate err : "+error);
+        }
+    );
 }
