@@ -6,9 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Q & A</title>
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/loading.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
+    <div class="animationload">
+        <div class="osahanloading"></div>
+    </div>
     <table id="table-wrapper">
         <tr>
             <td>NO.</td>
@@ -17,6 +21,7 @@
             <td>DATE</td>
         </tr>
     </table>
+    <div id="paging-wrapper"></div>
     <button onclick="onLoadQuestionUploadPage()">글쓰기</button>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="../scripts/firebase.js"></script>
