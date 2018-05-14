@@ -12,17 +12,19 @@ firebase.auth().onAuthStateChanged(function (user) {
 function uploadQuestion(){
     if(confirm("게시물을 등록하시겠습니까?")){
         var uploadInfo = {};
-        uploadInfo[currentUid] = getUploadInfo();
-        firebase.database().ref("Questions/" + Date.now()).set(
-            uploadInfo
-        ).then(
-            function(){
-                onLoadBoardPage();
-            },
-            function(error){
-                console.log("uploadQuestion err : "+error);
-            }
-        );
+        if(getUploadInfo()) {
+            uploadInfo[currentUid] = getUploadInfo();
+            firebase.database().ref("Questions/" + Date.now()).set(
+                uploadInfo
+            ).then(
+                function(){
+                    onLoadBoardPage();
+                },
+                function(error){
+                    console.log("uploadQuestion err : "+error);
+                }
+            );
+        }
     }
 }
 
@@ -33,7 +35,15 @@ function getUploadInfo(){
         content : $("#question-content")[0].value,
         date : getCurrentDate(),
     }
-    return uploadInfo;
+    if(uploadInfo.title === "") {
+        alert("제목을 입력하세요.");
+    }
+    else if(uploadInfo.content === "") {
+        alert("내용을 입력하세요.");
+    }
+    else {
+        return uploadInfo;
+    }
 }
 
 function getCurrentDate(){
