@@ -16,9 +16,18 @@
             <a href="board.html">Q & A</a>
         </div>
     </header>
-    <input id="question-title" type="text" placeholder="Title">
-    <textarea name="" id="question-content" cols="30" rows="10" placeholder="contents"></textarea>
-    <button onclick="uploadQuestion()">확인</button>
+    <div class="board-wrapper">
+        <section>
+            <h3>Q & A</h3>
+        </section>
+        <section class="text-area">
+            <input id="question-title" type="text" placeholder="제목">
+            <br>
+            <textarea name="" id="question-content" cols="30" rows="10" placeholder="내용"></textarea>
+            <br>
+            <button onclick="uploadQuestion()">확인</button>
+        </section>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="../scripts/firebase.js"></script>
     <script src="../scripts/loadPage.js"></script>
