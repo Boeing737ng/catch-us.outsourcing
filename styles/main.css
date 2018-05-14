@@ -47,8 +47,9 @@ header a:hover {
 section.logo {
     margin: 30px auto;
     width: 240px;
-    height: 100px;
-    border: 1px solid red;
+}
+section.logo img {
+    width: 100%;
 }
 section.login {
     text-align: center;
