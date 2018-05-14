@@ -12,30 +12,37 @@
     <div>지역</div>
     <input name="area" type="checkbox">
     <select class="area" id="sido_code">
-        <option>선택</option>
+        <option value="none">선택</option>
     </select>
     <select class="area"  id="sigoon_code">
-        <option>선택</option>
+        <option value="none">선택</option>
     </select>
     <select class="area"  id="dong_code">
-        <option>선택</option>
+        <option value="none">선택</option>
     </select>
-    <p><span>역지오코더 위치 : </span><span id="geoAddress"></span> </p>
-
-    <div>
-        <input type="text" id="area" placeholder="ex) 대전 광역시">
-    </div>
     <div>분야</div>
-    <input type="text" placeholder="특허/실용방안">
+    <div>
+        <a>특허/실용신안</a>
+
+        <a>상표</a>
+        
+        <a>디자인</a>
+        
+        <a>BM</a>
+        
+        <a>국제 출원</a>
+    </div>
     <a>특허/실용방안</a>
     <div>중요키워드</div>
-    <input type="text" placeholder="ex) 공작기계">
+    <input id="key-word" type="text" placeholder="ex) 공작기계">
     <div>출원 상세내용</div>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <textarea id="details" name="" id="" cols="30" rows="10"></textarea>
+    <button>견적 요청</button>
 
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="../scripts/firebase.js"></script>
     <script src="../scripts/loadPage.js"></script>
     <script src="../scripts/estimate.js"></script>
+    <script src="../scripts/area.js"></script>
 </body>
 </html>
