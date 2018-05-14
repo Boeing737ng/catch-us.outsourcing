@@ -13,4 +13,4 @@ function getEstimateList(){
     )
 }
 
-getstimateList();
+getEstimateList();
