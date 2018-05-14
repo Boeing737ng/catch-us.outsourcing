@@ -253,13 +253,36 @@ footer span {
 
 /********** Signup ends **********/
 
-
+/********** Estimate **********/
+.estimate-wrapper {
+    height: 100%;
+    width: 100%;
+}
+.side-view-left, .side-view-right {
+    display: inline-block;
+    vertical-align: text-top;
+    height: 100%;
+    background-color: #F0F0F0;
+}
+.side-view-left {
+    width: 350px;
+    margin-right: 10px;
+}
+.side-view-right {
+    width: 900px;
+}
+.estimate-view-wrapper {
+    margin: auto;
+    width: 1300px;
+    height: calc(100% - 300px);
+}
+/********** Estimate ends **********/
 
 /********** Board **********/
-.board-wrapper {
+.board-wrapper, .estimate-wrapper {
     text-align: center;
 }
-.board-wrapper h3 {
+.board-wrapper h3, .estimate-wrapper h3 {
     padding-bottom: 5px;
     width: 240px;
     margin: 40px auto 100px;
