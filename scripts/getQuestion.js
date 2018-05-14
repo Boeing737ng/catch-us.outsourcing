@@ -23,12 +23,12 @@ function loadQuestionList(){
         for(key in questionObj){
             questionValues = Object.values(questionObj[key])[0];
             // console.log(Object.values(questionObj[key])[0]);
-            questionRow = [
-                key,
-                questionValues["title"], 
-                questionValues["email"], 
-                questionValues["date"]
-            ];
+            questionRow = {
+                key : key,
+                title : questionValues["title"], 
+                email : questionValues["email"], 
+                date : questionValues["date"]
+            };
             questionList.unshift(questionRow);
         }
         pageIdx = parseInt((questionList.length-1)/pageViewLength+1);
@@ -46,9 +46,9 @@ function makeQuestionTable(page){
         $("#question-table").append(
             "<tr class=\'questions\'>"+
             "<td>"+idx+"</td>"+
-            "<td><a href=\'./question?qidx="+row[0]+"\'>"+row[1]+"</a></td>"+
-            "<td>"+row[2]+"</td>"+
-            "<td>"+row[3]+"</td>"+
+            "<td><a href=\'./question?qidx="+row["key"]+"\'>"+row["title"]+"</a></td>"+
+            "<td>"+row["email"]+"</td>"+
+            "<td>"+row["date"]+"</td>"+
             "</tr>"
         );
         idx++;

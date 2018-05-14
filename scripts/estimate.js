@@ -46,6 +46,7 @@ function getCurrentDate(){
 }
 
 function uploadEstimate(){
+    showLoading();
     firebase.database().ref("Users/"+ currentUid +"/Estimates/"+ Date.now()).set(
         getEstimateInfo()
     ).then(

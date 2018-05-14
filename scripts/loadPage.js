@@ -27,6 +27,10 @@ function onLoadQuestionUploadPage(){
     location.href = rootURL+"pages/question-upload.html";
 }
 
+function onLoadEstimatePage(){
+    location.href = rootURL+"pages/estimate.html";
+}
+
 function showLoading(){
     $(".animationload")[0].style.display = "block";
 }
