@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>견적서 작성</title>
+    <link rel="stylesheet" href="../styles/loading.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>지역</div>
+    <input name="area" type="checkbox">
+    <select class="area" id="sido_code">
+        <option>선택</option>
+    </select>
+    <select class="area"  id="sigoon_code">
+        <option>선택</option>
+    </select>
+    <select class="area"  id="dong_code">
+        <option>선택</option>
+    </select>
+    <p><span>역지오코더 위치 : </span><span id="geoAddress"></span> </p>
+
+    <div>
+        <input type="text" id="area" placeholder="ex) 대전 광역시">
+    </div>
+    <div>분야</div>
+    <input type="text" placeholder="특허/실용방안">
+    <a>특허/실용방안</a>
+    <div>중요키워드</div>
+    <input type="text" placeholder="ex) 공작기계">
+    <div>출원 상세내용</div>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+    <script src="../scripts/firebase.js"></script>
+    <script src="../scripts/loadPage.js"></script>
+    <script src="../scripts/estimate.js"></script>
+</body>
+</html>
