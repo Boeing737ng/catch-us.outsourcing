@@ -306,5 +306,35 @@ footer span {
 #paging-wrapper {
     margin-top: 20px;
 }
+.text-area {
+    width: 700px;
+    margin: auto ;
+    height: auto;
+}
+#question-title, #question-content {
+    width: 100%;
+    font-size: 15px;
+    border: 1px solid #BFBFBF;
+    border-radius: 5px;
+}
+#question-title {
+    height: 30px;
+    margin-bottom: 17px;
+}
+#question-content {
+    height: 300px;
+    min-height: 300px;
+    max-height: 450px;
+    max-width: 100%;
+    min-width: 100%;
+}
+.text-area button {
+    background-color: #C8D9F3;
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    margin-top: 40px;
+}
+
 /********** Board ends **********/
 
