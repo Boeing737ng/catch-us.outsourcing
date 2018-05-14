@@ -26,7 +26,7 @@ function clientSignup(){
                 });
         },
         function(errer){
-            console.log("clientSignup firest err : ", errer);
+            console.log("clientSignup first err : ", errer);
             noneLoading();
         }
     )
