@@ -1,6 +1,7 @@
 var EstimatesList = {}
 function getEstimateList(){
     var UserList = firebase.database().ref("/Users");
+    showLoading();
     return UserList.once('value').then(
         function(snapshot){
             for(row of Object.values(snapshot.val())){
@@ -9,8 +10,9 @@ function getEstimateList(){
                 }
             }
             console.log(EstimatesList)
+            noneLoading();
         }
     )
 }
 
-getstimateList();
+getEstimateList();
