@@ -23,7 +23,8 @@ function getEstimateInfo(){
         field : "특허/실용 방안",
         keyword : $("#key-word").val(),
         details : $("#details").val(),
-        date : getCurrentDate()
+        date : getCurrentDate(),
+        uid : currentUid
     };
     return EstimateInfo;
 }
@@ -47,7 +48,8 @@ function getCurrentDate(){
 
 function uploadEstimate(){
     showLoading();
-    firebase.database().ref("Users/"+ currentUid +"/Estimates/"+ Date.now()).set(
+
+    firebase.database().ref("Estimates/"+ Date.now()).set(
         getEstimateInfo()
     ).then(
         function(){
@@ -55,6 +57,18 @@ function uploadEstimate(){
         },
         function(error){
             console.log("uploadEstimate err : "+error);
+            nonLoading();
         }
     );
+
+    // firebase.database().ref("Users/"+ currentUid +"/Estimates/"+ Date.now()).set(
+    //     getEstimateInfo()
+    // ).then(
+    //     function(){
+    //         onLoadClitentPage();
+    //     },
+    //     function(error){
+    //         console.log("uploadEstimate err : "+error);
+    //     }
+    // );
 }

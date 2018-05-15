@@ -10,8 +10,9 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function getUserEstimate(){
-    var estimateObj = firebase.database().ref("Users/"+currentUid+"/Estimates");
-    return estimateObj.orderByKey().once('value');
+    // var estimateObj = firebase.database().ref("Users/"+currentUid+"/Estimates");
+    var estimateObj = firebase.database().ref("Estimates/");
+    return estimateObj.orderByChild("uid").equalTo(currentUid).once('value');
 }
 
 function loadEstimateList(){
@@ -30,5 +31,14 @@ function loadEstimateList(){
             };
             estimateList.unshift(estimateRow);
         }
+    });
+}
+
+function makeCurEstimateList(){
+    $("#estimate-list")[0]
+    estimateList.forEach(function(row){
+        $("#estimate-list").append(
+            "<div id='estimate'>"+row["area"]+"</div>"
+        );
     });
 }
