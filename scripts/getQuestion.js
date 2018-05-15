@@ -1,5 +1,5 @@
-var pageViewLength = 3;
-var pageBarLength = 3;
+var pageViewLength = 10;
+var pageBarLength = 10;
 var questionList = [];
 var pageIdx = 0;
 showLoading();
@@ -58,6 +58,7 @@ function makeQuestionTable(page){
 function makePaging(pageBarIdx){
     var pageStart = (pageBarIdx-1)*pageViewLength+1;
     var pageEnd = pageBarIdx*pageViewLength;
+    makeQuestionTable(pageStart);
     $("#paging-wrapper").children().remove();
     if(pageStart != 1){
         $("#paging-wrapper").append(
