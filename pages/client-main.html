@@ -13,9 +13,28 @@
     <div class="animationload">
         <div class="osahanloading"></div>
     </div>
-    <div>나의 견적서</div>
-    <button onclick="onLoadEstimatePage()">추가</button>
-    <div>전문 변리사</div>
+    <header>
+        <div class="link-container light-font">
+            <a href="../">HOME</a>
+            <a href="" onclick="window.location.reload(true)">견적문의</a>
+            <a href="board.html">Q & A</a>
+        </div>
+    </header>
+    <div class="estimate-wrapper">
+        <section>
+            <h3>견적 문의</h3>
+        </section>
+        <section class="estimate-view-wrapper">
+            <div class="side-view-left">
+                <h4>나의 견적서</h4>
+                <button onclick="onLoadEstimatePage()">추가</button>
+                <div id="estimate-list"></div>
+            </div>
+            <div class="side-view-right">
+                <h4>전문 변리사</h4>
+            </div>
+        </section>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="../scripts/firebase.js"></script>
