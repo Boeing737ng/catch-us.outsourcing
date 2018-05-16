@@ -32,7 +32,7 @@ function makeEstimateTable(){
             +"<div>지역</div>"
             +"<div>"+row["area"]+"</div>"
             +"<div>분야</div>"
-            +"<div>"+row["field"]+"</div>"
+            +"<div>"+row["field"].toString()+" - "+row["keyword"]+"</div>"
             +"<div>내용</div>"
             +"<div>"+row["details"]+"</div>"
             +"<div>요청일</div>"
@@ -47,11 +47,6 @@ function makeEstimateTable(){
 function getExpertList(){
     var UserList = firebase.database().ref("/Users");
     return UserList.orderByChild("personalInfo/type").equalTo("Expert").once('value')
-    // .then(
-    //     function(snapshot){
-    //         return snapshot.val();
-    //     }
-    // )
 }
 
 function makeCurExpertTable(key){
@@ -134,4 +129,5 @@ function backToExpert(){
     $("#expert-list").show();
     $("#expert-info").hide();
 }
+
 getEstimateList();
