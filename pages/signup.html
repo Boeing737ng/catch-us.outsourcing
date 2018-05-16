@@ -27,10 +27,16 @@
         </div>
         <!--  의뢰인  -->
         <section id="client-signup">
-            <input id="client-email" class="signup-input" type="text" placeholder="이메일 주소">
-            <input id="client-nickname" class="signup-input" type="text" placeholder="닉네임">
-            <input id="client-pwd" class="signup-input" type="password" placeholder="비밀번호">
-            <input id="client-pwd-check" class="signup-input" type="password" placeholder="비밀번호 확인">
+            <div class="layout-wrapper">
+                <div class="signup-row">
+                    <input id="client-email" class="signup-input" type="text" placeholder="이메일 주소">
+                    <input id="client-nickname" class="signup-input" type="text" placeholder="닉네임">
+                </div>
+                <div class="signup-row">
+                    <input id="client-pwd" class="signup-input" type="password" placeholder="비밀번호">
+                    <input id="client-pwd-check" class="signup-input" type="password" placeholder="비밀번호 확인">
+                </div>
+            </div>
             <button class="completed-button" onclick="clientSignup()">회원가입 완료</button>
         </section>
     
