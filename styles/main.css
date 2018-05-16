@@ -309,7 +309,7 @@ footer span {
     height: calc(100% - 70px);
     -ms-overflow-style: none;
 }
-.scroll-area::-webkit-scrollbar { 
+div::-webkit-scrollbar { 
     width: 0 !important 
 }
 .estimate-input-wrapper {
@@ -381,7 +381,22 @@ textarea#details {
     max-height: 300px;
     border-radius: 3px;
 }
-
+#expert-list {
+    overflow-y: scroll;
+    padding: 0px 30px;
+    width: calc(100% - 60px);
+    border-top: 2px solid #FFF;
+    height: calc(100% - 70px);
+    -ms-overflow-style: none;
+    text-align: left;
+}
+.experts {
+    margin: 20px 8px 0px;
+    border: 1px solid red;
+    display: inline-block;
+    width: 260px;
+    height: 300px;
+}
 /********** Estimate ends **********/
 
 /********** Board **********/
