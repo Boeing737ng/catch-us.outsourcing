@@ -5,8 +5,18 @@ $("input[name=area]").change(function(){
         $(".area").removeAttr('disabled').css("opacity","1");
     }
 });
+
 $("#area-no-matter-text").click(function(){
     $("input[name=area]").click();
+});
+
+$(".field").click(function(){
+    if($(this).hasClass("selected-field")){
+        $(this).removeClass("selected-field");
+    }
+    else {
+        $(this).addClass("selected-field");
+    }
 });
 
 var currentUid = '';
