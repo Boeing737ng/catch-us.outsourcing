@@ -139,7 +139,7 @@ footer span {
 }
 /*********** Main ends **********/
 /********** Signup **********/
-.signup-wrapper {
+.input-field-wrapper {
     padding-top: 15px;
     margin: 50px auto;
     width: 600px;
@@ -148,7 +148,7 @@ footer span {
     border-radius: 10px;
     text-align: center;
 }
-.signup-wrapper section {
+.input-field-wrapper section {
     display: none; /* Does not display anything when page is loaded first */
 }
 .signup-header {
