@@ -147,8 +147,13 @@ footer span {
     border: 1px solid #051E5A;
     border-radius: 10px;
     text-align: center;
+    /* animation: spin 0.5s infinite; */
 }
-.input-field-wrapper section {
+/* @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  } */
+#client-signup, #expert-signup {
     display: none; /* Does not display anything when page is loaded first */
 }
 .signup-header {
@@ -240,7 +245,7 @@ footer span {
     margin: 5px auto;
     font-size: 15px;
 }
-.signup-complete {
+.completed-button {
     display: block;
     width: 80px;
     height: 30px;
@@ -277,11 +282,78 @@ footer span {
     width: 1300px;
     height: calc(100% - 200px);
 }
+.estimate-input-wrapper {
+    width: 85%;
+    margin: auto;
+    text-align: left;
+}
+.estimate-input-wrapper .header {
+    margin: 20px 0 10px;
+}
+.area-no-matter {
+    margin-bottom: 8px;
+}
+.area-no-matter input {
+    width: 15px;
+    height: 15px;
+}
+#area-no-matter-text:hover {
+    cursor: pointer;
+}
+.select-area select{
+    width: 100px;
+    height: 25px;
+    padding-left: 10px;
+    font-size: 13px;
+    color: #051E5A;
+    border: 1px solid #051E5A;
+    border-radius: 1px;
+}
+.select-section {
+    padding: 0px 15px;
+}
+.select-field a{
+    display: inline-block;
+    border: 1px solid #051E5A;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    margin: 0px 5px 5px 0px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 12px;
+}
+.select-field a:hover{
+    cursor: pointer;
+}
+.select-field a.selected-field {
+    background-color: #051E5A;
+    color: #fff;
+}
+input#key-word {
+    width: 190px;
+    display: block;
+    padding: 5px 0 5px 5px;
+    border: none;
+    border-bottom: 1px solid #051E5A;
+    font-size: 12px;
+}
+textarea#details {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 220px;
+    min-height: 220px;
+    max-height: 300px;
+    border-radius: 3px;
+}
+
 /********** Estimate ends **********/
 
 /********** Board **********/
 .board-wrapper, .estimate-wrapper {
     text-align: center;
+    margin-top: 50px;
 }
 .board-wrapper h3, .estimate-wrapper h3 {
     padding-bottom: 5px;

@@ -6,41 +6,65 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>견적서 작성</title>
     <link rel="stylesheet" href="../styles/loading.css">
+    <link rel="stylesheet" href="../styles/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="animationload">
         <div class="osahanloading"></div>
     </div>
-    <div>지역</div>
-    <input name="area" type="checkbox">
-    <select class="area" id="sido_code">
-        <option value="none">선택</option>
-    </select>
-    <select class="area"  id="sigoon_code">
-        <option value="none">선택</option>
-    </select>
-    <select class="area"  id="dong_code">
-        <option value="none">선택</option>
-    </select>
-    <div>분야</div>
-    <div>
-        <a>특허/실용신안</a>
+    <div class="estimate-wrapper">
+        <section>
+            <h3>견적 요청서</h3>
+        </section>
+        <div class="input-field-wrapper">
+            <div class="estimate-input-wrapper">
+                <div class="header">1. 지역</div>
+                <section class="select-section">
+                    <div class="area-no-matter">
+                        <input name="area" type="checkbox">
+                        <span id="area-no-matter-text">지역 상관 없음</span>
+                    </div>
+                    <div class="select-area">
+                        <select class="area" id="sido_code">
+                            <option value="none">선택</option>
+                        </select>
+                        <select class="area" id="sigoon_code">
+                            <option value="none">선택</option>
+                        </select>
+                        <select class="area" id="dong_code">
+                            <option value="none">선택</option>
+                        </select>
+                    </div>
+                </section>
+                <div class="header">2. 분야</div>
+                <section class="select-section">
+                    <div class="select-field">
+                        <a class="field">특허/실용신안</a>
+            
+                        <a class="field">상표</a>
+                        
+                        <a class="field">디자인</a>
+                        
+                        <a class="field">BM</a>
+                        
+                        <a class="field">국제 출원</a>
 
-        <a>상표</a>
-        
-        <a>디자인</a>
-        
-        <a>BM</a>
-        
-        <a>국제 출원</a>
+                        <a class="field">특허/실용방안</a>
+                    </div>
+                </section>
+                <div class="header">3. 중요키워드</div>
+                <section class="select-section">
+                    <input id="key-word" type="text" placeholder="ex) 공작기계">
+                </section>
+                <div class="header">4. 출원 상세내용</div>
+                <section class="select-section">
+                    <textarea id="details" name="" id="" cols="30" rows="10"></textarea>
+                </section>
+                <button class="completed-button" onclick="uploadEstimate();">견적 요청</button>
+            </div>
+        </div>
     </div>
-    <a>특허/실용방안</a>
-    <div>중요키워드</div>
-    <input id="key-word" type="text" placeholder="ex) 공작기계">
-    <div>출원 상세내용</div>
-    <textarea id="details" name="" id="" cols="30" rows="10"></textarea>
-    <button onclick="uploadEstimate();">견적 요청</button>
 
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="../scripts/firebase.js"></script>
