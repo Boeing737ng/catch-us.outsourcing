@@ -10,15 +10,6 @@ $("#area-no-matter-text").click(function(){
     $("input[name=area]").click();
 });
 
-$(".field").click(function(){
-    if($(this).hasClass("selected-field")){
-        $(this).removeClass("selected-field");
-    }
-    else {
-        $(this).addClass("selected-field");
-    }
-});
-
 var currentUid = '';
 
 firebase.auth().onAuthStateChanged(function (user) {

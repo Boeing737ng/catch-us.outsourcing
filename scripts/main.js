@@ -9,6 +9,15 @@ $(document).ready(function(){
     });
 });
 
+$(".field").click(function(){
+    if($(this).hasClass("selected-field")){
+        $(this).removeClass("selected-field");
+    }
+    else {
+        $(this).addClass("selected-field");
+    }
+});
+
 function signIn(){
     showLoading();
     email = $("#user-email")[0].value;

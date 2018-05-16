@@ -36,34 +36,54 @@
     
         <!-- 전문가  -->
         <section id="expert-signup">
+            <br>
+            <p>1. 상세 정보</p>
             <div class="layout-wrapper">
-                <div class="signup-layout">
+                <div class="signup-row">
                     <input id="expert-email" class="signup-input" type="text" placeholder="이메일 주소">
-                    <input id="expert-pwd" class="signup-input" type="password" placeholder="비밀번호">
-                    <input id="expert-name" class="signup-input" type="text" placeholder="성명">
-                    <input id="expert-phone" class="signup-input" type="text" placeholder="연락처">
-                    <input id="expert-qualification" class="signup-input" type="text" placeholder="자격취득일 (ex.2018-01-01)">
-                </div>
-                <div class="signup-layout">
                     <input style="visibility: hidden;" class="signup-input" type="text" placeholder="">
+                </div>
+                <div class="signup-row">
+                    <input id="expert-pwd" class="signup-input" type="password" placeholder="비밀번호">
                     <input id="expert-pwd-check" class="signup-input" type="password" placeholder="비밀번호 확인">
+                </div>
+                <div class="signup-row">
+                    <input id="expert-name" class="signup-input" type="text" placeholder="성명">
                     <input id="expert-affiliation" class="signup-input" type="text" placeholder="소속">
+                </div>
+                <div class="signup-row">
+                    <input id="expert-phone" class="signup-input" type="text" placeholder="연락처">
                     <input id="expert-address" class="signup-input" type="text" placeholder="주소">
+                </div>
+                <div class="signup-row">
+                    <input id="expert-qualification" class="signup-input" type="text" placeholder="자격취득일 (ex.2018-01-01)">
                     <input id="expert-agent-num" class="signup-input" type="text" placeholder="대리인 번호">
                 </div>
             </div>
-            <p>프로필 사진</p>
+            <p>2. 주요 분야</p>
+            <br>
+            <div class="signup-field">
+                <div class="select-field">
+                    <a class="field">특허/실용신안</a>
+                    <a class="field">상표</a>
+                    <a class="field">디자인</a>
+                    <a class="field">BM</a>
+                    <a class="field">국제 출원</a>
+                    <a class="field">특허/실용방안</a>
+                </div>
+            </div>
+            <p>3. 프로필 사진</p>
             <div class="file-wrapper">
                 <div class="image-wrapper">
                     <img id="pre-profile" src="" alt="">
                 </div>
                 <input id="expert-profile" type="file" accept=".png, .jpg, .jpeg">
             </div>
-            <p>경력사항</p>
+            <p>4. 경력사항</p>
             <textarea name="" id="expert-career" cols="30" rows="10" placeholder="여기에 입력하세요."></textarea>
-            <p>자서, 논문 수상</p>
+            <p>5. 자서, 논문 수상</p>
             <textarea name="" id="expert-reward" cols="30" rows="10" placeholder="여기에 입력하세요."></textarea>
-            <p>간략소개</p>
+            <p>6. 간략소개</p>
             <textarea name="" id="expert-intro" cols="30" rows="10" placeholder="여기에 입력하세요."></textarea>
             <button class="completed-button" onclick="expertSignup()">회원가입 완료</button>
         </section>

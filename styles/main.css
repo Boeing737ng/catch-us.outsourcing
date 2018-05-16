@@ -140,19 +140,14 @@ footer span {
 /*********** Main ends **********/
 /********** Signup **********/
 .input-field-wrapper {
-    padding-top: 15px;
+    padding: 15px 30px;
     margin: 50px auto;
-    width: 600px;
+    width: calc(600px - 60px);
     height: auto;
     border: 1px solid #051E5A;
     border-radius: 10px;
     text-align: center;
-    /* animation: spin 0.5s infinite; */
 }
-/* @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  } */
 #client-signup, #expert-signup {
     display: none; /* Does not display anything when page is loaded first */
 }
@@ -187,30 +182,37 @@ footer span {
 }
 .signup-input {
     width: 190px;
-    display: block;
     padding: 5px 0 5px 5px;
-    margin: 40px auto;
     border: none;
     border-bottom: 1px solid #051E5A;
     font-size: 15px;
 }
 .layout-wrapper {
     overflow: auto;
-    width: 70%;
-    margin: auto;
+    width: 80%;
+    margin: 40px auto;
+}
+.signup-row {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 24px;
+}
+.signup-row input:first-child {
+    float: left;
+}
+.signup-row input:last-child {
+    float: right;
 }
 .signup-layout {
     display: inline-block;
     vertical-align: top;
 }
-.signup-layout:first-child {
-    float: left;
-}
-.signup-layout:last-child {
-    float: right;
+.signup-field .select-field {
+    width: 100%;
+    margin: 10px auto 50px;
 }
 .file-wrapper {
-    width: 75%;
+    width: 80%;
     margin: 20px auto;
     text-align: left;
 }
@@ -232,9 +234,9 @@ footer span {
     margin-bottom: 15px;
 }
 #expert-signup textarea {
-    width: 75%;
-    max-width: 75%;
-    min-width: 75%;
+    width: 80%;
+    max-width: 80%;
+    min-width: 80%;
     max-height: 300px;
     min-height: 150px;
     margin: auto;
@@ -259,6 +261,13 @@ footer span {
 /********** Signup ends **********/
 
 /********** Estimate **********/
+.estimates {
+    border: 1px solid #051E5A;
+    width: calc(95% - 20px);
+    margin: auto;
+    background-color: #FFF;
+    padding: 10px;
+}
 .estimate-wrapper {
     height: calc(100% - 100px);
     width: 100%;
@@ -312,13 +321,16 @@ footer span {
 .select-section {
     padding: 0px 15px;
 }
+.select-field {
+    width: 100%;
+}
 .select-field a{
     display: inline-block;
     border: 1px solid #051E5A;
     border-radius: 5px;
     width: 100px;
     height: 30px;
-    margin: 0px 5px 5px 0px;
+    margin: 0px 30px 15px 0px;
     text-align: center;
     line-height: 30px;
     font-size: 12px;
@@ -358,7 +370,7 @@ textarea#details {
 .board-wrapper h3, .estimate-wrapper h3 {
     padding-bottom: 5px;
     width: 240px;
-    margin: 0px auto 100px;
+    margin: 0px auto;
     border-bottom: 1px dashed #5F5F5F;
 }
 .table-content {
