@@ -5,6 +5,9 @@ $("input[name=area]").change(function(){
         $(".area").removeAttr('disabled').css("opacity","1");
     }
 });
+$("#area-no-matter-text").click(function(){
+    $("input[name=area]").click();
+});
 
 var currentUid = '';
 
