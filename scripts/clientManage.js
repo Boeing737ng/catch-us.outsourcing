@@ -49,7 +49,8 @@ function makeCurEstimateList(){
                 "<div>지역</div>"+
                 "<div>"+row["area"]+"</div>"+
                 "<div>분야</div>"+
-                "<div>"+row["field"].toString()+" - "+row["keyword"]+"</div>"+
+                // "<div>"+row["field"].toString()+" - "+row["keyword"]+"</div>"+
+                "<div>"+row["field"]+" - "+row["keyword"]+"</div>"+
                 "<div>내용</div>"+
                 "<div>"+row["details"]+"</div>"+
                 "<div>요청일</div>"+
