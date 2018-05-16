@@ -33,13 +33,22 @@ firebase.auth().onAuthStateChanged(function (user) {
 function getEstimateInfo(){
     var EstimateInfo = {
         area : getArea(),
-        field : "특허/실용 방안",
+        field : getSelectedField(),
         keyword : $("#key-word").val(),
         details : $("#details").val(),
         date : getCurrentDate(),
         uid : currentUid
     };
     return EstimateInfo;
+}
+
+function getSelectedField(){
+    var selectedField = $(".selected-field");
+    var selectedList = [];
+    for(var i = 0; i<selectedField.length; i++){
+        selectedList.push($(".selected-field")[i].text);
+    }
+    return selectedList;
 }
 
 function getArea(){
