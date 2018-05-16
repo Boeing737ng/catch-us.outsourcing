@@ -18,17 +18,19 @@ function getUserEstimate(){
 
 function loadEstimateList(){
     getUserEstimate().then(function(snapshot){
-        estimateObj = snapshot.val();
+        var estimateObj = snapshot.val();
         for(key in estimateObj){
             estimateValues = estimateObj[key];
-            estimateRow = {
-                key : key,
-                area : estimateValues["area"], 
-                date : estimateValues["date"], 
-                details : estimateValues["details"],
-                field : estimateValues["field"],
-                keyword : estimateValues["keyword"]
-            };
+            estimateRow = estimateValues;
+            estimateRow["key"] = key;
+            // estimateRow = {
+            //     key : key,
+            //     area : estimateValues["area"], 
+            //     date : estimateValues["date"], 
+            //     details : estimateValues["details"],
+            //     field : estimateValues["field"],
+            //     keyword : estimateValues["keyword"]
+            // };
             estimateList.unshift(estimateRow);
         }
         makeCurEstimateList();
