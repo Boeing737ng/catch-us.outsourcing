@@ -266,10 +266,11 @@ footer span {
 /********** Estimate **********/
 .estimates {
     border: 1px solid #051E5A;
-    width: calc(95% - 20px);
-    margin: auto;
+    width: calc(95% - 34px);
+    height: 250px;
+    margin: 17px auto;
     background-color: #FFF;
-    padding: 10px;
+    padding: 17px;
 }
 .estimate-wrapper {
     height: calc(100% - 100px);
@@ -285,6 +286,7 @@ footer span {
 .side-view-left {
     width: 350px;
     margin-right: 10px;
+    position: relative;
 }
 .side-view-right {
     width: 900px;
@@ -293,6 +295,22 @@ footer span {
     margin: auto;
     width: 1300px;
     height: calc(100% - 200px);
+}
+.add-button {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+.scroll-area {
+    margin: 5px 0;
+    overflow-y: scroll;
+    width: 100%;
+    border-top: 2px solid #FFF;
+    height: calc(100% - 70px);
+    -ms-overflow-style: none;
+}
+.scroll-area::-webkit-scrollbar { 
+    width: 0 !important 
 }
 .estimate-input-wrapper {
     width: 85%;
@@ -340,6 +358,7 @@ footer span {
 }
 .select-field a:hover{
     cursor: pointer;
+    box-shadow: 1px 1px 1px #999;
 }
 .select-field a.selected-field {
     background-color: #051E5A;
