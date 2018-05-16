@@ -1,9 +1,10 @@
 var currentUid = '';
 var estimateList = [];
 firebase.auth().onAuthStateChanged(function (user) {
+    showLoading();
     if (user) {
         currentUid = user.uid;
-        loadEstimateList()
+        loadEstimateList();
     } else {
         alert("로그인이 필요합니다.");
         onLoadMainPage();
@@ -34,6 +35,7 @@ function loadEstimateList(){
             estimateList.unshift(estimateRow);
         }
         makeCurEstimateList();
+        noneLoading();
     });
 }
 
@@ -41,13 +43,13 @@ function loadEstimateList(){
 function makeCurEstimateList(){
     // $("#estimate-list")[0]
     estimateList.forEach(function(row){
-        console.log(row)
+        console.log(row);
         $("#estimate-list").append(
             "<div id='"+row["key"]+"' class='estimates'>"+
                 "<div>지역</div>"+
                 "<div>"+row["area"]+"</div>"+
                 "<div>분야</div>"+
-                "<div>"+row["field"]+"</div>"+
+                "<div>"+row["field"].toString()+"</div>"+
                 "<div>내용</div>"+
                 "<div>"+row["details"]+"</div>"+
                 "<div>요청일</div>"+
