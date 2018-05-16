@@ -1,8 +1,8 @@
 $("input[name=area]").change(function(){
     if($(this).is(':checked')) {
-        $(".area").attr('disabled', 'disabled');
+        $(".area").attr('disabled', 'disabled').css("opacity","0.5");
     } else {
-        $(".area").removeAttr('disabled');
+        $(".area").removeAttr('disabled').css("opacity","1");
     }
 });
 
