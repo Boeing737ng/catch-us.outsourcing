@@ -1,4 +1,6 @@
-var EstimatesList = []
+var EstimatesList = [];
+var curExpertList = {};
+
 function getEstimateList(){
     var estimateList = firebase.database().ref("/Estimates");
     showLoading();
@@ -12,7 +14,7 @@ function getEstimateList(){
                 EstimatesList.unshift(estimateRow);
             }
             console.log(EstimatesList);
-            makeQuestionTable();
+            makeEstimateTable();
             noneLoading();
         },
         function(error){
@@ -23,10 +25,10 @@ function getEstimateList(){
 }
 
 // 수정 필요
-function makeQuestionTable(){
+function makeEstimateTable(){
     EstimatesList.forEach(function(row){
         $("#estimate-list").append(
-            "<div id='"+row["key"]+"' class='estimates' onclick=\"func("+row["key"]+")\">"
+            "<div id='"+row["key"]+"' class='estimates' onclick=\"makeCurExpertTable("+row["key"]+")\">"
             +"<div>지역</div>"
             +"<div>"+row["area"]+"</div>"
             +"<div>분야</div>"
@@ -39,6 +41,67 @@ function makeQuestionTable(){
             +"</div>"
         );
     });
+}
+
+
+function getExpertList(){
+    var UserList = firebase.database().ref("/Users");
+    return UserList.orderByChild("personalInfo/type").equalTo("Expert").once('value')
+    // .then(
+    //     function(snapshot){
+    //         return snapshot.val();
+    //     }
+    // )
+}
+
+function makeCurExpertTable(key){
+    curExpertList = {};
+    $("#expert-list").show();
+    $("#expert-info").hide();
+    $(".experts").remove();
+    getExpertList().then(function(snapshot){
+        curExpertList = snapshot.val();
+            
+        for(uid in curExpertList){
+            expertInfo = curExpertList[uid]["personalInfo"];
+            console.log(expertInfo)
+            $("#expert-list").append(
+                "<div class='experts' onclick=\"makeCurExpertInfoTable('"+uid+"')\">"
+                +"<img src=\""+expertInfo["profileUrl"]+"\" style=\"with:100px; height:100px\">"
+                +"<div>이름 : "+expertInfo["name"]+"</div>"
+                +"<div>주요 분야 : </div>"
+                +"<div>소속 : "+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</div>"
+                +"<div>--------------------------------------</div>"
+                +"</div>"
+            );
+        };
+        // console.log(curExpertList)
+    })
+}
+
+function makeCurExpertInfoTable(uid){
+    $("#expert-list").hide();
+    $("#expert-info").show();
+    $(".cur-expert").remove();
+    var UserList = firebase.database().ref("/Users/"+uid);
+    UserList.once('value').then(function(snapshot){
+        curExpertInfo = snapshot.val();
+        console.log(curExpertInfo)
+        expertPersonalInfo = curExpertInfo["personalInfo"];
+        $("#expert-info").append(
+            "<div class='cur-expert'>"
+            +"<img src=\""+expertPersonalInfo["profileUrl"]+"\" style=\"with:100px; height:100px\">"
+            +"<div>이름 : "+expertPersonalInfo["name"]+" 변리사</div>"
+            +"<div>주요 분야 : </div>"
+            +"<div>소속 : "+expertPersonalInfo["affiliation"]+" ("+expertPersonalInfo["address"]+")</div>"
+            +"<div>경력 사항 : "+expertPersonalInfo["additionalInfo"]["Career"]+"</div>"
+            +"<div>저서, 논문, 수상 : "+expertPersonalInfo["additionalInfo"]["Reward"]+"</div>"
+            +"<div>간략 소개 : "+expertPersonalInfo["additionalInfo"]["Intro"]+"</div>"
+            +"<div>연락처 : "+expertPersonalInfo["phoneNum"]+"</div>"
+            +"<div>이메일 : "+curExpertInfo["email"]+"</div>"
+            +"</div>"
+        );
+    })
 }
 
 // 수정 필요
@@ -67,4 +130,8 @@ function func(key){
     })
 }
 
+function backToExpert(){
+    $("#expert-list").show();
+    $("#expert-info").hide();
+}
 getEstimateList();
