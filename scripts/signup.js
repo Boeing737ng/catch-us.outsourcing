@@ -1,5 +1,5 @@
 var storageRef = firebase.storage().ref();
-
+var name = "";
 // 기본 회원가입
 function firebaseSignup(email, password){
     return firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -63,20 +63,28 @@ function expertSignup(){
             // $('#expert-profile').get(0).files[0]
             upLoadProfile(user.user.uid).then(
                 function(snapshot){
-                    console.log(snapshot)
-                    expertInfo["personalInfo"]["profileUrl"] = snapshot.task.uploadUrl_;
-                    console.log(expertInfo);
-                    writeExpertData(user.user.uid, expertInfo)
-                    .then(
-                        function(){
-                            alert("회원가입이 완료되었습니다.");
-                            onLoadMainPage();
-                        },
-                        function(error){
+                    
+                    storageRef.child(name).getDownloadURL().then(
+                        function(url){
+                            expertInfo["personalInfo"]["profileUrl"] = url;
+                            console.log(expertInfo);
+                            writeExpertData(user.user.uid, expertInfo)
+                            .then(
+                                function(){
+                                    alert("회원가입이 완료되었습니다.");
+                                    // onLoadMainPage();
+                                },
+                                function(error){
+                                    console.log("expertSignup forth err : ", error);
+                                    noneLoading();
+                                }
+                            );
+                        },function(error){
                             console.log("expertSignup third err : ", error);
                             noneLoading();
                         }
-                    );
+                    )
+                    
                 },
                 function(){
                     console.log("expertSignup second err : ", error);
@@ -111,7 +119,7 @@ function getExpertInfo(){
             qualificationDate : $("#expert-qualification")[0].value,
             agentNum : $("#expert-agent-num")[0].value,
             // fieldList : $("#expert-field")[0].value,
-            profileUrl : '',
+            // profileUrl : '',
             additionalInfo : {
                 Career : $("#expert-career")[0].value,
                 Reward : $("#expert-reward")[0].value,
@@ -126,7 +134,7 @@ function getExpertInfo(){
 function upLoadProfile(uid){
     const file = $('#expert-profile').get(0).files[0];
     fileNames = file.name.split(".");
-    const name = uid+"."+fileNames[fileNames.length-1];
+    name = uid+"."+fileNames[fileNames.length-1];
     const metadata = {
         contentType: file.type
     };
