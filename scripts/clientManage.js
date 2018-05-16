@@ -43,17 +43,17 @@ function makeCurEstimateList(){
     estimateList.forEach(function(row){
         console.log(row)
         $("#estimate-list").append(
-            "<div id='"+row["key"]+"' class='estimates'>"
-            +"<div>지역</div>"
-            +"<div>"+row["area"]+"</div>"
-            +"<div>분야</div>"
-            +"<div>"+row["field"]+"</div>"
-            +"<div>내용</div>"
-            +"<div>"+row["details"]+"</div>"
-            +"<div>요청일</div>"
-            +"<div>"+row["date"]+"</div>"
-            +"<div>--------------------------------------</div>"
-            +"</div>"
+            "<div id='"+row["key"]+"' class='estimates'>"+
+                "<div>지역</div>"+
+                "<div>"+row["area"]+"</div>"+
+                "<div>분야</div>"+
+                "<div>"+row["field"]+"</div>"+
+                "<div>내용</div>"+
+                "<div>"+row["details"]+"</div>"+
+                "<div>요청일</div>"+
+                "<div>"+row["date"]+"</div>"+
+                "<div>--------------------------------------</div>"+
+            "</div>"
         );
     });
 }

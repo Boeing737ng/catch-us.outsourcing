@@ -1,5 +1,14 @@
 console.log("Catch-us 외주 개발 (김승태, 최기현)")
 var s;
+
+$(document).ready(function(){
+    $('#user-email, #user-pw').keypress(function(event){
+        if(event.keyCode === 13){
+            $('.login-button').click();
+        }
+    });
+});
+
 function signIn(){
     showLoading();
     email = $("#user-email")[0].value;
