@@ -118,7 +118,7 @@ function getExpertInfo(){
             address : $("#expert-address")[0].value,
             qualificationDate : $("#expert-qualification")[0].value,
             agentNum : $("#expert-agent-num")[0].value,
-            // fieldList : $("#expert-field")[0].value,
+            field : getSelectedField(),
             // profileUrl : '',
             additionalInfo : {
                 Career : $("#expert-career")[0].value,
@@ -140,19 +140,12 @@ function upLoadProfile(uid){
     };
     return storageRef.child(name).put(file, metadata);
 }
-// 전문가 테스트 정보
-// var info = {
-//     "additionalInfo" : {
-//         "Career" : "경력사항", 
-//         "Reward" : "논문,수상 등", 
-//         "Intro" : "간단소개"
-//     },
-//     "address" : "대전",
-//     "affiliation" : "칠사공",
-//     "agentNum" : "111992",
-//     "fieldList" : ["기계", "컴퓨터", "전자"],
-//     "name" : "김승태",
-//     "phoneNum" : "010-0000-0000",
-//     "profileUrl" : "www.asdf.com",
-//     "qualificationDate" : "2010"
-// }
+
+function getSelectedField(){
+    var selectedField = $(".selected-field");
+    var selectedList = [];
+    for(var i = 0; i<selectedField.length; i++){
+        selectedList.push($(".selected-field")[i].text);
+    }
+    return selectedList;
+}

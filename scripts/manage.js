@@ -78,11 +78,12 @@ function makeCurExpertTable(key){
                         "</div>"+
                         "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
                         "<p>주요 분야</p>"+
-                        "<span>"+expertInfo["field"]+"</span>"+
+                        "<span>"+expertInfo["field"].toString()+"</span>"+
                         "<p>소속</p>"+
                         "<span>"+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</span>"+
                     "</div>"+
                 "</div>"
+
             );
         };
         // console.log(curExpertList)
@@ -102,7 +103,7 @@ function makeCurExpertInfoTable(uid){
             "<div class='cur-expert'>"
             +"<img src=\""+expertPersonalInfo["profileUrl"]+"\" style=\"with:100px; height:100px\">"
             +"<div>이름 : "+expertPersonalInfo["name"]+" 변리사</div>"
-            +"<div>주요 분야 : </div>"
+            +"<div>주요 분야 : "+expertInfo["field"].toString()+"</div>"
             +"<div>소속 : "+expertPersonalInfo["affiliation"]+" ("+expertPersonalInfo["address"]+")</div>"
             +"<div>경력 사항 : "+expertPersonalInfo["additionalInfo"]["Career"]+"</div>"
             +"<div>저서, 논문, 수상 : "+expertPersonalInfo["additionalInfo"]["Reward"]+"</div>"
