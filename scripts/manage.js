@@ -18,7 +18,7 @@ function uploadSelectedExperts(){
             }
         }
     });
-    firebase.database().ref("Estimates/"+ selectedKey+"/matchList").update(
+    firebase.database().ref("Uers/"+ selectedKey+"/matchList").update(
         selectedExpertlist
     ).then(
         function(){
@@ -84,7 +84,7 @@ function makeCurExpertTable(key){
     $("#expert-list").show();
     $("#expert-detail").hide();
     $(".experts").remove();
-    
+
     selectedKey = key;
     firebase.database().ref("/Estimates/"+key+"/matchList").once('value').then(function(matchedExpert){
         var matchedExpertList = [];
@@ -101,7 +101,7 @@ function makeCurExpertTable(key){
                     console.log(expertInfo)
                     $("#expert-list").append(
                         "<div class='experts'>"+
-                            "<div class='expert-info-wrapper'> id=\""+uid+"\""+
+                            "<div class='expert-info-wrapper' id=\""+uid+"\">"+
                                 "<div class='expert-image-wrapper'>"+
                                     "<img src=\""+expertInfo["profileUrl"]+"\">"+
                                 "</div>"+
