@@ -412,9 +412,11 @@ textarea#details {
 }
 .expert-info-wrapper span {
     color: #8C8C8C;
+    font-size: 13px;
 }
 .expert-info-wrapper p {
     color: #5F5F5F;
+    font-size: 15px;
 }
 .view-details {
     position: absolute;
