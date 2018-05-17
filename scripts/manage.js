@@ -70,11 +70,14 @@ function makeCurExpertTable(key){
                         "<div class='expert-image-wrapper'>"+
                             "<img src=\""+expertInfo["profileUrl"]+"\">"+
                         "</div>"+
-                        "<button onclick=\"makeCurExpertInfoTable('"+uid+"')\">상세 보기</button>"+
-                        "<input class='select-expert' type='checkbox'>"+
+                        "<label class='select-wrapper'>"+
+                            "<input class='select-expert' type='checkbox'>"+
+                            "<span class='checkmark'></span>"+
+                        "</label>"+
+                        "<a class='view-details' onclick=\"makeCurExpertInfoTable('"+uid+"')\">상세 보기</a>"+
                         "<div class='expert-additional-info'>"+
-                            "<input name='apply-number' type='text'>"+
-                            "<input name='register-number' type='text'>"+
+                            "<input name='apply-number' type='text' placeholder='출원 건수'>"+
+                            "<input name='register-number' type='text' placeholder='등록률 (%)'>"+
                         "</div>"+
                         "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
                         "<p>주요 분야</p>"+
