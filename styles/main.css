@@ -296,7 +296,7 @@ footer span {
     width: 1300px;
     height: calc(100% - 200px);
 }
-.add-button, #submit-selected-expert {
+.add-button, #submit-selected-expert ,#show-previous-page {
     position: absolute;
     right: 10px;
     top: 20px;
@@ -381,7 +381,8 @@ textarea#details {
     max-height: 300px;
     border-radius: 3px;
 }
-#expert-list {
+#expert-list, #expert-detail {
+    display: none;
     overflow-y: scroll;
     padding: 0px 30px;
     width: calc(100% - 60px);
@@ -389,6 +390,9 @@ textarea#details {
     height: calc(100% - 70px);
     -ms-overflow-style: none;
     text-align: left;
+}
+#expert-detail {
+    
 }
 .experts {
     background-color: #FFF;
@@ -455,6 +459,9 @@ textarea#details {
 }
 .expert-additional-info input:first-child {
     margin-bottom: 3px;
+}
+#expert-detail {
+
 }
 /********** Estimate ends **********/
 

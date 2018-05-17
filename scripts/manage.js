@@ -56,11 +56,10 @@ function getExpertList(){
 function makeCurExpertTable(key){
     curExpertList = {};
     $("#expert-list").show();
-    $("#expert-info").hide();
+    $("#expert-detail").hide();
     $(".experts").remove();
     getExpertList().then(function(snapshot){
         curExpertList = snapshot.val();
-            
         for(uid in curExpertList){
             expertInfo = curExpertList[uid]["personalInfo"];
             console.log(expertInfo)
@@ -95,25 +94,25 @@ function makeCurExpertTable(key){
 
 function makeCurExpertInfoTable(uid){
     $("#expert-list").hide();
-    $("#expert-info").show();
+    $("#expert-detail").show();
     $(".cur-expert").remove();
     var UserList = firebase.database().ref("/Users/"+uid);
     UserList.once('value').then(function(snapshot){
         curExpertInfo = snapshot.val();
         console.log(curExpertInfo)
         expertPersonalInfo = curExpertInfo["personalInfo"];
-        $("#expert-info").append(
-            "<div class='cur-expert'>"
-            +"<img src=\""+expertPersonalInfo["profileUrl"]+"\" style=\"with:100px; height:100px\">"
-            +"<div>이름 : "+expertPersonalInfo["name"]+" 변리사</div>"
-            +"<div>주요 분야 : "+expertInfo["field"].toString()+"</div>"
-            +"<div>소속 : "+expertPersonalInfo["affiliation"]+" ("+expertPersonalInfo["address"]+")</div>"
-            +"<div>경력 사항 : "+expertPersonalInfo["additionalInfo"]["Career"]+"</div>"
-            +"<div>저서, 논문, 수상 : "+expertPersonalInfo["additionalInfo"]["Reward"]+"</div>"
-            +"<div>간략 소개 : "+expertPersonalInfo["additionalInfo"]["Intro"]+"</div>"
-            +"<div>연락처 : "+expertPersonalInfo["phoneNum"]+"</div>"
-            +"<div>이메일 : "+curExpertInfo["email"]+"</div>"
-            +"</div>"
+        $("#expert-detail").append(
+            "<div class='cur-expert'>"+
+                "<img src=\""+expertPersonalInfo["profileUrl"]+"\" style=\"with:100px; height:100px\">"+
+                "<div>이름 : "+expertPersonalInfo["name"]+" 변리사</div>"+
+                "<div>주요 분야 : "+expertInfo["field"].toString()+"</div>"+
+                "<div>소속 : "+expertPersonalInfo["affiliation"]+" ("+expertPersonalInfo["address"]+")</div>"+
+                "<div>경력 사항 : "+expertPersonalInfo["additionalInfo"]["Career"]+"</div>"+
+                "<div>저서, 논문, 수상 : "+expertPersonalInfo["additionalInfo"]["Reward"]+"</div>"+
+                "<div>간략 소개 : "+expertPersonalInfo["additionalInfo"]["Intro"]+"</div>"+
+                "<div>연락처 : "+expertPersonalInfo["phoneNum"]+"</div>"+
+                "<div>이메일 : "+curExpertInfo["email"]+"</div>"+
+            "</div>"
         );
     })
 }
@@ -146,7 +145,7 @@ function func(key){
 
 function backToExpert(){
     $("#expert-list").show();
-    $("#expert-info").hide();
+    $("#expert-detail").hide();
 }
 
 getEstimateList();
