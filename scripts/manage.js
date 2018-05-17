@@ -1,6 +1,10 @@
 var EstimatesList = [];
 var curExpertList = {};
 
+$("#submit-selected-expert").click(function(){
+    alert('ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ');
+});
+
 function getEstimateList(){
     var estimateList = firebase.database().ref("/Estimates");
     showLoading();
@@ -61,13 +65,24 @@ function makeCurExpertTable(key){
             expertInfo = curExpertList[uid]["personalInfo"];
             console.log(expertInfo)
             $("#expert-list").append(
-                "<div class='experts' onclick=\"makeCurExpertInfoTable('"+uid+"')\">"
-                +"<img src=\""+expertInfo["profileUrl"]+"\" style=\"with:100px; height:100px\">"
-                +"<div>이름 : "+expertInfo["name"]+"</div>"
-                +"<div>주요 분야 : </div>"
-                +"<div>소속 : "+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</div>"
-                +"<div>--------------------------------------</div>"
-                +"</div>"
+                "<div class='experts'>"+
+                    "<div class='expert-info-wrapper'>"+
+                        "<div class='expert-image-wrapper'>"+
+                            "<img src=\""+expertInfo["profileUrl"]+"\">"+
+                        "</div>"+
+                        "<button onclick=\"makeCurExpertInfoTable('"+uid+"')\">상세 보기</button>"+
+                        "<input class='select-expert' type='checkbox'>"+
+                        "<div class='expert-additional-info'>"+
+                            "<input name='apply-number' type='text'>"+
+                            "<input name='register-number' type='text'>"+
+                        "</div>"+
+                        "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
+                        "<p>주요 분야</p>"+
+                        "<span>"+expertInfo["field"]+"</span>"+
+                        "<p>소속</p>"+
+                        "<span>"+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</span>"+
+                    "</div>"+
+                "</div>"
             );
         };
         // console.log(curExpertList)

@@ -265,7 +265,7 @@ footer span {
 
 /********** Estimate **********/
 .estimates {
-    border: 1px solid #051E5A;
+    border: 1px solid #BFBFBF;
     width: calc(95% - 34px);
     height: 250px;
     margin: 17px auto;
@@ -391,11 +391,29 @@ textarea#details {
     text-align: left;
 }
 .experts {
+    background-color: #FFF;
     margin: 20px 8px 0px;
-    border: 1px solid red;
+    border: 1px solid #BFBFBF;
     display: inline-block;
     width: 260px;
-    height: 300px;
+    height: 340px;
+}
+.expert-info-wrapper {
+    overflow: hidden;
+    padding: 20px;
+    height: calc(100% - 40px);
+    max-height: calc(100% - 40px);
+}
+.expert-image-wrapper img {
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+}
+.expert-info-wrapper span {
+    color: #8C8C8C;
+}
+.expert-info-wrapper p {
+    color: #5F5F5F;
 }
 /********** Estimate ends **********/
 
