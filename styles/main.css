@@ -282,11 +282,11 @@ footer span {
     vertical-align: text-top;
     height: 100%;
     background-color: #F0F0F0;
+    position: relative;
 }
 .side-view-left {
     width: 350px;
     margin-right: 10px;
-    position: relative;
 }
 .side-view-right {
     width: 900px;
@@ -296,7 +296,7 @@ footer span {
     width: 1300px;
     height: calc(100% - 200px);
 }
-.add-button {
+.add-button, #submit-selected-expert ,#show-previous-page {
     position: absolute;
     right: 10px;
     top: 20px;
@@ -381,7 +381,8 @@ textarea#details {
     max-height: 300px;
     border-radius: 3px;
 }
-#expert-list {
+#expert-list, #expert-detail {
+    display: none;
     overflow-y: scroll;
     padding: 0px 30px;
     width: calc(100% - 60px);
@@ -389,6 +390,9 @@ textarea#details {
     height: calc(100% - 70px);
     -ms-overflow-style: none;
     text-align: left;
+}
+#expert-detail {
+    
 }
 .experts {
     background-color: #FFF;
@@ -399,6 +403,7 @@ textarea#details {
     height: 340px;
 }
 .expert-info-wrapper {
+    position: relative;
     overflow: hidden;
     padding: 20px;
     height: calc(100% - 40px);
@@ -411,9 +416,52 @@ textarea#details {
 }
 .expert-info-wrapper span {
     color: #8C8C8C;
+    font-size: 13px;
 }
 .expert-info-wrapper p {
     color: #5F5F5F;
+    font-size: 15px;
+}
+.view-details {
+    position: absolute;
+    top: 50px;
+    right: 12px;
+    font-size: 12px;
+    color: #5D5D5D;
+    text-decoration: underline;
+}
+.view-details:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+.expert-additional-info {
+    width: 60px;
+    position: absolute;
+    top: 97px;
+    right: 14px;
+}
+.expert-additional-info input {
+    padding-left: 5px;
+    border: 1px solid #BDBDBD;
+    width: 100%;
+}
+.expert-additional-info input::-webkit-input-placeholder {
+    color: #B1B1B1;
+}
+.expert-additional-info input::-moz-placeholder{
+    color: #B1B1B1;
+}
+.expert-additional-info input:-ms-input-placeholder {
+    color: #B1B1B1;
+}
+.expert-additional-info input:-moz-placeholder {
+    color: #B1B1B1;
+}
+.expert-additional-info input:first-child {
+    margin-bottom: 3px;
+}
+#expert-detail {
+
 }
 /********** Estimate ends **********/
 
@@ -501,4 +549,71 @@ textarea#details {
 }
 
 /********** Board ends **********/
+/********** Checkbox style **********/
+.select-wrapper {
+    display: block;
+    top: 10px;
+    right: 0;
+    position: absolute;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
+/* Hide the browser's default checkbox */
+.select-wrapper input {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.select-wrapper:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.select-wrapper input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.select-wrapper input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.select-wrapper .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/********** Checkbox style ends **********/
