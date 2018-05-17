@@ -1,9 +1,35 @@
 var EstimatesList = [];
 var curExpertList = {};
-
+var selectedExpertlist = {};
+var selectedKey = "";
 $("#submit-selected-expert").click(function(){
-    alert('ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ');
+    uploadSelectedExperts();
 });
+
+function uploadSelectedExperts(){
+    var curExpertList = $('.expert-info-wrapper');
+    showLoading();
+    curExpertList.each(function(idx){
+        var curExpert = $(curExpertList[idx]);
+        if(curExpert.find(".select-expert")[0].checked){
+            selectedExpertlist[curExpert[0].id] = {
+                applyNum : curExpert.find("input[name='apply-number']")[0].value,
+                registerNum : curExpert.find("input[name='register-number']")[0].value
+            }
+        }
+    });
+    firebase.database().ref("Estimates/"+ selectedKey+"/matchList").update(
+        selectedExpertlist
+    ).then(
+        function(){
+            noneLoading();
+        },
+        function(error){
+            console.log("uploadEstimate err : "+error);
+            nonLoading();
+        }
+    );
+}
 
 function getEstimateList(){
     var estimateList = firebase.database().ref("/Estimates");
@@ -58,36 +84,48 @@ function makeCurExpertTable(key){
     $("#expert-list").show();
     $("#expert-info").hide();
     $(".experts").remove();
-    getExpertList().then(function(snapshot){
-        curExpertList = snapshot.val();
+    selectedKey = key;
+    firebase.database().ref("/Estimates/"+key+"/matchList").once('value').then(function(matchedExpert){
+        var matchedExpertList = [];
+        if(matchedExpert.val() != null){
+            matchedExpertList = Object.keys(matchedExpert.val());
+        }
+        console.log(matchedExpertList)
+        getExpertList().then(function(snapshot){
+            curExpertList = snapshot.val();
+            console.log(curExpertList);
+            for(uid in curExpertList){
+                if($.inArray( uid, matchedExpertList ) == -1){
+                    expertInfo = curExpertList[uid]["personalInfo"];
+                    console.log(expertInfo)
+                    $("#expert-list").append(
+                        "<div class='experts'>"+
+                            "<div class='expert-info-wrapper' id=\""+uid+"\">"+
+                                "<div class='expert-image-wrapper'>"+
+                                    "<img src=\""+expertInfo["profileUrl"]+"\">"+
+                                "</div>"+
+                                "<button onclick=\"makeCurExpertInfoTable('"+uid+"')\">상세 보기</button>"+
+                                "<input class='select-expert' type='checkbox'>"+
+                                "<div class='expert-additional-info'>"+
+                                    "<input name='apply-number' type='text'>"+
+                                    "<input name='register-number' type='text'>"+
+                                "</div>"+
+                                "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
+                                "<p>주요 분야</p>"+
+                                "<span>"+expertInfo["field"].toString()+"</span>"+
+                                "<p>소속</p>"+
+                                "<span>"+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</span>"+
+                            "</div>"+
+                        "</div>"
+        
+                    );
+                };
+            }
             
-        for(uid in curExpertList){
-            expertInfo = curExpertList[uid]["personalInfo"];
-            console.log(expertInfo)
-            $("#expert-list").append(
-                "<div class='experts'>"+
-                    "<div class='expert-info-wrapper'>"+
-                        "<div class='expert-image-wrapper'>"+
-                            "<img src=\""+expertInfo["profileUrl"]+"\">"+
-                        "</div>"+
-                        "<button onclick=\"makeCurExpertInfoTable('"+uid+"')\">상세 보기</button>"+
-                        "<input class='select-expert' type='checkbox'>"+
-                        "<div class='expert-additional-info'>"+
-                            "<input name='apply-number' type='text'>"+
-                            "<input name='register-number' type='text'>"+
-                        "</div>"+
-                        "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
-                        "<p>주요 분야</p>"+
-                        "<span>"+expertInfo["field"].toString()+"</span>"+
-                        "<p>소속</p>"+
-                        "<span>"+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</span>"+
-                    "</div>"+
-                "</div>"
-
-            );
-        };
-        // console.log(curExpertList)
+            // console.log(curExpertList)
+        })
     })
+    
 }
 
 function makeCurExpertInfoTable(uid){
