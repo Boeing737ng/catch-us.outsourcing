@@ -1,5 +1,6 @@
 var currentUid = '';
 var estimateList = [];
+
 firebase.auth().onAuthStateChanged(function (user) {
     showLoading();
     if (user) {
@@ -45,7 +46,7 @@ function makeCurEstimateList(){
     estimateList.forEach(function(row){
         console.log(row);
         $("#estimate-list").append(
-            "<div id='"+row["key"]+"' class='estimates'>"+
+            "<div id='"+row["key"]+"' onclick=\"matchedExpertList("+row["key"]+")\" class='estimates'>"+
                 "<div>지역</div>"+
                 "<div>"+row["area"]+"</div>"+
                 "<div>분야</div>"+
@@ -59,4 +60,68 @@ function makeCurEstimateList(){
             "</div>"
         );
     });
+}
+
+function matchedExpertList(key){
+    firebase.database().ref("Estimates/"+key+"/matchList").once('value').then(function(snapshot){
+        var expertList = snapshot.val();
+        $(".experts").remove();
+        $("#expert-list").show();
+        $("#expert-info").hide();
+        for(key in expertList){
+            var expertValue = expertList[key];
+            if(expertValue["outputResult"] != null){
+                $("#expert-list").append(
+                    "<div id='"+key+"' onclick=\"showExpertInfo('"+key+"', "+expertValue["applyNum"]+", "+expertValue["registerNum"]+")\" class='experts'>"+
+                        "<img src=\""+expertValue["profileUrl"]+"\" style=\"width:100px; height:100px\">"+
+                        "<div>"+expertValue["name"]+" 변리사</div>"+
+                        "<div>"+expertValue["outputResult"]+"</div>"+
+                        "<div>--------------------------------------</div>"+
+                    "</div>"
+                );
+                console.log(expertValue["name"]);
+                console.log(expertValue["profileUrl"]);
+                console.log(expertValue["outputResult"]);
+            }
+        }
+
+    });
+}
+
+function showExpertInfo(uid, applyNum, registerNum){
+    $("#expert-list").hide();
+    $("#expert-info").show();
+    $("#expert-info-wrapper").remove();
+    firebase.database().ref("Users/"+uid).once('value').then(function(snapshot){
+        var curExpertInto =  snapshot.val();
+        var expertInfo = curExpertInto["personalInfo"];
+        $("#expert-info").append(
+            "<div id=\"expert-info-wrapper\">"+
+                "<button onclick=\"backMatchedExpertList()\">뒤로가기</button>"+
+                "<img src=\""+expertInfo["profileUrl"]+"\" style=\"width:100px; height:100px\">"+
+                "<div>출원 건수 : "+applyNum+"</div>"+
+                "<div>등록률 : "+registerNum+" (%)</div>"+
+                "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
+                "<p>주요 분야</p>"+
+                "<span>"+expertInfo["field"].toString()+"</span>"+
+                "<p>소속</p>"+
+                "<span>"+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</span>"+
+                "<p>경력 사항</p>"+
+                "<span>"+expertInfo["additionalInfo"]["Career"]+"</span>"+
+                "<p>저서, 논문 ,수상</p>"+
+                "<span>"+expertInfo["additionalInfo"]["Reward"]+"</span>"+
+                "<p>간략 소개</p>"+
+                "<span>"+expertInfo["additionalInfo"]["Intro"]+"</span>"+
+                "<p>연락처</p>"+
+                "<span>"+expertInfo["phoneNum"]+"</span>"+
+                "<p>이메일 주소</p>"+
+                "<span>"+curExpertInto["email"]+"</span>"+
+            "</div>"
+        );
+    });
+}
+
+function backMatchedExpertList(){
+    $("#expert-list").show();
+    $("#expert-info").hide();
 }
