@@ -7,18 +7,21 @@ $("#submit-selected-expert").click(function(){
 });
 
 function uploadSelectedExperts(){
-    var curExpertList = $('.expert-info-wrapper');
+    var curExpertTableList = $('.expert-info-wrapper');
     showLoading();
-    curExpertList.each(function(idx){
-        var curExpert = $(curExpertList[idx]);
+    selectedExpertlist = {};
+    curExpertTableList.each(function(idx){
+        var curExpert = $(curExpertTableList[idx]);
         if(curExpert.find(".select-expert")[0].checked){
             selectedExpertlist[curExpert[0].id] = {
+                name : curExpertList[curExpert[0].id]["personalInfo"]["name"],
+                profileUrl : curExpertList[curExpert[0].id]["personalInfo"]["profileUrl"],
                 applyNum : curExpert.find("input[name='apply-number']")[0].value,
                 registerNum : curExpert.find("input[name='register-number']")[0].value
             }
         }
     });
-    firebase.database().ref("Uers/"+ selectedKey+"/matchList").update(
+    firebase.database().ref("Estimates/"+ selectedKey+"/matchList").update(
         selectedExpertlist
     ).then(
         function(){
@@ -154,32 +157,6 @@ function makeCurExpertInfoTable(uid){
                 "<div>이메일 : "+curExpertInfo["email"]+"</div>"+
             "</div>"
         );
-    })
-}
-
-// 수정 필요
-function func(key){
-    var curEstimate = firebase.database().ref("/Estimates/"+key);
-    $("#cur-estimate").remove();
-    curEstimate.once('value').then(function(snapshot){
-        estimateInfo = snapshot.val();
-        firebase.database().ref("/Users/"+snapshot.val()["uid"]).once('value').then(function(snapshot2){
-            usrInfo = snapshot2.val();
-            $("#estimate-info").append(
-                "<div id='cur-estimate'>"
-                +"<div>닉네임</div>"
-                +"<div>"+usrInfo["personalInfo"]["nickname"]+"</div>"
-                +"<div>이메일</div>"
-                +"<div>"+usrInfo["email"]+"</div>"
-                +"<div>지역</div>"
-                +"<div>"+estimateInfo["area"]+"</div>"
-                +"<div>분야</div>"
-                +"<div>"+estimateInfo["field"]+"</div>"
-                +"<div>출원 상세내용</div>"
-                +"<div>"+estimateInfo["details"]+"</div>"
-                +"</div>"
-            )
-        })
     })
 }
 
