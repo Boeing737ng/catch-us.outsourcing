@@ -45,11 +45,11 @@ header a:hover {
 /*********** header ends **********/
 /*********** Main **********/
 .main-wrapper {
-    min-height: calc(100vh - 210px);
+    min-height: calc(100vh - 285px);
 }
 section.logo {
-    margin: 30px auto;
-    width: 240px;
+    margin: 100px auto;
+    width: 340px;
 }
 section.logo img {
     width: 100%;
