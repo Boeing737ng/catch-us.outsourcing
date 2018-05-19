@@ -410,7 +410,7 @@ textarea#details {
     max-height: calc(100% - 40px);
 }
 .expert-image-wrapper img {
-    width: 120px;
+    width: 100px;
     height: 120px;
     border-radius: 5px;
 }
