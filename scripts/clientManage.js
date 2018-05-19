@@ -65,18 +65,21 @@ function makeCurEstimateList(){
 function matchedExpertList(key){
     firebase.database().ref("Estimates/"+key+"/matchList").once('value').then(function(snapshot){
         var expertList = snapshot.val();
-        $(".experts").remove();
+        $(".matched-expert").remove();
         $("#expert-list").show();
         $("#expert-info").hide();
         for(key in expertList){
             var expertValue = expertList[key];
             if(expertValue["outputResult"] != null){
                 $("#expert-list").append(
-                    "<div id='"+key+"' onclick=\"showExpertInfo('"+key+"', "+expertValue["applyNum"]+", "+expertValue["registerNum"]+")\" class='experts'>"+
-                        "<img src=\""+expertValue["profileUrl"]+"\" style=\"width:100px; height:100px\">"+
-                        "<div>"+expertValue["name"]+" 변리사</div>"+
-                        "<div>"+expertValue["outputResult"]+"</div>"+
-                        "<div>--------------------------------------</div>"+
+                    "<div id='"+key+"' onclick=\"showExpertInfo('"+key+"', "+expertValue["applyNum"]+", "+expertValue["registerNum"]+")\" class='matched-expert'>"+
+                        "<section class='matched-expert-left'>"+
+                            "<img src=\""+expertValue["profileUrl"]+"\">"+
+                            "<p>"+expertValue["name"]+" 변리사</p>"+
+                        "</section>"+
+                        "<section class='matched-expert-content'>"+
+                            "<p>"+expertValue["outputResult"]+"</p>"+
+                        "</section>"+
                     "</div>"
                 );
                 console.log(expertValue["name"]);

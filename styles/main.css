@@ -387,12 +387,9 @@ textarea#details {
     padding: 17px 30px;
     width: calc(100% - 60px);
     border-top: 2px solid #FFF;
-    height: calc(100% - 94px);
+    height: calc(100% - 104px);
     -ms-overflow-style: none;
     text-align: left;
-}
-#expert-detail {
-    
 }
 .experts {
     background-color: #FFF;
@@ -478,6 +475,7 @@ section.detail-left {
 }
 section.detail-right {
     padding: 25px;
+    width: calc(77% - 53px);
     height: calc(100% - 50px);
 }
 section.detail-left img {
@@ -497,6 +495,39 @@ section.detail-left p, section.detail-right p:first-child {
 .expert-detail-info span {
     color: #8C8C8C;
     font-size: 16px;
+}
+.matched-expert {
+    border: 1px solid #BFBFBF;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: calc(100% - 20px);
+    height: 180px;
+    max-height: 180px;
+    background-color: #FFF;
+}
+.matched-expert p {
+    color: #5F5F5F;
+    font-size: 15px;
+}
+.matched-expert-left, .matched-expert-content {
+    display: inline-block;
+    height: 100%;
+    max-height: 100%;
+    vertical-align: top;
+}
+.matched-expert-left {
+    width: 22%;
+    text-align: center;
+}
+.matched-expert-left img {
+    height: 130px;
+    max-width: 150px;
+}
+.matched-expert-content {
+    padding: 0px 15px;
+    width: calc(78% - 30px);
+    max-width: calc(78% - 30px);
+    overflow: scroll;
 }
 /********** Estimate ends **********/
 
