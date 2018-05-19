@@ -384,10 +384,10 @@ textarea#details {
 #expert-list, #expert-detail {
     display: none;
     overflow-y: scroll;
-    padding: 0px 30px;
+    padding: 17px 30px;
     width: calc(100% - 60px);
     border-top: 2px solid #FFF;
-    height: calc(100% - 70px);
+    height: calc(100% - 94px);
     -ms-overflow-style: none;
     text-align: left;
 }
@@ -460,8 +460,43 @@ textarea#details {
 .expert-additional-info input:first-child {
     margin-bottom: 3px;
 }
-#expert-detail {
-
+.expert-detail-info {
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    border: 1px solid #BFBFBF;
+    background-color: #FFF;
+}
+.expert-detail-info section{
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+section.detail-left {
+    text-align: center;
+    border-right: 1px solid #BFBFBF;
+    width: 23%;
+}
+section.detail-right {
+    padding: 25px;
+    height: calc(100% - 50px);
+}
+section.detail-left img {
+    height: 220px;
+}
+section.detail-right p {
+    color: #5F5F5F;
+    font-size: 18px;
+    margin-top: 40px;
+    margin-bottom: 7px;
+}
+section.detail-left p, section.detail-right p:first-child {
+    color: #5F5F5F;
+    font-size: 18px;
+    margin-top: 0;
+}
+.expert-detail-info span {
+    color: #8C8C8C;
+    font-size: 16px;
 }
 /********** Estimate ends **********/
 
