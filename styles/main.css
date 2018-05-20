@@ -384,12 +384,15 @@ textarea#details {
 #expert-list, #expert-detail {
     display: none;
     overflow-y: scroll;
-    padding: 17px 30px;
+    padding: 0px 30px 30px;
     width: calc(100% - 60px);
     border-top: 2px solid #FFF;
     height: calc(100% - 104px);
     -ms-overflow-style: none;
     text-align: left;
+}
+#expert-detail {
+    padding-top: 17px;
 }
 .experts {
     background-color: #FFF;
@@ -530,6 +533,22 @@ section.detail-left p, section.detail-right p:first-child {
     width: calc(78% - 30px);
     max-width: calc(78% - 30px);
     overflow: scroll;
+}
+.expert-count {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    font-size: 15px;
+    color: #5F5F5F;
+}
+.expert-additional-data {
+    text-align: left;
+    padding-left: 30px;
+    margin-top: 60px;
+}
+.expert-additional-data span{
+    display: block;
+    margin-bottom: 10px;
 }
 /********** Estimate ends **********/
 

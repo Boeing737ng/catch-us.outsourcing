@@ -63,6 +63,7 @@ function makeCurEstimateList(){
 }
 
 function matchedExpertList(key){
+    backMatchedExpertList();
     firebase.database().ref("Estimates/"+key+"/matchList").once('value').then(function(snapshot){
         var expertList = snapshot.val();
         $(".matched-expert").remove();
@@ -92,33 +93,40 @@ function matchedExpertList(key){
 }
 
 function showExpertInfo(uid, applyNum, registerNum){
+    var expert_detail = document.getElementById("expert-detail");
+    expert_detail.removeChild(expert_detail.lastChild); // does not remove the button to move previous page
     $("#expert-list").hide();
-    $("#expert-info").show();
+    $("#expert-detail").show();
     $("#expert-info-wrapper").remove();
     firebase.database().ref("Users/"+uid).once('value').then(function(snapshot){
         var curExpertInto =  snapshot.val();
         var expertInfo = curExpertInto["personalInfo"];
-        $("#expert-info").append(
-            "<div id=\"expert-info-wrapper\">"+
-                "<button onclick=\"backMatchedExpertList()\">뒤로가기</button>"+
-                "<img src=\""+expertInfo["profileUrl"]+"\" style=\"width:100px; height:100px\">"+
-                "<div>출원 건수 : "+applyNum+"</div>"+
-                "<div>등록률 : "+registerNum+" (%)</div>"+
-                "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
-                "<p>주요 분야</p>"+
-                "<span>"+expertInfo["field"].toString()+"</span>"+
-                "<p>소속</p>"+
-                "<span>"+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</span>"+
-                "<p>경력 사항</p>"+
-                "<span>"+expertInfo["additionalInfo"]["Career"]+"</span>"+
-                "<p>저서, 논문 ,수상</p>"+
-                "<span>"+expertInfo["additionalInfo"]["Reward"]+"</span>"+
-                "<p>간략 소개</p>"+
-                "<span>"+expertInfo["additionalInfo"]["Intro"]+"</span>"+
-                "<p>연락처</p>"+
-                "<span>"+expertInfo["phoneNum"]+"</span>"+
-                "<p>이메일 주소</p>"+
-                "<span>"+curExpertInto["email"]+"</span>"+
+        $("#expert-detail").append(
+            "<div class='expert-detail-info'>"+
+                "<section class='detail-left'>"+
+                    "<img src=\""+expertInfo["profileUrl"]+"\" style=\"width:100px; height:100px\">"+
+                    "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
+                    "<div class='expert-additional-data'>"+
+                        "<span>출원 건수 : "+applyNum+"</span>"+
+                        "<span>등록률 : "+registerNum+" (%)</span>"+
+                    "</div>"+
+                "</section>"+
+                "<section class='detail-right'>"+
+                    "<p>주요 분야</p>"+
+                    "<span>"+expertInfo["field"].toString()+"</span>"+
+                    "<p>소속</p>"+
+                    "<span>"+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</span>"+
+                    "<p>경력 사항</p>"+
+                    "<span>"+expertInfo["additionalInfo"]["Career"]+"</span>"+
+                    "<p>저서, 논문 ,수상</p>"+
+                    "<span>"+expertInfo["additionalInfo"]["Reward"]+"</span>"+
+                    "<p>간략 소개</p>"+
+                    "<span>"+expertInfo["additionalInfo"]["Intro"]+"</span>"+
+                    "<p>연락처</p>"+
+                    "<span>"+expertInfo["phoneNum"]+"</span>"+
+                    "<p>이메일 주소</p>"+
+                    "<span>"+curExpertInto["email"]+"</span>"+
+                "</section>"+
             "</div>"
         );
     });
@@ -126,5 +134,5 @@ function showExpertInfo(uid, applyNum, registerNum){
 
 function backMatchedExpertList(){
     $("#expert-list").show();
-    $("#expert-info").hide();
+    $("#expert-detail").hide();
 }

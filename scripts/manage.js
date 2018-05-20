@@ -165,9 +165,9 @@ function makeCurExpertDetailTable(uid){
                     "<p>간략 소개</p>"+
                     "<span>"+expertPersonalInfo["additionalInfo"]["Intro"]+"</span>"+
                     "<p>연락처</p>"+
-                    "<span>연락처 : "+expertPersonalInfo["phoneNum"]+"</span>"+
+                    "<span>"+expertPersonalInfo["phoneNum"]+"</span>"+
                     "<p>이메일</p>"+
-                    "<span>이메일 : "+curExpertInfo["email"]+"</span>"+
+                    "<span>"+curExpertInfo["email"]+"</span>"+
                 "</section>"+
             "</div>"
         );
