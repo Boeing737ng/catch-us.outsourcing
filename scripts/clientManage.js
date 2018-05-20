@@ -56,7 +56,6 @@ function makeCurEstimateList(){
                 "<div>"+row["details"]+"</div>"+
                 "<div>요청일</div>"+
                 "<div>"+row["date"]+"</div>"+
-                "<div>--------------------------------------</div>"+
             "</div>"
         );
     });
@@ -104,7 +103,7 @@ function showExpertInfo(uid, applyNum, registerNum){
         $("#expert-detail").append(
             "<div class='expert-detail-info'>"+
                 "<section class='detail-left'>"+
-                    "<img src=\""+expertInfo["profileUrl"]+"\" style=\"width:100px; height:100px\">"+
+                    "<img src=\""+expertInfo["profileUrl"]+"\">"+
                     "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
                     "<div class='expert-additional-data'>"+
                         "<span>출원 건수 : "+applyNum+"</span>"+

@@ -70,7 +70,6 @@ function makeEstimateTable(){
             +"<div>"+row["details"]+"</div>"
             +"<div>요청일</div>"
             +"<div>"+row["date"]+"</div>"
-            +"<div>--------------------------------------</div>"
             +"</div>"
         );
     });
