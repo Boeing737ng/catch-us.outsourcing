@@ -86,7 +86,7 @@ button.signup-button {
 
 section.service-info {
     width: 100%;
-    margin: 50px auto 100px;
+    margin: 120px auto 100px;
 }
 .info-wrapper {
     text-align: center;
@@ -471,7 +471,9 @@ textarea#details {
 section.detail-left {
     text-align: center;
     border-right: 1px solid #BFBFBF;
-    width: 23%;
+    width: calc(23% - 20px);
+    height: calc(100% - 20px);
+    padding: 10px;
 }
 section.detail-right {
     padding: 25px;
