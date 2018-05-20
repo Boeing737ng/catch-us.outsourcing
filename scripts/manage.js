@@ -97,9 +97,11 @@ function makeCurExpertTable(key){
         console.log(matchedExpertList)
         getExpertList().then(function(snapshot){
             curExpertList = snapshot.val();
-            console.log(curExpertList);
+            // console.log(curExpertList);
+            var matchedExpertNum = 0;
             for(uid in curExpertList){
                 if($.inArray( uid, matchedExpertList ) == -1){
+                    matchedExpertNum++;
                     expertInfo = curExpertList[uid]["personalInfo"];
                     console.log(expertInfo)
                     $("#expert-list").append(
@@ -128,8 +130,7 @@ function makeCurExpertTable(key){
                     );
                 };
             }
-            
-            // console.log(curExpertList)
+            $("#expert-num")[0].innerHTML = matchedExpertNum;
         })
     })
     
