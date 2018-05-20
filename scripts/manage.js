@@ -137,6 +137,8 @@ function makeCurExpertTable(key){
 }
 
 function makeCurExpertDetailTable(uid){
+    var expert_detail = document.getElementById("expert-detail");
+    expert_detail.removeChild(expert_detail.lastChild); // does not remove the button to move previous page
     $("#expert-list").hide();
     $("#expert-detail").show();
     $(".cur-expert").remove();
@@ -173,11 +175,8 @@ function makeCurExpertDetailTable(uid){
 }
 
 function backToExpert(){
-    var expert_detail = document.getElementById("expert-detail");
-    expert_detail.style.display = "none";
-    expert_detail.removeChild(expert_detail.lastChild); // does not remove the button to move previous page
+    $("#expert-detail").hide();
     $("#expert-list").show();
-    
 }
 
 getEstimateList();
