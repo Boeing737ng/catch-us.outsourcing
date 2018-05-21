@@ -2,6 +2,7 @@ html,body {
     margin: 0;
     padding: 0;
     width: 100%;
+    height: calc(100% - 80px);
 }
 body {
     margin-bottom: 80px;
@@ -30,6 +31,9 @@ a {
 }
 * {
     box-sizing: border-box;
+}
+*::-webkit-scrollbar { 
+    width: 0 !important 
 }
 /*********** header **********/
 header {
@@ -274,12 +278,17 @@ footer span {
 
 /********** Estimate **********/
 .estimates {
+    text-align: left;
     border: 1px solid #BFBFBF;
     width: calc(95% - 34px);
     height: 250px;
     margin: 17px auto;
     background-color: #FFF;
-    padding: 17px;
+    padding: 12px;
+    overflow: hidden;
+}
+.estimates:hover, .matched-expert:hover {
+    cursor: pointer;
 }
 .estimate-wrapper {
     height: calc(100% - 100px);
@@ -303,7 +312,7 @@ footer span {
 .estimate-view-wrapper {
     margin: auto;
     width: 1300px;
-    height: calc(100% - 200px);
+    height: calc(100% - 70px);
 }
 .add-button, #submit-selected-expert ,#show-previous-page {
     position: absolute;
@@ -317,9 +326,6 @@ footer span {
     border-top: 2px solid #FFF;
     height: calc(100% - 70px);
     -ms-overflow-style: none;
-}
-div::-webkit-scrollbar { 
-    width: 0 !important 
 }
 .estimate-input-wrapper {
     width: 85%;
@@ -394,14 +400,15 @@ textarea#details {
     display: none;
     overflow-y: scroll;
     padding: 0px 30px 30px;
-    width: calc(100% - 60px);
+    width: 100%;
     border-top: 2px solid #FFF;
-    height: calc(100% - 104px);
+    height: calc(100% - 75px);
     -ms-overflow-style: none;
     text-align: left;
 }
 #expert-detail {
     padding-top: 17px;
+    height: calc(100% - 61px);
 }
 .experts {
     background-color: #FFF;
@@ -484,13 +491,13 @@ section.detail-left {
     text-align: center;
     border-right: 1px solid #BFBFBF;
     width: calc(23% - 20px);
-    height: calc(100% - 20px);
+    height: 100%;
     padding: 10px;
 }
 section.detail-right {
     padding: 25px;
-    width: calc(77% - 53px);
-    height: calc(100% - 50px);
+    width: calc(77% + 20px);
+    height: 100%;
     overflow: scroll;
 }
 section.detail-left img {
@@ -716,12 +723,16 @@ section.detail-left p, section.detail-right p:first-child {
 /********** Checkbox style ends **********/
 
 .info-list-title {
-    text-align: left;
-    padding: 10px 0px;
-    font-weight: bold;
+    color: #5F5F5F;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 5px;
 }
 
 .info-list-content {
-    text-align: left;
-    padding: 5px 0px;
+    color: #8C8C8C;
+    font-size: 13px;
+    display: block;
+    margin-bottom: 20px;
+    padding-left: 5px;
 }
