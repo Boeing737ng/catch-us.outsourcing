@@ -13,6 +13,25 @@
     <div class="animationload">
         <div class="osahanloading"></div>
     </div>    
+    <header>
+        <div class="link-container light-font">
+            <a onclick="signOut()">LOGOUT</a>
+            <a href="">견적문의</a>
+            <a href="board.html">Q & A</a>
+        </div>
+    </header>
+    <div class="board-wrapper">
+        <section class="page-title">
+            <h3>Q & A</h3>
+        </section>
+        <section class="text-area">
+            <pre id="question-title" type="text"></pre>
+            <br>
+            <pre name="" id="question-content"></pre>
+            <br>
+            <button onclick="uploadQuestion()">확인</button>
+        </section>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="../scripts/firebase.js"></script>
     <script src="../scripts/loadPage.js"></script>

@@ -711,6 +711,8 @@ section.detail-left p, section.detail-right p:first-child {
 #question-title {
     height: 30px;
     margin-bottom: 17px;
+    text-align: left;
+    white-space: pre-wrap;
 }
 #question-content {
     height: 300px;
@@ -718,6 +720,8 @@ section.detail-left p, section.detail-right p:first-child {
     max-height: 450px;
     max-width: 100%;
     min-width: 100%;
+    text-align: left;
+    white-space: pre-wrap;
 }
 .text-area button {
     background-color: #C8D9F3;
