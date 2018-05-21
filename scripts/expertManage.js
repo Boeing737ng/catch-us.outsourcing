@@ -39,7 +39,7 @@ function makeMatchedEstimateTable(){
     matchedEstimateList.forEach(function(row){
         var answer = ""
         if(row["matchList"][currentUid]["outputResult"] != null){
-            answer = "<div>답변 완료</div>";
+            answer = "<div class='completed-request'>&#9989;답변 완료</div>";
         }
         $("#estimate-list").append(
             "<div id='"+row["key"]+"' class='estimates' onclick=\"showEstimateInfo("+row["key"]+")\">"+

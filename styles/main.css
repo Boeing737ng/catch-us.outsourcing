@@ -278,6 +278,7 @@ footer span {
 
 /********** Estimate **********/
 .estimates {
+    position: relative;
     text-align: left;
     border: 1px solid #BFBFBF;
     width: calc(95% - 34px);
@@ -574,6 +575,14 @@ section.detail-left p, section.detail-right p:first-child {
 .expert-additional-data span{
     display: block;
     margin-bottom: 10px;
+}
+.completed-request {
+    position: absolute;
+    top: 3px;
+    right: 8px;
+    color: #00BE00;
+    font-weight: 500;
+    font-size: 15px;
 }
 /********** Estimate ends **********/
 
