@@ -54,7 +54,8 @@ function getClientInfo(){
 
 // 전문가 회원가입
 function expertSignup(){
-    var expertInfo = getExpertInfo()
+    var expertInfo = getExpertInfo();
+    showLoading();
     firebaseSignup(
         expertInfo["email"],
         expertInfo["password"]
@@ -72,7 +73,7 @@ function expertSignup(){
                             .then(
                                 function(){
                                     alert("회원가입이 완료되었습니다.");
-                                    // onLoadMainPage();
+                                    onLoadMainPage();
                                 },
                                 function(error){
                                     console.log("expertSignup forth err : ", error);
