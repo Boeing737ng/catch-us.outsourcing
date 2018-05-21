@@ -108,7 +108,7 @@ function matchedExpertList(key){
                             "<p>"+expertValue["name"]+" 변리사</p>"+
                         "</section>"+
                         "<section class='matched-expert-content'>"+
-                            "<p>"+expertValue["outputResult"]+"</p>"+
+                            "<pre>"+expertValue["outputResult"]+"</pre>"+
                         "</section>"+
                     "</div>"
                 );
