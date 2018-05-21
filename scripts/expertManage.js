@@ -1,11 +1,35 @@
 var currentUid = "";
 var matchedEstimateList = [];
 var currentKey = "";
+// firebase.auth().onAuthStateChanged(function (user) {
+//     showLoading();
+//     if (user) {
+//         currentUid = user.uid;
+//         getMatchedEstimate();
+//     } else {
+//         alert("로그인이 필요합니다.");
+//         onLoadMainPage();
+//     }
+// });
+
 firebase.auth().onAuthStateChanged(function (user) {
     showLoading();
     if (user) {
-        currentUid = user.uid;
-        getMatchedEstimate();
+        firebase.database().ref("Users/"+user.uid+"/personalInfo/type").once('value').then(
+            function(snapshot){
+                if(snapshot.val() == "Client"){
+                    onLoadClitentPage();
+                }
+                if(snapshot.val() != "Expert"){
+                    alert("사용자 권한이 없습니다.");
+                    onLoadMainPage();
+                }
+                getMatchedEstimate();
+            },
+            function(error){
+                console.log("onAuthStateChanged err : "+error)
+            }
+        );
     } else {
         alert("로그인이 필요합니다.");
         onLoadMainPage();
