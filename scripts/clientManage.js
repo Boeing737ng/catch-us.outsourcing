@@ -62,6 +62,8 @@ function loadEstimateList(){
         }
         makeCurEstimateList();
         noneLoading();
+    },function(error){
+        console.log("loadEstimateList err : "+error);
     });
 }
 
@@ -116,6 +118,8 @@ function matchedExpertList(key){
             }
         }
 
+    },function(error){
+        console.log("matchedExpertList err : "+error);
     });
 }
 
@@ -156,6 +160,8 @@ function showExpertInfo(uid, applyNum, registerNum){
                 "</section>"+
             "</div>"
         );
+    }, function(error){
+        console.log("showExpertInfo err : "+error)
     });
 }
 

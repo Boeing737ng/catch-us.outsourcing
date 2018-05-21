@@ -7,6 +7,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         loadQuestionList();
     } else {
+        alert("로그인이 필요합니다.")
         onLoadMainPage();
     }
 });
@@ -35,6 +36,8 @@ function loadQuestionList(){
         makePaging(1);
         makeQuestionTable(1);
         noneLoading();
+    },function(error){
+        console.log("loadQuestionList err : "+error);
     });
 }
 

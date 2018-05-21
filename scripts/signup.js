@@ -85,7 +85,6 @@ function expertSignup(){
                             noneLoading();
                         }
                     )
-                    
                 },
                 function(){
                     console.log("expertSignup second err : ", error);
