@@ -62,14 +62,14 @@ function makeEstimateTable(){
     EstimatesList.forEach(function(row){
         $("#estimate-list").append(
             "<div id='"+row["key"]+"' class='estimates' onclick=\"makeCurExpertTable("+row["key"]+")\">"
-            +"<div>지역</div>"
-            +"<div>"+row["area"]+"</div>"
-            +"<div>분야</div>"
-            +"<div>"+row["field"].toString()+" - "+row["keyword"]+"</div>"
-            +"<div>내용</div>"
-            +"<div>"+row["details"]+"</div>"
-            +"<div>요청일</div>"
-            +"<div>"+row["date"]+"</div>"
+            +"<div class='info-list-title'>지역</div>"
+            +"<div class='info-list-content'>"+row["area"]+"</div>"
+            +"<div class='info-list-title'>분야</div>"
+            +"<div class='info-list-content'>"+row["field"].toString()+" - "+row["keyword"]+"</div>"
+            +"<div class='info-list-title'>내용</div>"
+            +"<div class='info-list-content'>"+row["details"]+"</div>"
+            +"<div class='info-list-title'>요청일</div>"
+            +"<div class='info-list-content'>"+row["date"]+"</div>"
             +"</div>"
         );
     });
