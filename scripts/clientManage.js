@@ -1,11 +1,36 @@
 var currentUid = '';
 var estimateList = [];
 
+// firebase.auth().onAuthStateChanged(function (user) {
+//     showLoading();
+//     if (user) {
+//         currentUid = user.uid;
+//         loadEstimateList();
+//     } else {
+//         alert("로그인이 필요합니다.");
+//         onLoadMainPage();
+//     }
+// });
+
 firebase.auth().onAuthStateChanged(function (user) {
     showLoading();
     if (user) {
-        currentUid = user.uid;
-        loadEstimateList();
+        firebase.database().ref("Users/"+user.uid+"/personalInfo/type").once('value').then(
+            function(snapshot){
+                if(snapshot.val() == "Expert"){
+                    onLoadExpertPage();
+                }
+                else if(snapshot.val() != "Client"){
+                    alert("사용자 권한이 없습니다.");
+                    onLoadMainPage();
+                }
+                currentUid = user.uid;
+                loadEstimateList();
+            },
+            function(error){
+                console.log("onAuthStateChanged err : "+error)
+            }
+        );
     } else {
         alert("로그인이 필요합니다.");
         onLoadMainPage();
@@ -45,6 +70,10 @@ function makeCurEstimateList(){
     // $("#estimate-list")[0]
     estimateList.forEach(function(row){
         console.log(row);
+        var details = row["details"];
+        if(details.length > 21){
+            details = details.substring(0, 21) + " . . .";
+        }
         $("#estimate-list").append(
             "<div id='"+row["key"]+"' onclick=\"matchedExpertList("+row["key"]+")\" class='estimates'>"+
                 "<p class='info-list-title'>지역</p>"+
@@ -52,7 +81,7 @@ function makeCurEstimateList(){
                 "<p class='info-list-title'>분야</p>"+
                 "<span class='info-list-content'>"+row["field"].toString()+" - "+row["keyword"]+"</span>"+
                 "<p class='info-list-title'>내용</p>"+
-                "<span class='info-list-content'>"+row["details"]+"</span>"+
+                "<span class='info-list-content'>"+details+"</span>"+
                 "<p class='info-list-title'>요청일</p>"+
                 "<span class='info-list-content'>"+row["date"]+"</span>"+
             "</div>"

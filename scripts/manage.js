@@ -2,6 +2,28 @@ var EstimatesList = [];
 var curExpertList = {};
 var selectedExpertlist = {};
 var selectedKey = "";
+
+firebase.auth().onAuthStateChanged(function (user) {
+    showLoading();
+    if (user) {
+        firebase.database().ref("Users/"+user.uid+"/personalInfo/type").once('value').then(
+            function(snapshot){
+                if(snapshot.val() != "Admin"){
+                    alert("관리자 권한이 없습니다.");
+                    onLoadMainPage();
+                }
+                getEstimateList();
+            },
+            function(error){
+                console.log("onAuthStateChanged err : "+error)
+            }
+        );
+    } else {
+        alert("로그인이 필요합니다.");
+        onLoadMainPage();
+    }
+});
+
 $("#submit-selected-expert").click(function(){
     uploadSelectedExperts();
 });
@@ -99,6 +121,10 @@ function getEstimateList(){
 
 function makeEstimateTable(){
     EstimatesList.forEach(function(row){
+        var details = row["details"];
+        if(details.length > 21){
+            details = details.substring(0, 21) + " . . .";
+        }
         $("#estimate-list").append(
             "<div id='"+row["key"]+"' class='estimates' onclick=\"makeCurExpertTable("+row["key"]+")\">"+
                 "<p class='info-list-title'>지역</p>"+
@@ -106,7 +132,7 @@ function makeEstimateTable(){
                 "<p class='info-list-title'>분야</p>"+
                 "<span class='info-list-content'>"+row["field"].toString()+" - "+row["keyword"]+"</span>"+
                 "<p class='info-list-title'>내용</p>"+
-                "<span class='info-list-content'>"+row["details"]+"</span>"+
+                "<span class='info-list-content'>"+details+"</span>"+
                 "<p class='info-list-title'>요청일</p>"+
                 "<span class='info-list-content'>"+row["date"]+"</span>"+
             "</div>"
@@ -216,5 +242,3 @@ function backToExpert(){
     $("#expert-detail").hide();
     $("#expert-list").show();
 }
-
-getEstimateList();

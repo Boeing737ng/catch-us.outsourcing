@@ -35,6 +35,8 @@ function signIn(){
                     }else if(snapshot.val() == "Client"){
                         console.log("의뢰인 로그인");
                         onLoadClitentPage();
+                    }else if(snapshot.val() == "Admin"){
+                        onLoadManagertPage();
                     }
                 },
                 function(error){
