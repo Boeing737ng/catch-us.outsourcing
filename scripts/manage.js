@@ -3,6 +3,27 @@ var curExpertList = {};
 var selectedExpertlist = {};
 var selectedKey = "";
 
+firebase.auth().onAuthStateChanged(function (user) {
+    showLoading();
+    if (user) {
+        firebase.database().ref("Users/"+user.uid+"/personalInfo/type").once('value').then(
+            function(snapshot){
+                if(snapshot.val() != "Admin"){
+                    alert("관리자 권한이 없습니다.");
+                    onLoadMainPage();
+                }
+                getEstimateList();
+            },
+            function(error){
+                console.log("onAuthStateChanged err : "+error)
+            }
+        );
+    } else {
+        alert("로그인이 필요합니다.");
+        onLoadMainPage();
+    }
+});
+
 $("#submit-selected-expert").click(function(){
     uploadSelectedExperts();
 });
@@ -221,5 +242,3 @@ function backToExpert(){
     $("#expert-detail").hide();
     $("#expert-list").show();
 }
-
-getEstimateList();
