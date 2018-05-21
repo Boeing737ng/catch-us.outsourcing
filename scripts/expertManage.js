@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     onLoadClitentPage();
                 }
                 else if(snapshot.val() != "Expert"){
-                    alert("사용자 권한이 없습니다.");
+                    alert("전문가 권한이 없습니다.");
                     onLoadMainPage();
                 }
                 currentUid = user.uid;
@@ -57,6 +57,8 @@ function getMatchedEstimate(){
         makeMatchedEstimateTable();
         noneLoading();
         console.log(matchedEstimateList);
+    },function(error){
+        console.log("getMatchedEstimate err : " +error);
     })
 }
 
@@ -111,7 +113,11 @@ function showEstimateInfo(key){
                 +"<div>"+estimateInfo["details"]+"</div>"
                 +"</div>"
             )
+        },function(error){
+            console.log("showEstimateInfo first err : "+error);
         })
+    },function(error){
+        console.log("showEstimateInfo second err : "+error);
     })
 }
 
@@ -126,6 +132,8 @@ function writeOutputResult(){
             $("#send-output-result")[0].innerHTML = "답변하기";
         }
         $("#output-result").show();
+    },function(error){
+        console.log("writeOutputResult err : "+error);
     })
 }
 
@@ -136,8 +144,8 @@ function uploadOutputResult(){
         function(){
             alert("산출 결과 저장 완료");
             window.location.reload(true);
-        },function(){
-
+        },function(error){
+            console.log("uploadOutputResult err : "+error);
         }
     )
 }

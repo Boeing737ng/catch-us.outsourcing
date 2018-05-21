@@ -35,6 +35,8 @@ function loadQuestionList(){
         makePaging(1);
         makeQuestionTable(1);
         noneLoading();
+    },function(error){
+        console.log("loadQuestionList err : "+error);
     });
 }
 

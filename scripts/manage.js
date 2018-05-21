@@ -195,7 +195,11 @@ function makeCurExpertTable(key){
                 };
             }
             $("#expert-num")[0].innerHTML = matchedExpertNum;
+        },function(error){
+            console.log("makeCurExpertTable first err : "+error);
         })
+    }, function(error){
+        console.log("makeCurExpertTable second err : "+error);
     })
     
 }
@@ -235,6 +239,8 @@ function makeCurExpertDetailTable(uid){
                 "</section>"+
             "</div>"
         );
+    },function(error){
+        console.log("makeCurExpertDetailTable err : "+error)
     })
 }
 
