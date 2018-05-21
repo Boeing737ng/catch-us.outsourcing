@@ -32,6 +32,7 @@ function uploadSelectedExperts(){
     var curExpertTableList = $('.expert-info-wrapper');
     showLoading();
     selectedExpertlist = {};
+    var selectedExpertNum = 0;
     for(var idx = 0; idx<curExpertTableList.length; idx++){
         var curExpert = $(curExpertTableList[idx]);
         if(curExpert.find(".select-expert")[0].checked){
@@ -50,6 +51,7 @@ function uploadSelectedExperts(){
                 return;
             }
             console.log("aaaaa");
+            selectedExpertNum++;
             selectedExpertlist[curExpert[0].id] = {
                 name : curExpertList[curExpert[0].id]["personalInfo"]["name"],
                 profileUrl : curExpertList[curExpert[0].id]["personalInfo"]["profileUrl"],
@@ -87,6 +89,7 @@ function uploadSelectedExperts(){
     ).then(
         function(){
             makeCurExpertTable(selectedKey);
+            alert("총 " + selectedExpertNum + "명의 변리사에게 견적 요청서를 전송하였습니다.");
             noneLoading();
         },
         function(error){
