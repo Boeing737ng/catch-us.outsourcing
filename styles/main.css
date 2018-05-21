@@ -1,9 +1,14 @@
 html,body {
     margin: 0;
     padding: 0;
-    overflow: auto;
     width: 100%;
-    height: 100%;
+}
+body {
+    margin-bottom: 80px;
+}
+html {
+    position: relative;
+    min-height: 100%;
 }
 input:focus, button:focus, textarea:focus {
     outline: none;
@@ -22,6 +27,9 @@ a {
 }
 .page-title {
     margin-bottom: 50px;
+}
+* {
+    box-sizing: border-box;
 }
 /*********** header **********/
 header {
@@ -48,7 +56,7 @@ header a:hover {
     min-height: calc(100vh - 285px);
 }
 section.logo {
-    margin: 100px auto;
+    margin: 50px auto;
     width: 340px;
 }
 section.logo img {
@@ -86,7 +94,7 @@ button.signup-button {
 
 section.service-info {
     width: 100%;
-    margin: 120px auto 100px;
+    margin: 85px auto 100px;
 }
 .info-wrapper {
     text-align: center;
@@ -129,7 +137,8 @@ section.service-info {
     width: 100%;
 } */
 footer {
-    margin-top: -50px;
+    position: absolute;
+    bottom: 0;
     padding: 10px 0;
     border-top: 2px solid #051E5A;
     width: 100%;
