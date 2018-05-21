@@ -5,6 +5,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         currentUid = user.uid;
         // loadQuestionList();
     } else {
+        alert("로그인이 필요합니다.");
         onLoadMainPage();
     }
 });

@@ -7,6 +7,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         loadQuestionList();
     } else {
+        alert("로그인이 필요합니다.")
         onLoadMainPage();
     }
 });

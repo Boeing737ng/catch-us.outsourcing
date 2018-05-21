@@ -1,9 +1,19 @@
-$(document).ready(
-    function(){
-        showLoading();
+// $(document).ready(
+//     function(){
+//         showLoading();
+//         makeQuestion();
+//     }
+// );
+firebase.auth().onAuthStateChanged(function (user) {
+    showLoading();
+    if (user) {
+        currentUid = user.uid;
         makeQuestion();
+    } else {
+        console.log("로그인이 필요합니다.");
+        onLoadMainPage();
     }
-);
+});
 
 function getPostData(){
     var getPost = location.search.split("?")[1].split("=");
