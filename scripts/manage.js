@@ -198,11 +198,11 @@ function makeCurExpertDetailTable(uid){
                     "<p>소속</p>"+
                     "<span>"+expertPersonalInfo["affiliation"]+" ("+expertPersonalInfo["address"]+")</span>"+
                     "<p>경력 사항</p>"+
-                    "<span>"+expertPersonalInfo["additionalInfo"]["Career"]+"</span>"+
+                    "<pre>"+expertPersonalInfo["additionalInfo"]["Career"]+"</pre>"+
                     "<p>저서, 논문, 수상</p>"+
-                    "<span>"+expertPersonalInfo["additionalInfo"]["Reward"]+"</span>"+
+                    "<pre>"+expertPersonalInfo["additionalInfo"]["Reward"]+"</pre>"+
                     "<p>간략 소개</p>"+
-                    "<span>"+expertPersonalInfo["additionalInfo"]["Intro"]+"</span>"+
+                    "<pre>"+expertPersonalInfo["additionalInfo"]["Intro"]+"</pre>"+
                     "<p>연락처</p>"+
                     "<span>"+expertPersonalInfo["phoneNum"]+"</span>"+
                     "<p>이메일</p>"+
