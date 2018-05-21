@@ -45,6 +45,10 @@ function makeCurEstimateList(){
     // $("#estimate-list")[0]
     estimateList.forEach(function(row){
         console.log(row);
+        var details = row["details"];
+        if(details.length > 21){
+            details = details.substring(0, 21) + " . . .";
+        }
         $("#estimate-list").append(
             "<div id='"+row["key"]+"' onclick=\"matchedExpertList("+row["key"]+")\" class='estimates'>"+
                 "<p class='info-list-title'>지역</p>"+
@@ -52,7 +56,7 @@ function makeCurEstimateList(){
                 "<p class='info-list-title'>분야</p>"+
                 "<span class='info-list-content'>"+row["field"].toString()+" - "+row["keyword"]+"</span>"+
                 "<p class='info-list-title'>내용</p>"+
-                "<span class='info-list-content'>"+row["details"]+"</span>"+
+                "<span class='info-list-content'>"+details+"</span>"+
                 "<p class='info-list-title'>요청일</p>"+
                 "<span class='info-list-content'>"+row["date"]+"</span>"+
             "</div>"
