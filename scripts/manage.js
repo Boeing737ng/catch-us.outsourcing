@@ -2,6 +2,7 @@ var EstimatesList = [];
 var curExpertList = {};
 var selectedExpertlist = {};
 var selectedKey = "";
+
 $("#submit-selected-expert").click(function(){
     uploadSelectedExperts();
 });
