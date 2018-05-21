@@ -66,7 +66,10 @@ function makeMatchedEstimateTable(){
     matchedEstimateList.forEach(function(row){
         var answer = ""
         if(row["matchList"][currentUid]["outputResult"] != null){
-            answer = "<div class='completed-request'>&#9989;답변 완료</div>";
+            answer = "<div class='completed-request'>&#9989; 답변 완료</div>";
+        }
+        else {
+            answer = "<div class='pendding-request'>미완료</div>";
         }
         var details = row["details"];
         if(details.length > 21){

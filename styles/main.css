@@ -137,8 +137,8 @@ section.service-info {
 .info-body {
     margin: auto;
     color: #fff;
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     background-color: #051E5A;
 }
@@ -618,13 +618,16 @@ section.detail-left p, section.detail-right p:first-child {
     display: block;
     margin-bottom: 10px;
 }
-.completed-request {
+.completed-request, .pendding-request {
     position: absolute;
     top: 3px;
     right: 8px;
     color: #00BE00;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 13px;
+}
+.pendding-request {
+    color: #FF0000;
 }
 #cur-estimate, .edit-info {
     position: relative;
