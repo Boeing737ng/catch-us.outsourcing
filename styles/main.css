@@ -704,3 +704,14 @@ section.detail-left p, section.detail-right p:first-child {
     transform: rotate(45deg);
 }
 /********** Checkbox style ends **********/
+
+.info-list-title {
+    text-align: left;
+    padding: 10px 0px;
+    font-weight: bold;
+}
+
+.info-list-content {
+    text-align: left;
+    padding: 5px 0px;
+}
