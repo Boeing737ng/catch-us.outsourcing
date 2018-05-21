@@ -38,3 +38,8 @@ function showLoading(){
 function noneLoading(){
     $(".animationload")[0].style.display = "none";
 }
+
+function signOut(){
+    firebase.auth().signOut();
+    onLoadMainPage();
+}
