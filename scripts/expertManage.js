@@ -60,27 +60,30 @@ function makeMatchedEstimateTable(){
 // 수정 필요
 function showEstimateInfo(key){
     currentKey = key;
+    $("#estimate-info").remove("#cur-estimate");
     $("#estimate-info").show();
-    $("#output-result").hide();
+    $("#edit-request-wrapper").hide();
     var curEstimate = firebase.database().ref("/Estimates/"+key);
     $("#cur-estimate").remove();
+    $("#expert-response-header").html("견적 상세 내용");
     curEstimate.once('value').then(function(snapshot){
         estimateInfo = snapshot.val();
         firebase.database().ref("/Users/"+snapshot.val()["uid"]).once('value').then(function(snapshot2){
             usrInfo = snapshot2.val();
-            $("#info-list").append(
-                "<div id='cur-estimate'>"
-                +"<div>닉네임</div>"
-                +"<div>"+usrInfo["personalInfo"]["nickname"]+"</div>"
-                +"<div>이메일</div>"
-                +"<div>"+usrInfo["email"]+"</div>"
-                +"<div>지역</div>"
-                +"<div>"+estimateInfo["area"]+"</div>"
-                +"<div>분야</div>"
-                +"<div>"+estimateInfo["field"]+"</div>"
-                +"<div>출원 상세내용</div>"
-                +"<div>"+estimateInfo["details"]+"</div>"
-                +"</div>"
+            $("#estimate-info").append(
+                "<div id='cur-estimate'>"+
+                    "<p>닉네임</p>"+
+                    "<span>"+usrInfo["personalInfo"]["nickname"]+"</span>"+
+                    "<p>이메일</p>"+
+                    "<span>"+usrInfo["email"]+"</span>"+
+                    "<p>지역</p>"+
+                    "<span>"+estimateInfo["area"]+"</span>"+
+                    "<p>분야</p>"+
+                    "<span>"+estimateInfo["field"]+"</span>"+
+                    "<p>출원 상세내용</p>"+
+                    "<span>"+estimateInfo["details"]+"</span>"+
+                    "<button id='write-result-button' onclick='writeOutputResult();'>다음</button>"+
+                "</div>"
             )
         })
     })
@@ -96,7 +99,8 @@ function writeOutputResult(){
             $("#output-text")[0].value = "";
             $("#send-output-result")[0].innerHTML = "답변하기";
         }
-        $("#output-result").show();
+        $("#edit-request-wrapper").show();
+        $("#expert-response-header").html("답변 입력");
     })
 }
 
@@ -114,6 +118,7 @@ function uploadOutputResult(){
 }
 
 function backInfoList(){
+    $("#expert-response-header").html("견적 상세 내용");
     $("#estimate-info").show();
-    $("#output-result").hide();
+    $("#edit-request-wrapper").hide();
 }

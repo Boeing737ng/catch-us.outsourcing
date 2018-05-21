@@ -11,41 +11,41 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-        <div class="animationload">
-                <div class="osahanloading"></div>
-            </div>
-            <header>
-                <div class="link-container light-font">
-                    <a href="../">HOME</a>
-                    <a href="" onclick="window.location.reload(true)">견적문의</a>
-                    <a href="board.html">Q & A</a>
+    <div class="animationload">
+        <div class="osahanloading"></div>
+    </div>
+    <header>
+        <div class="link-container light-font">
+            <a href="../">HOME</a>
+            <a href="" onclick="window.location.reload(true)">견적문의</a>
+            <a href="board.html">Q & A</a>
+        </div>
+    </header>
+    <div class="estimate-wrapper">
+        <section class="page-title">
+            <h3>견적 문의</h3>
+        </section>
+        <section class="estimate-view-wrapper">
+            <div class="side-view-left">
+                <h4>고객 견적 요청서</h4>
+                <div class="scroll-area">
+                    <div id="estimate-list"></div>
                 </div>
-            </header>
-            <div class="estimate-wrapper">
-                <section class="page-title">
-                    <h3>견적 문의</h3>
-                </section>
-                <section class="estimate-view-wrapper">
-                    <div class="side-view-left">
-                        <h4>고객 견적 요청서</h4>
-                        <div class="scroll-area">
-                            <div id="estimate-list"></div>
-                        </div>
-                    </div>
-                    <div class="side-view-right">
-                        <div id="estimate-info" style="display:none">
-                            <div id="info-list"></div>
-                            <button id="write-result-button" onclick="writeOutputResult()">다음</button>
-                        </div>
-                        <div id="output-result" style="display:none">
-                            <p>산출결과</p>
-                            <textarea name="" id="output-text" cols="30" rows="10"></textarea>
-                            <button onclick="backInfoList()">뒤로가기</button>
-                            <button id="send-output-result">답변하기</button>
-                        </div>
-                    </div>
-                </section>
             </div>
+            <div class="side-view-right">
+                <h4 id="expert-response-header"></h4>
+                <div id="estimate-info" style="display:none"></div>
+                <div id="edit-request-wrapper" style="display:none">
+                    <div class="edit-info">
+                        <p>산출결과</p>
+                        <textarea name="" id="output-text" cols="30" rows="10"></textarea>
+                        <button id="move-back-button" onclick="backInfoList()">뒤로가기</button>
+                        <button id="send-output-result">답변하기</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="../scripts/firebase.js"></script>
     <script src="../scripts/loadPage.js"></script>

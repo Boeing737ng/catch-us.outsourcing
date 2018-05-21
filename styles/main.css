@@ -263,7 +263,7 @@ footer span {
     margin: 5px auto;
     font-size: 15px;
 }
-.completed-button {
+.completed-button, #write-result-button, #send-output-result, #move-back-button {
     display: block;
     width: 80px;
     height: 30px;
@@ -397,7 +397,7 @@ textarea#details {
     max-height: 300px;
     border-radius: 3px;
 }
-#expert-list, #expert-detail {
+#expert-list, #expert-detail, #estimate-info, #edit-request-wrapper {
     display: none;
     overflow-y: scroll;
     padding: 0px 30px 30px;
@@ -410,6 +410,10 @@ textarea#details {
 #expert-detail {
     padding-top: 17px;
     height: calc(100% - 61px);
+}
+#estimate-info, #edit-request-wrapper {
+    height: calc(100% - 62px);
+    padding: 0;
 }
 .experts {
     background-color: #FFF;
@@ -583,6 +587,52 @@ section.detail-left p, section.detail-right p:first-child {
     color: #00BE00;
     font-weight: 500;
     font-size: 15px;
+}
+#cur-estimate, .edit-info {
+    position: relative;
+    overflow-y: scroll;
+    border: 1px solid #BFBFBF;
+    width: 60%;
+    height: 90%;
+    margin: 17px auto 0;
+    padding: 30px 20px;
+    background-color: #FFF;
+}
+#cur-estimate p, #edit-request-wrapper p {
+    color: #5F5F5F;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+#cur-estimate span {
+    display: block;
+    color: #8C8C8C;
+    font-size: 13px;
+    margin-bottom: 30px;
+    padding-left: 5px;
+    max-width: 100%;
+}
+#write-result-button, #send-output-result {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    margin: 0;
+}
+#move-back-button {
+    position: absolute;
+    bottom: 15px;
+    right: 100px;
+    margin: 0;
+}
+.edit-info * {
+    display: block;
+}
+.edit-info textarea {
+    margin-top: 20px;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 80%;
+    min-height: 80%;
 }
 /********** Estimate ends **********/
 
