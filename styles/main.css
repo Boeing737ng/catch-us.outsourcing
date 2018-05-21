@@ -29,10 +29,24 @@ a {
     margin-bottom: 50px;
 }
 * {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
 }
 *::-webkit-scrollbar { 
     width: 0 !important 
+}
+input::-webkit-input-placeholder {
+    font-size: 13px;
+}
+input::-moz-placeholder{
+    font-size: 13px;
+}
+input:-ms-input-placeholder {
+    font-size: 13px;
+}
+input:-moz-placeholder {
+    font-size: 13px;
 }
 /*********** header **********/
 header {
@@ -48,6 +62,7 @@ header a:hover {
     font-weight: 400;
 }
 .link-container {
+    font-size: 14px;
     position: relative;
     top: 50%;
     float: right;
@@ -73,26 +88,22 @@ section.login * {
     margin: 0 auto 7px;
 }
 section.login input {
-    width: 255px;
+    width: 260px;
     padding-left: 5px;
     height: 30px;
     border: 1px solid #4C4C4C;
     border-radius: 5px;
 }
-button.login-button {
-    width: 264px;
+button.login-button, button.signup-button {
+    font-size: 12px;
+    width: 260px;
     height: 30px;
     background-color: #C8D9F3;
     border: none;
     border-radius: 5px;
 }
 button.signup-button {
-    display: inline-block;
-    width: 264px;
-    height: 30px;
     background-color: #EAEAEA;
-    border: none;
-    border-radius: 5px;
 }
 
 section.service-info {
@@ -115,6 +126,7 @@ section.service-info {
     float: right;
 }
 .info-header {
+    font-size: 16px;
     display: block;
     margin-bottom: 30px;
 }
@@ -127,6 +139,7 @@ section.service-info {
     background-color: #051E5A;
 }
 .info-text {
+    font-size: 14px;
     position: relative;
     top: 50%;
     transform: translate(0,-50%);
@@ -140,6 +153,7 @@ section.service-info {
     width: 100%;
 } */
 footer {
+    font-size: 14px;
     position: absolute;
     bottom: 0;
     padding: 10px 0;
@@ -197,7 +211,7 @@ footer span {
     text-align: center;
 }
 .signup-input {
-    width: 190px;
+    width: 180px;
     padding: 5px 0 5px 5px;
     border: none;
     border-bottom: 1px solid #051E5A;
@@ -206,7 +220,7 @@ footer span {
 .layout-wrapper {
     overflow: auto;
     width: 80%;
-    margin: 40px auto;
+    margin: 30px auto;
 }
 .signup-row {
     display: inline-block;
@@ -261,11 +275,11 @@ footer span {
     text-align: left;
     width: 75%;
     margin: 5px auto;
-    font-size: 15px;
+    font-size: 14px;
 }
 .completed-button, #write-result-button, #send-output-result, #move-back-button {
     display: block;
-    width: 80px;
+    font-size: 11px;
     height: 30px;
     border: none;
     margin: 30px auto;
@@ -412,7 +426,7 @@ textarea#details {
     height: calc(100% - 61px);
 }
 #estimate-info, #edit-request-wrapper {
-    height: calc(100% - 62px);
+    height: calc(100% - 70px);
     padding: 0;
 }
 .experts {
@@ -593,7 +607,7 @@ section.detail-left p, section.detail-right p:first-child {
     overflow-y: scroll;
     border: 1px solid #BFBFBF;
     width: 60%;
-    height: 90%;
+    height: auto;
     margin: 17px auto 0;
     padding: 30px 20px;
     background-color: #FFF;
@@ -614,9 +628,8 @@ section.detail-left p, section.detail-right p:first-child {
 }
 #write-result-button, #send-output-result {
     position: absolute;
-    bottom: 15px;
     right: 15px;
-    margin: 0;
+    margin-bottom: 20px;
 }
 #move-back-button {
     position: absolute;
