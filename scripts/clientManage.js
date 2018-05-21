@@ -20,10 +20,11 @@ firebase.auth().onAuthStateChanged(function (user) {
                 if(snapshot.val() == "Expert"){
                     onLoadExpertPage();
                 }
-                if(snapshot.val() != "Client"){
+                else if(snapshot.val() != "Client"){
                     alert("사용자 권한이 없습니다.");
                     onLoadMainPage();
                 }
+                currentUid = user.uid;
                 loadEstimateList();
             },
             function(error){
