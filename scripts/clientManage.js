@@ -17,6 +17,9 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         firebase.database().ref("Users/"+user.uid+"/personalInfo/type").once('value').then(
             function(snapshot){
+                if(snapshot.val() == "Expert"){
+                    onLoadExpertPage();
+                }
                 if(snapshot.val() != "Client"){
                     alert("사용자 권한이 없습니다.");
                     onLoadMainPage();
