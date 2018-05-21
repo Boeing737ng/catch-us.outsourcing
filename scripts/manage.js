@@ -186,7 +186,8 @@ function makeCurExpertTable(key){
                                     "<input name='apply-number' type='text' placeholder='출원 건수'>"+
                                     "<input name='register-number' type='text' placeholder='등록률 (%)'>"+
                                 "</div>"+
-                                "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
+                                "<p class='expert-name'>"+expertInfo["name"]+ ' 변리사' +"</p>"+
+                                "<hr>"+
                                 "<p>주요 분야</p>"+
                                 "<span>"+expertInfo["field"].toString()+"</span>"+
                                 "<p>소속</p>"+
