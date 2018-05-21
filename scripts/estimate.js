@@ -44,7 +44,7 @@ function getSelectedField(){
 
 function getArea(){
     if($("input[name=area]").is(':checked')){
-        return "No matter";
+        return "지역 무관";
     }
     return $("#sido_code option:selected").text()+" "+$("#sigoon_code option:selected").text()+" "+$("#dong_code option:selected").text()
 }

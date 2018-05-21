@@ -10,9 +10,24 @@ function uploadSelectedExperts(){
     var curExpertTableList = $('.expert-info-wrapper');
     showLoading();
     selectedExpertlist = {};
-    curExpertTableList.each(function(idx){
+    for(var idx = 0; idx<curExpertTableList.length; idx++){
         var curExpert = $(curExpertTableList[idx]);
         if(curExpert.find(".select-expert")[0].checked){
+            var applyNum = curExpert.find("input[name='apply-number']")[0].value.replace(/ /gi, '');
+            var registerNum = curExpert.find("input[name='register-number']")[0].value.replace(/ /gi, '');
+            console.log("applyNum : "+applyNum);
+            console.log("registerNum : "+registerNum);
+            if(applyNum == '' || isNaN(applyNum)){
+                alert("출원 건수 및 등록률을 확인해주세요.");
+                noneLoading();
+                return;
+            }
+            if(registerNum == '' || isNaN(curExpert.find("input[name='register-number']")[0].value)){
+                alert("출원 건수 및 등록률을 확인해주세요.");
+                noneLoading();
+                return;
+            }
+            console.log("aaaaa");
             selectedExpertlist[curExpert[0].id] = {
                 name : curExpertList[curExpert[0].id]["personalInfo"]["name"],
                 profileUrl : curExpertList[curExpert[0].id]["personalInfo"]["profileUrl"],
@@ -20,11 +35,36 @@ function uploadSelectedExperts(){
                 registerNum : curExpert.find("input[name='register-number']")[0].value
             }
         }
-    });
+    }
+    // curExpertTableList.each(function(idx){
+    //     var curExpert = $(curExpertTableList[idx]);
+    //     if(curExpert.find(".select-expert")[0].checked){
+    //         var applyNum = curExpert.find("input[name='apply-number']")[0].value.replace(/ /gi, '');
+    //         var registerNum = curExpert.find("input[name='register-number']")[0].value.replace(/ /gi, '');
+    //         console.log("applyNum : "+applyNum);
+    //         console.log("registerNum : "+registerNum);
+    //         if(applyNum == '' || isNaN(applyNum)){
+    //             alert("출원 건수 및 등록률을 확인해주세요.");
+    //             return;
+    //         }
+    //         if(registerNum == '' || isNaN(curExpert.find("input[name='register-number']")[0].value)){
+    //             alert("출원 건수 및 등록률을 확인해주세요.");
+    //             return;
+    //         }
+    //         console.log("aaaaa");
+    //         selectedExpertlist[curExpert[0].id] = {
+    //             name : curExpertList[curExpert[0].id]["personalInfo"]["name"],
+    //             profileUrl : curExpertList[curExpert[0].id]["personalInfo"]["profileUrl"],
+    //             applyNum : curExpert.find("input[name='apply-number']")[0].value,
+    //             registerNum : curExpert.find("input[name='register-number']")[0].value
+    //         }
+    //     }
+    // });
     firebase.database().ref("Estimates/"+ selectedKey+"/matchList").update(
         selectedExpertlist
     ).then(
         function(){
+            makeCurExpertTable(selectedKey);
             noneLoading();
         },
         function(error){
