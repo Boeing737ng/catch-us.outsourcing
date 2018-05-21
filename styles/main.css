@@ -540,10 +540,18 @@ section.detail-left p, section.detail-right p:first-child {
     max-height: 180px;
     background-color: #FFF;
 }
+
 .matched-expert p {
     color: #5F5F5F;
     font-size: 15px;
 }
+
+.matched-expert pre {
+    color: #5F5F5F;
+    font-size: 15px;
+    white-space: pre-wrap;
+}
+
 .matched-expert-left, .matched-expert-content {
     display: inline-block;
     height: 100%;
