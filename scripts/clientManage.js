@@ -1,11 +1,32 @@
 var currentUid = '';
 var estimateList = [];
 
+// firebase.auth().onAuthStateChanged(function (user) {
+//     showLoading();
+//     if (user) {
+//         currentUid = user.uid;
+//         loadEstimateList();
+//     } else {
+//         alert("로그인이 필요합니다.");
+//         onLoadMainPage();
+//     }
+// });
+
 firebase.auth().onAuthStateChanged(function (user) {
     showLoading();
     if (user) {
-        currentUid = user.uid;
-        loadEstimateList();
+        firebase.database().ref("Users/"+user.uid+"/personalInfo/type").once('value').then(
+            function(snapshot){
+                if(snapshot.val() != "Client"){
+                    alert("사용자 권한이 없습니다.");
+                    onLoadMainPage();
+                }
+                loadEstimateList();
+            },
+            function(error){
+                console.log("onAuthStateChanged err : "+error)
+            }
+        );
     } else {
         alert("로그인이 필요합니다.");
         onLoadMainPage();
