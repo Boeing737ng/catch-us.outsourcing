@@ -514,10 +514,18 @@ section.detail-left p, section.detail-right p:first-child {
     font-size: 18px;
     margin-top: 0;
 }
+
 .expert-detail-info span {
     color: #8C8C8C;
     font-size: 16px;
 }
+
+.expert-detail-info pre {
+    color: #8C8C8C;
+    font-size: 16px;
+    white-space: pre-wrap;
+}
+
 .matched-expert {
     border: 1px solid #BFBFBF;
     margin: 20px 0px;
