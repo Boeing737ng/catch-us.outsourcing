@@ -95,12 +95,15 @@ function matchedExpertList(key){
     backMatchedExpertList();
     firebase.database().ref("Estimates/"+key+"/matchList").once('value').then(function(snapshot){
         var expertList = snapshot.val();
+        console.log(expertList)
         $(".matched-expert").remove();
         $("#expert-list").show();
         $("#expert-info").hide();
+        var noExpert = true;
         for(key in expertList){
             var expertValue = expertList[key];
             if(expertValue["outputResult"] != null){
+                noExpert = false
                 $("#expert-list").append(
                     "<div id='"+key+"' onclick=\"showExpertInfo('"+key+"', "+expertValue["applyNum"]+", "+expertValue["registerNum"]+")\" class='matched-expert'>"+
                         "<section class='matched-expert-left'>"+
@@ -117,7 +120,15 @@ function matchedExpertList(key){
                 console.log(expertValue["outputResult"]);
             }
         }
-
+        if(noExpert){
+            $("#expert-list").append(
+                "<div class='matched-expert'>"+
+                    "<section class='matched-expert-content'>"+
+                        "<pre>아직 매칭된 변리사가 없습니다.</pre>"+
+                    "</section>"+
+                "</div>"
+            );
+        }
     },function(error){
         console.log("matchedExpertList err : "+error);
     });
