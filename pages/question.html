@@ -25,11 +25,14 @@
             <h3>Q & A</h3>
         </section>
         <section class="text-area">
-            <pre id="question-title" type="text"></pre>
-            <br>
-            <pre name="" id="question-content"></pre>
-            <br>
-            <button onclick="uploadQuestion()">확인</button>
+            <div id="meta-data-wrapper">
+                <span>작성자: </span><span id="writer-email"></span>
+                <br>
+                <span>날짜: </span><span id="uploaded-date"></span>
+            </div>
+            <pre id="selected-question-title" type="text"></pre>
+            <pre name="" id="selected-question-content"></pre>
+            <button class="back-to-question-list" onclick="onLoadBoardPage()">목록으로</button>
         </section>
     </div>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>

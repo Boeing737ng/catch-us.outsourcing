@@ -43,9 +43,11 @@ function makeQuestion(){
 }
 
 function makeQuestionLayout(title, email, date, content){
-    $("#question-title")[0].innerHTML = "제목 : " + title + " " + email + " " + date;
-    
-    $("#question-content")[0].innerHTML = content;
+    document.getElementById("selected-question-title").textContent = title;
+    document.getElementById("selected-question-content").textContent = content;
+    document.getElementById("writer-email").textContent = email;
+    document.getElementById("uploaded-date").textContent = date;
+
     console.log("title : ", title);
     console.log("email : ", email);
     console.log("date : ", date);

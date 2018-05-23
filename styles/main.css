@@ -708,10 +708,9 @@ section.detail-left p, section.detail-right p:first-child {
 #question-table {
     margin: auto;
     border-collapse: collapse;
-    border-right: 1px solid #DCDCDC;
 }
 #question-table td {
-    border: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
     height: 35px;
 }
 #question-table td {
@@ -762,6 +761,24 @@ section.detail-left p, section.detail-right p:first-child {
     margin: auto ;
     height: auto;
 }
+.text-area pre {
+    white-space: pre-wrap;
+    text-align: left;
+    padding: 6px;
+    margin: 0;
+    color: #5F5F5F;
+    font-size: 14px;
+}
+#selected-question-title {
+    border: 1px solid #DCDCDC;
+    background-color: #F6F6F6;
+}
+#selected-question-content {
+    border-left: 1px solid #DCDCDC;
+    border-right: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
+    min-height: 300px;
+}
 #question-title, #question-content {
     width: 100%;
     font-size: 15px;
@@ -791,6 +808,18 @@ section.detail-left p, section.detail-right p:first-child {
     border-radius: 5px;
     border: none;
     margin-top: 40px;
+}
+button.back-to-question-list {
+    float: right;
+}
+#meta-data-wrapper {
+    text-align: right;
+    width: 100%;
+    margin-bottom: 15px;
+}
+#meta-data-wrapper span {
+    color: #5F5F5F;
+    font-size: 14px;
 }
 
 /********** Board ends **********/
