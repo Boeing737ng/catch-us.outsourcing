@@ -1,5 +1,5 @@
-var pageViewLength = 10;
-var pageBarLength = 10;
+var pageViewLength = 4;
+var pageBarLength = 3;
 var questionList = [];
 var pageIdx = 0;
 showLoading();
@@ -56,16 +56,24 @@ function makeQuestionTable(page){
         );
         idx++;
     });
+    $(".page-button").removeClass("clicked-page-btn");
+    $($(".page-button")[(page-1)%pageBarLength]).addClass("clicked-page-btn");
 }
 
-function makePaging(pageBarIdx){
-    var pageStart = (pageBarIdx-1)*pageViewLength+1;
-    var pageEnd = pageBarIdx*pageViewLength;
-    makeQuestionTable(pageStart);
+function makePaging(pageBarIdx, direction){
+    var pageStart = (pageBarIdx-1)*pageBarLength+1;
+    var pageEnd = pageBarIdx*pageBarLength;
+    var viewIdx = 0;
+    if(direction == "prev"){
+        viewIdx = pageEnd;
+    }else if(direction == "next"){
+        viewIdx = pageStart;
+    }
+    makeQuestionTable(viewIdx);
     $("#paging-wrapper").children().remove();
     if(pageStart != 1){
         $("#paging-wrapper").append(
-            "<button id='prev-page-button' onclick='makePaging("+(pageBarIdx-1)+")'>\<</button>"
+            "<button id='prev-page-button' onclick='makePaging("+(pageBarIdx-1)+", \"prev\")'>\<</button>"
         );
     }
     if(pageEnd > pageIdx){
@@ -78,7 +86,9 @@ function makePaging(pageBarIdx){
     }
     if(pageEnd != pageIdx){
         $("#paging-wrapper").append(
-            "<button id='next-page-button' onclick='makePaging("+(pageBarIdx+1)+")'>\></button>"
+            "<button id='next-page-button' onclick='makePaging("+(pageBarIdx+1)+", \"next\")'>\></button>"
         );
     }
+    $(".page-button").removeClass("clicked-page-btn");
+    $($(".page-button")[(viewIdx-1)%pageBarLength]).addClass("clicked-page-btn");
 }
