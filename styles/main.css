@@ -714,14 +714,31 @@ section.detail-left p, section.detail-right p:first-child {
     border: 1px solid #DCDCDC;
     height: 35px;
 }
-.questions {
+#question-table td {
+    color: #5F5F5F;
+    font-size: 14px;
+}
+#question-table td a{
+    color: #5F5F5F;
+    font-size: 14px;
+}
+#question-table td a:hover{
+    text-decoration: underline;
+}
+.questions, .admin {
     font-weight: 300;
     color: #000;
 }
+.admin {
+    background-color: #F6F6F6;
+    font-weight: 600;
+}
 .table-header {
-    background-color: #F2F2F2;
-    color: #5F5F5F;
+    background-color: #051E5A;
     font-weight: 400;
+}
+.table-header td{
+    color: #FFF !important; 
 }
 #question-table tr>td:nth-child(1) {
     width: 50px;

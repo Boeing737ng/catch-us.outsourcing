@@ -40,10 +40,27 @@ function loadQuestionList(){
         }
         pageIdx = parseInt((questionList.length-1)/pageViewLength+1);
         makePaging(1);
+        makeAdminQuestionTable();
         makeQuestionTable(1);
         noneLoading();
     },function(error){
         console.log("loadQuestionList err : "+error);
+    });
+}
+
+function makeAdminQuestionTable(){
+    adminQuestionList.forEach(function(row){
+        $("#question-table").append(
+            "<tr class='admin'>"+
+                "<td>공지</td>"+
+                "<td><a href=\'./question?qidx="+row["key"]+"\'>"+row["title"]+"</a></td>"+
+                "<td>"+row["email"]+"</td>"+
+                "<td>"+row["date"]+"</td>"+
+            "</tr>"
+        );
+        console.log("작성자 : ", row["email"]);
+        console.log("내용 : ", row["title"]);
+        console.log("일자 : ", row["date"]);
     });
 }
 
@@ -54,10 +71,10 @@ function makeQuestionTable(page){
     viewPage.forEach(function(row){
         $("#question-table").append(
             "<tr class=\'questions\'>"+
-            "<td>"+idx+"</td>"+
-            "<td><a href=\'./question?qidx="+row["key"]+"\'>"+row["title"]+"</a></td>"+
-            "<td>"+row["email"]+"</td>"+
-            "<td>"+row["date"]+"</td>"+
+                "<td>"+idx+"</td>"+
+                "<td><a href=\'./question?qidx="+row["key"]+"\'>"+row["title"]+"</a></td>"+
+                "<td>"+row["email"]+"</td>"+
+                "<td>"+row["date"]+"</td>"+
             "</tr>"
         );
         idx++;
@@ -97,12 +114,4 @@ function makePaging(pageBarIdx, direction){
     }
     $(".page-button").removeClass("clicked-page-btn");
     $($(".page-button")[(viewIdx-1)%pageBarLength]).addClass("clicked-page-btn");
-}
-
-function makeAdminQuestionTable(){
-    adminQuestionList.forEach(function(row){
-        console.log("작성자 : ", row["email"]);
-        console.log("내용 : ", row["title"]);
-        console.log("일자 : ", row["date"]);
-    });
 }
