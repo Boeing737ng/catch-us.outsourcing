@@ -115,7 +115,7 @@ function showEstimateInfo(key){
                     "<p>분야</p>"+
                     "<span>"+estimateInfo["field"]+"</span>"+
                     "<p>출원 상세내용</p>"+
-                    "<span>"+estimateInfo["details"]+"</span>"+
+                    "<pre>"+estimateInfo["details"]+"</pre>"+
                     "<button id='write-result-button' onclick='writeOutputResult();'>다음</button>"+
                 "</div>"
             )

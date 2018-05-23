@@ -653,7 +653,7 @@ section.detail-left p, section.detail-right p:first-child {
     margin-top: 0;
     margin-bottom: 5px;
 }
-#cur-estimate span {
+#cur-estimate span, #cur-estimate pre {
     display: block;
     color: #8C8C8C;
     font-size: 13px;
