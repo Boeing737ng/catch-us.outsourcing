@@ -31,8 +31,9 @@ function getCurrentQuestion(){
 function makeQuestion(){
     getCurrentQuestion().then(
         function(snapshot){
+            var isModify = Object.keys(snapshot.val())[0] == currentUid;
             var questionData = Object.values(snapshot.val())[0];
-            makeQuestionLayout(questionData["title"], questionData["email"], questionData["date"], questionData["content"]);
+            makeQuestionLayout(questionData["title"], questionData["email"], questionData["date"], questionData["content"], isModify);
             noneLoading();
         },
         function(error){
@@ -42,9 +43,47 @@ function makeQuestion(){
     )
 }
 
-function makeQuestionLayout(title, email, date, content){
-    document.getElementById("selected-question-title").textContent = title;
-    document.getElementById("selected-question-content").textContent = content;
-    document.getElementById("writer-email").textContent = email;
-    document.getElementById("uploaded-date").textContent = date;
+function makeQuestionLayout(title, email, date, content, isModify){
+    $(".text-area").show();
+    if(isModify){
+        $(".read-question").hide();
+        $(".modify-question").show();
+        $("#question-title")[0].value = title;
+        $("#question-content")[0].value = content;
+    }else{
+        $(".read-question").show();
+        $(".modify-question").hide();
+        document.getElementById("selected-question-title").textContent = title;
+        document.getElementById("selected-question-content").textContent = content;
+        document.getElementById("writer-email").textContent = email;
+        document.getElementById("uploaded-date").textContent = date;
+    }
+}
+
+function modifyQuestion(){
+    if(confirm("게시물을 수정하시겠습니까?")){
+        firebase.database().ref("Questions/" + getPostData()["qidx"] + "/" + currentUid).update({
+            content : $("#question-content")[0].value,
+            title : $("#question-title")[0].value
+        }).then(
+            function(){
+                alert("수정을 완료하였습니다.")
+                onLoadBoardPage();
+            },
+            function(error){
+                console.log("uploadQuestion err : "+error);
+            }
+        );
+    }
+}
+
+function removeQuestion(){
+    if(confirm("게시물을 정말 삭제하시겠습니까?")){
+        firebase.database().ref("Questions/" + getPostData()["qidx"]).remove().then(function(s){
+            alert("해당 게시물을 삭제하였습니다.");
+            onLoadBoardPage();
+        }, function(error){
+            console.log("err : "+error);
+        })
+    }
 }

@@ -815,6 +815,7 @@ section.detail-left p, section.detail-right p:first-child {
 }
 button.back-to-question-list {
     float: right;
+    margin-left: 10px;
 }
 #meta-data-wrapper {
     text-align: right;
