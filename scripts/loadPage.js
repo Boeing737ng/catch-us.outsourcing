@@ -51,7 +51,7 @@ function estimatePage(){
                 onLoadExpertPage();
             }
             else if(snapshot.val() == "Client"){
-                onLoadMainPage();
+                onLoadClitentPage();
             }else if(snapshot.val() == "Admin"){
                 onLoadManagertPage();
             }
