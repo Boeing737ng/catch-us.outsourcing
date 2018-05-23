@@ -1,6 +1,7 @@
-var pageViewLength = 10;
-var pageBarLength = 10;
+var pageViewLength = 4;
+var pageBarLength = 3;
 var questionList = [];
+var adminQuestionList = [];
 var pageIdx = 0;
 showLoading();
 firebase.auth().onAuthStateChanged(function (user) {
@@ -30,7 +31,12 @@ function loadQuestionList(){
                 email : questionValues["email"], 
                 date : questionValues["date"]
             };
-            questionList.unshift(questionRow);
+            if(questionValues["email"] != "admin@catch.us"){
+                questionList.unshift(questionRow);
+            }else{
+                questionRow["email"] = "관리자";
+                adminQuestionList.unshift(questionRow);
+            }
         }
         pageIdx = parseInt((questionList.length-1)/pageViewLength+1);
         makePaging(1);
@@ -56,16 +62,24 @@ function makeQuestionTable(page){
         );
         idx++;
     });
+    $(".page-button").removeClass("clicked-page-btn");
+    $($(".page-button")[(page-1)%pageBarLength]).addClass("clicked-page-btn");
 }
 
-function makePaging(pageBarIdx){
-    var pageStart = (pageBarIdx-1)*pageViewLength+1;
-    var pageEnd = pageBarIdx*pageViewLength;
-    makeQuestionTable(pageStart);
+function makePaging(pageBarIdx, direction){
+    var pageStart = (pageBarIdx-1)*pageBarLength+1;
+    var pageEnd = pageBarIdx*pageBarLength;
+    var viewIdx = 0;
+    if(direction == "prev"){
+        viewIdx = pageEnd;
+    }else if(direction == "next"){
+        viewIdx = pageStart;
+    }
+    makeQuestionTable(viewIdx);
     $("#paging-wrapper").children().remove();
     if(pageStart != 1){
         $("#paging-wrapper").append(
-            "<button id='prev-page-button' onclick='makePaging("+(pageBarIdx-1)+")'>\<</button>"
+            "<button id='prev-page-button' onclick='makePaging("+(pageBarIdx-1)+", \"prev\")'>\<</button>"
         );
     }
     if(pageEnd > pageIdx){
@@ -78,7 +92,17 @@ function makePaging(pageBarIdx){
     }
     if(pageEnd != pageIdx){
         $("#paging-wrapper").append(
-            "<button id='next-page-button' onclick='makePaging("+(pageBarIdx+1)+")'>\></button>"
+            "<button id='next-page-button' onclick='makePaging("+(pageBarIdx+1)+", \"next\")'>\></button>"
         );
     }
+    $(".page-button").removeClass("clicked-page-btn");
+    $($(".page-button")[(viewIdx-1)%pageBarLength]).addClass("clicked-page-btn");
+}
+
+function makeAdminQuestionTable(){
+    adminQuestionList.forEach(function(row){
+        console.log("작성자 : ", row["email"]);
+        console.log("내용 : ", row["title"]);
+        console.log("일자 : ", row["date"]);
+    });
 }

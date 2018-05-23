@@ -860,3 +860,15 @@ section.detail-left p, section.detail-right p:first-child {
     margin-bottom: 20px;
     padding-left: 5px;
 }
+
+.clicked-page-btn{
+    border-radius: 20%;
+    background: linear-gradient(rgb(74,141,247), rgb(18, 86,215));
+    color: white; 
+}
+/* 
+저장
+border-radius: 20%;
+background: linear-gradient(rgb(74,141,247), rgb(18, 86,215));
+color: white; 
+*/
