@@ -1,6 +1,7 @@
 var pageViewLength = 4;
 var pageBarLength = 3;
 var questionList = [];
+var adminQuestionList = [];
 var pageIdx = 0;
 showLoading();
 firebase.auth().onAuthStateChanged(function (user) {
@@ -30,7 +31,12 @@ function loadQuestionList(){
                 email : questionValues["email"], 
                 date : questionValues["date"]
             };
-            questionList.unshift(questionRow);
+            if(questionValues["email"] != "admin@catch.us"){
+                questionList.unshift(questionRow);
+            }else{
+                questionRow["email"] = "관리자";
+                adminQuestionList.unshift(questionRow);
+            }
         }
         pageIdx = parseInt((questionList.length-1)/pageViewLength+1);
         makePaging(1);
@@ -91,4 +97,12 @@ function makePaging(pageBarIdx, direction){
     }
     $(".page-button").removeClass("clicked-page-btn");
     $($(".page-button")[(viewIdx-1)%pageBarLength]).addClass("clicked-page-btn");
+}
+
+function makeAdminQuestionTable(){
+    adminQuestionList.forEach(function(row){
+        console.log("작성자 : ", row["email"]);
+        console.log("내용 : ", row["title"]);
+        console.log("일자 : ", row["date"]);
+    });
 }
