@@ -43,3 +43,21 @@ function signOut(){
     firebase.auth().signOut();
     onLoadMainPage();
 }
+
+function estimatePage(){
+    firebase.database().ref("Users/"+firebase.auth().getUid()+"/personalInfo/type").once('value').then(
+        function(snapshot){
+            if(snapshot.val() == "Expert"){
+                onLoadExpertPage();
+            }
+            else if(snapshot.val() == "Client"){
+                onLoadMainPage();
+            }else if(snapshot.val() == "Admin"){
+                onLoadManagertPage();
+            }
+        },
+        function(error){
+            console.log("onAuthStateChanged err : "+error)
+        }
+    );
+}
