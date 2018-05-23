@@ -335,8 +335,12 @@ footer span {
 }
 .add-button, #submit-selected-expert ,#show-previous-page {
     position: absolute;
+    height: 23px;
     right: 10px;
     top: 20px;
+    background-color: #FFF;
+    border: 1px solid #BFBFBF;
+    border-radius: 4px;
 }
 .scroll-area {
     margin: 5px 0;
