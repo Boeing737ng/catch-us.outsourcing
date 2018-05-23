@@ -71,7 +71,6 @@ function loadEstimateList(){
 function makeCurEstimateList(){
     // $("#estimate-list")[0]
     estimateList.forEach(function(row){
-        console.log(row);
         var details = row["details"];
         if(details.length > 21){
             details = details.substring(0, 21) + " . . .";
@@ -115,9 +114,6 @@ function matchedExpertList(key){
                         "</section>"+
                     "</div>"
                 );
-                console.log(expertValue["name"]);
-                console.log(expertValue["profileUrl"]);
-                console.log(expertValue["outputResult"]);
             }
         }
         if(noExpert){

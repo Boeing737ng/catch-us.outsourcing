@@ -56,7 +56,6 @@ function getMatchedEstimate(){
         }
         makeMatchedEstimateTable();
         noneLoading();
-        console.log(matchedEstimateList);
     },function(error){
         console.log("getMatchedEstimate err : " +error);
     })

@@ -47,9 +47,4 @@ function makeQuestionLayout(title, email, date, content){
     document.getElementById("selected-question-content").textContent = content;
     document.getElementById("writer-email").textContent = email;
     document.getElementById("uploaded-date").textContent = date;
-
-    console.log("title : ", title);
-    console.log("email : ", email);
-    console.log("date : ", date);
-    console.log("content : ", content);
 }

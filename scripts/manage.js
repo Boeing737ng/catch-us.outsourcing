@@ -38,8 +38,6 @@ function uploadSelectedExperts(){
         if(curExpert.find(".select-expert")[0].checked){
             var applyNum = curExpert.find("input[name='apply-number']")[0].value.replace(/ /gi, '');
             var registerNum = curExpert.find("input[name='register-number']")[0].value.replace(/ /gi, '');
-            console.log("applyNum : "+applyNum);
-            console.log("registerNum : "+registerNum);
             if(applyNum == '' || isNaN(applyNum)){
                 alert("출원 건수 및 등록률을 확인해주세요.");
                 noneLoading();
@@ -50,7 +48,6 @@ function uploadSelectedExperts(){
                 noneLoading();
                 return;
             }
-            console.log("aaaaa");
             selectedExpertNum++;
             selectedExpertlist[curExpert[0].id] = {
                 name : curExpertList[curExpert[0].id]["personalInfo"]["name"],
@@ -111,7 +108,6 @@ function getEstimateList(){
                 estimateRow["key"] = key;
                 EstimatesList.unshift(estimateRow);
             }
-            console.log(EstimatesList);
             makeEstimateTable();
             noneLoading();
         },
@@ -161,7 +157,6 @@ function makeCurExpertTable(key){
         if(matchedExpert.val() != null){
             matchedExpertList = Object.keys(matchedExpert.val());
         }
-        console.log(matchedExpertList)
         getExpertList().then(function(snapshot){
             curExpertList = snapshot.val();
             // console.log(curExpertList);
@@ -170,7 +165,6 @@ function makeCurExpertTable(key){
                 if($.inArray( uid, matchedExpertList ) == -1){
                     matchedExpertNum++;
                     expertInfo = curExpertList[uid]["personalInfo"];
-                    console.log(expertInfo)
                     $("#expert-list").append(
                         "<div class='experts'>"+
                             "<div class='expert-info-wrapper' id=\""+uid+"\">"+
@@ -217,7 +211,6 @@ function makeCurExpertDetailTable(uid){
     var UserList = firebase.database().ref("/Users/"+uid);
     UserList.once('value').then(function(snapshot){
         curExpertInfo = snapshot.val();
-        console.log(curExpertInfo)
         expertPersonalInfo = curExpertInfo["personalInfo"];
         $("#expert-detail").append(
             "<div class='expert-detail-info'>"+

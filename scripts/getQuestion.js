@@ -58,9 +58,6 @@ function makeAdminQuestionTable(){
                 "<td>"+row["date"]+"</td>"+
             "</tr>"
         );
-        console.log("작성자 : ", row["email"]);
-        console.log("내용 : ", row["title"]);
-        console.log("일자 : ", row["date"]);
     });
 }
 
