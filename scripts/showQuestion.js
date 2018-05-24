@@ -31,8 +31,13 @@ function getCurrentQuestion(){
 function makeQuestion(){
     getCurrentQuestion().then(
         function(snapshot){
-            var isModify = Object.keys(snapshot.val())[0] == currentUid;
-            var questionData = Object.values(snapshot.val())[0];
+            var snapshotVal = snapshot.val();
+            var isModify = Object.keys(snapshotVal)[0] == currentUid;
+            // var questionData = Object.values(snapshotVal)[0];
+            for(value in snapshotVal){
+                questionData = snapshotVal[value];
+            }
+            console.log(questionData);
             makeQuestionLayout(questionData["title"], questionData["email"], questionData["date"], questionData["content"], isModify);
             noneLoading();
         },
