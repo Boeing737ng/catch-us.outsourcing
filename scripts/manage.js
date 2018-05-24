@@ -103,7 +103,11 @@ function getEstimateList(){
         function(snapshot){
             estimatesObj = snapshot.val();
             for(key in estimatesObj){
-                estimateValues = Object.values(estimatesObj[key])[0];
+                // estimateValues = Object.values(estimatesObj[key])[0];
+                // for(value in estimatesObj[key]){
+                //     estimateValues = estimatesObj[key][value];
+                // }
+                // console.log(estimateValues);
                 estimateRow = estimatesObj[key];
                 estimateRow["key"] = key;
                 EstimatesList.unshift(estimateRow);
@@ -156,6 +160,7 @@ function makeCurExpertTable(key){
         var matchedExpertList = [];
         if(matchedExpert.val() != null){
             matchedExpertList = Object.keys(matchedExpert.val());
+            console.log(matchedExpertList);
         }
         getExpertList().then(function(snapshot){
             curExpertList = snapshot.val();

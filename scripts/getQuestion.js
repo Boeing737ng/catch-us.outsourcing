@@ -23,7 +23,12 @@ function loadQuestionList(){
         questionObj = snapshot.val();
         // console.log(questionObj)
         for(key in questionObj){
-            questionValues = Object.values(questionObj[key])[0];
+            // questionValues = Object.values(questionObj[key])[0];
+            questionValues = {}
+            for(value in questionObj[key]){
+                questionValues = questionObj[key][value];
+            }
+            // console.log(questionValues)
             // console.log(Object.values(questionObj[key])[0]);
             questionRow = {
                 key : key,
