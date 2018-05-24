@@ -9,6 +9,18 @@ function firebaseSignup(email, password){
 function clientSignup(){
     var clientInfo = getClientInfo();
     showLoading();
+    if(!clientInfo["passwordCheck"]){
+        alert("비밀번호를 확인해주세요.");
+        $("#client-pwd")[0].focus();
+        noneLoading();
+        return;
+    }else if(clientInfo["personalInfo"]["nickname"].length > 6 || clientInfo["personalInfo"]["nickname"].length < 2){
+        alert("2이상 6이하의 닉네임을 사용해주세요.");
+        $("#client-nickname")[0].focus();
+        noneLoading();
+        return;
+    }
+    
     firebaseSignup(
         clientInfo["email"],
         clientInfo["password"]
@@ -25,11 +37,26 @@ function clientSignup(){
                     noneLoading();
                 });
         },
-        function(errer){
-            console.log("clientSignup first err : ", errer);
+        function(error){
+            console.log("clientSignup first err : ", error);
+            console.log(error.code)
+            if(error.code == 'auth/invalid-email'){
+                alert("이메일 입력이 올바르지 않습니다.");
+                $("#client-email")[0].focus();
+            }else if(error.code == 'auth/weak-password'){
+                alert("비밀번호 보안이 약합니다.");
+                $("#client-pwd")[0].focus();
+            }else if(error.code == 'auth/email-already-in-use'){
+                alert('현재 사용중인 이메일이 있습니다.');
+                $("#client-email")[0].focus();
+            }
             noneLoading();
         }
     )
+}
+
+function checkEmail(){
+
 }
 
 function writeClientData(uid, info){
@@ -43,6 +70,7 @@ function getClientInfo(){
     var singUpInfo = {
         email : $("#client-email")[0].value,
         password : $("#client-pwd")[0].value,
+        passwordCheck : $("#client-pwd")[0].value == $("#client-pwd-check")[0].value,
         personalInfo:{
             type : "Client",
             nickname : $("#client-nickname")[0].value
