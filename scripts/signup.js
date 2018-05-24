@@ -55,10 +55,6 @@ function clientSignup(){
     )
 }
 
-function checkEmail(){
-
-}
-
 function writeClientData(uid, info){
     return firebase.database().ref("Users/" + uid).set({
         email : info["email"],
@@ -122,6 +118,16 @@ function expertSignup(){
         },
         function(error){
             console.log("expertSignup first err : ", error);
+            if(error.code == 'auth/invalid-email'){
+                alert("이메일 입력이 올바르지 않습니다.");
+                $("#expert-email")[0].focus();
+            }else if(error.code == 'auth/weak-password'){
+                alert("비밀번호 보안이 약합니다.");
+                $("#expert-pwd")[0].focus();
+            }else if(error.code == 'auth/email-already-in-use'){
+                alert('현재 사용중인 이메일이 있습니다.');
+                $("#expert-email")[0].focus();
+            }
             noneLoading();
         }
     )
@@ -138,6 +144,7 @@ function getExpertInfo(){
     var singUpInfo = {
         email : $("#expert-email")[0].value,
         password : $("#expert-pwd")[0].value,
+        passwordCheck : $("#expert-pwd")[0].value == $("#expert-pwd-check")[0].value,
         personalInfo:{
             type : "Expert",
             name : $("#expert-name")[0].value,
