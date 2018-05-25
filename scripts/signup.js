@@ -80,6 +80,12 @@ function getClientInfo(){
 function expertSignup(){
     var expertInfo = getExpertInfo();
     showLoading();
+    if(!expertInfo["passwordCheck"]){
+        alert("비밀번호를 확인해주세요.");
+        $("#expert-pwd")[0].focus();
+        noneLoading();
+        return;
+    }
     firebaseSignup(
         expertInfo["email"],
         expertInfo["password"]
