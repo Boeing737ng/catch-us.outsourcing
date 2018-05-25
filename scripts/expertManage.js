@@ -1,16 +1,6 @@
 var currentUid = "";
 var matchedEstimateList = [];
 var currentKey = "";
-// firebase.auth().onAuthStateChanged(function (user) {
-//     showLoading();
-//     if (user) {
-//         currentUid = user.uid;
-//         getMatchedEstimate();
-//     } else {
-//         alert("로그인이 필요합니다.");
-//         onLoadMainPage();
-//     }
-// });
 
 firebase.auth().onAuthStateChanged(function (user) {
     showLoading();

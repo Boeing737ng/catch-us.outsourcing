@@ -9,7 +9,6 @@
     display:none;
 }
 .osahanloading {
-    /*animation: osahanloading 1.5s linear 0s normal none infinite running;*/
     animation: osahanloading 1.5s linear forwards 0s infinite;
     background: #fed37f none repeat scroll 0 0;
     border-radius: 50px;
@@ -22,7 +21,6 @@
     width: 30px;
 }
 .osahanloading::after {
-    /*animation: osahanloading_after 1.5s linear 0s normal none infinite running;*/
     animation: osahanloading_after 1.5s linear forwards 0s infinite;
     border-color: #85d6de transparent;
     border-radius: 80px;
