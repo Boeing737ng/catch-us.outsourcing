@@ -1,17 +1,6 @@
 var currentUid = '';
 var estimateList = [];
 
-// firebase.auth().onAuthStateChanged(function (user) {
-//     showLoading();
-//     if (user) {
-//         currentUid = user.uid;
-//         loadEstimateList();
-//     } else {
-//         alert("로그인이 필요합니다.");
-//         onLoadMainPage();
-//     }
-// });
-
 firebase.auth().onAuthStateChanged(function (user) {
     showLoading();
     if (user) {
@@ -69,7 +58,6 @@ function loadEstimateList(){
 
 // 수정 필요
 function makeCurEstimateList(){
-    // $("#estimate-list")[0]
     estimateList.forEach(function(row){
         var details = row["details"];
         if(details.length > 21){
