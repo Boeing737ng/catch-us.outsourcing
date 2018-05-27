@@ -383,6 +383,7 @@ footer span {
     color: #051E5A;
     border: 1px solid #051E5A;
     border-radius: 1px;
+    margin: 0px 5px 0px 5px;
 }
 .select-section {
     padding: 0px 15px;
@@ -396,14 +397,14 @@ footer span {
     border-radius: 5px;
     width: 100px;
     height: 30px;
-    margin: 0px 30px 15px 0px;
+    margin: 0px 11px 15px 11px;
     text-align: center;
     line-height: 30px;
     font-size: 12px;
 }
 .select-field a:hover{
     cursor: pointer;
-    font-weight: 800;
+    font-weight: 600;
 }
 .select-field a.selected-field {
     background-color: #051E5A;
