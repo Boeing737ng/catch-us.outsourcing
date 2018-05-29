@@ -1,5 +1,5 @@
 var pageViewLength = 10;
-var pageBarLength = 10;
+var pageBarLength = 5;
 var questionList = [];
 var adminQuestionList = [];
 var pageIdx = 0;
