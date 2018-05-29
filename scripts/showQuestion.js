@@ -32,6 +32,11 @@ function makeQuestion(){
     getCurrentQuestion().then(
         function(snapshot){
             var snapshotVal = snapshot.val();
+            if(snapshotVal == null){
+                alert("삭제된 게시물입니다.");
+                onLoadBoardPage();
+                return;
+            }
             var isModify = Object.keys(snapshotVal)[0] == currentUid;
             // var questionData = Object.values(snapshotVal)[0];
             for(value in snapshotVal){
