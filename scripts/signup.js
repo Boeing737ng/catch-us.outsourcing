@@ -79,6 +79,7 @@ function getClientInfo(){
 // 전문가 회원가입
 function expertSignup(){
     var expertInfo = getExpertInfo();
+    var personalInfo = expertInfo["personalInfo"]
     showLoading();
     // TODO :: 입력 데이터 정규화 검사 추가 수정 필요
     if(!expertInfo["passwordCheck"]){
@@ -126,6 +127,7 @@ function expertSignup(){
         noneLoading();
         return;
     }else if(expertInfo.personalInfo["additionalInfo"]["Reward"]){
+
         alert("저서, 논문 수상을 확인해주세요.");   
         $("#expert-reward")[0].focus();
         noneLoading();
