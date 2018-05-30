@@ -45,8 +45,10 @@ function signOut(){
 }
 
 function estimatePage(){
+    showLoading();
     firebase.database().ref("Users/"+firebase.auth().getUid()+"/personalInfo/type").once('value').then(
         function(snapshot){
+            noneLoading();
             if(snapshot.val() == "Expert"){
                 onLoadExpertPage();
             }
@@ -59,8 +61,10 @@ function estimatePage(){
             }
         },
         function(error){
+            noneLoading();
             alert("로그인이 필요합니다.");
             console.log("onAuthStateChanged err : "+error)
         }
+        
     );
 }
