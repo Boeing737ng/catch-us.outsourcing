@@ -86,51 +86,51 @@ function expertSignup(){
         $("#expert-pwd")[0].focus();
         noneLoading();
         return;
-    }else if(expertInfo["name"].length < 2){
+    }else if(expertInfo.personalInfo["name"].length < 2){
         alert("성명을 확인해주세요.");    
         $("#expert-name")[0].focus();
         noneLoading();
         return;
-    }else if(expertInfo["affiliation"].length < 2){
+    }else if(expertInfo.personalInfo["affiliation"].length < 2){
         alert("소속을 확인해주세요.");   
         $("#expert-affiliation")[0].focus();
         noneLoading();
         return;
-    }else if(expertInfo["phoneNum"].length < 5){
+    }else if(expertInfo.personalInfo["phoneNum"].length < 5){
         alert("전화번호를 확인해주세요.");   
         $("#expert-phone")[0].focus();
         noneLoading();
         return;
-    }else if(expertInfo["address"].length < 2){
+    }else if(expertInfo.personalInfo["address"].length < 2){
         alert("주소를 확인해주세요.");   
         $("#expert-address")[0].focus();
         noneLoading();
         return;
-    }else if(expertInfo["qualificationDate"].length < 2){
+    }else if(expertInfo.personalInfo["qualificationDate"].length < 2){
         alert("자격취득일을 확인해주세요.");   
         $("#expert-qualification")[0].focus();
         noneLoading();
         return;
-    }else if(expertInfo["agentNum"].length < 2){
+    }else if(expertInfo.personalInfo["agentNum"].length < 2){
         alert("대리인 번호를 확인해주세요.");   
         $("#expert-agent-num")[0].focus();
         noneLoading();
         return;
-    }else if(expertInfo["field"].length < 1){
+    }else if(expertInfo.personalInfo["field"].length < 1){
         alert("분야를 확인해주세요.");
         noneLoading();
         return;
-    }else if(expertInfo["additionalInfo"]["Career"]){
+    }else if(expertInfo.personalInfo["additionalInfo"]["Career"]){
         alert("경력사항을 확인해주세요.");   
         $("#expert-career")[0].focus();
         noneLoading();
         return;
-    }else if(expertInfo["additionalInfo"]["Reward"]){
+    }else if(expertInfo.personalInfo["additionalInfo"]["Reward"]){
         alert("저서, 논문 수상을 확인해주세요.");   
         $("#expert-reward")[0].focus();
         noneLoading();
         return;
-    }else if(expertInfo["additionalInfo"]["Intro"]){
+    }else if(expertInfo.personalInfo["additionalInfo"]["Intro"]){
         alert("간략소개를 확인해주세요.");   
         $("#expert-intro")[0].focus();
         noneLoading();
