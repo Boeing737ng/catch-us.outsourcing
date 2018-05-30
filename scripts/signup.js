@@ -121,6 +121,11 @@ function expertSignup(){
         alert("분야를 확인해주세요.");
         noneLoading();
         return;
+    }else if($("#expert-profile")[0].value === "") {
+        alert("사진을 선택해주세요.");
+        $("#expert-profile")[0].focus();
+        noneLoading();
+        return;
     }
     firebaseSignup(
         expertInfo["email"],
@@ -196,6 +201,7 @@ function getExpertInfo(){
             qualificationDate : $("#expert-qualification")[0].value,
             agentNum : $("#expert-agent-num")[0].value,
             field : getSelectedField(),
+            photo : $("#expert-profile")[0].value,
             // profileUrl : '',
             additionalInfo : {
                 Career : $("#expert-career")[0].value,
