@@ -121,6 +121,7 @@ function expertSignup(){
         alert("분야를 확인해주세요.");
         noneLoading();
         return;
+    }
     firebaseSignup(
         expertInfo["email"],
         expertInfo["password"]
