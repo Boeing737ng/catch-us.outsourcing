@@ -1,4 +1,5 @@
 var rootURL = "http://localhost/catch-us/";
+//var rootURL = "http://catchus.co.kr/"
 function onLoadMainPage(){
     location.href = rootURL;
 }
