@@ -121,23 +121,6 @@ function expertSignup(){
         alert("분야를 확인해주세요.");
         noneLoading();
         return;
-    }else if(personalInfo["additionalInfo"]["Career"]){
-        alert("경력사항을 확인해주세요.");   
-        $("#expert-career")[0].focus();
-        noneLoading();
-        return;
-    }else if(personalInfo["additionalInfo"]["Reward"]){
-
-        alert("저서, 논문 수상을 확인해주세요.");   
-        $("#expert-reward")[0].focus();
-        noneLoading();
-        return;
-    }else if(personalInfo["additionalInfo"]["Intro"]){
-        alert("간략소개를 확인해주세요.");   
-        $("#expert-intro")[0].focus();
-        noneLoading();
-        return;
-    }
     firebaseSignup(
         expertInfo["email"],
         expertInfo["password"]
