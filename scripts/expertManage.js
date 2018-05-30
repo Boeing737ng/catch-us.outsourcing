@@ -48,7 +48,7 @@ function getMatchedEstimate(){
         noneLoading();
     },function(error){
         console.log("getMatchedEstimate err : " +error);
-    })
+    });
 }
 
 function makeMatchedEstimateTable(){
