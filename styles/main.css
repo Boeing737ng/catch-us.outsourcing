@@ -549,6 +549,7 @@ section.detail-right {
 }
 section.detail-left img {
     width: 150px;
+    max-height: 250px;
     margin-top: 20px;
 }
 section.detail-right p {
