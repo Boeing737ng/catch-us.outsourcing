@@ -9,6 +9,12 @@ $(document).ready(function(){
     });
 });
 
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        estimatePage();
+    }
+});
+
 $(".field").click(function(){
     if($(this).hasClass("selected-field")){
         $(this).removeClass("selected-field");
