@@ -56,8 +56,18 @@ function loadEstimateList(){
     });
 }
 
-function displayClientDetails(details) {
-    console.log(details);
+function displayClientDetails(details, id) {
+    var decodedString = unescape(details);
+    $("#" + id).append(
+        "<div class='client-detail-text'>"+
+            "<p>견적 요청 내용</p>"+
+            "<pre>"+ decodedString +"</pre>"+
+        "</div>"
+    );
+}
+
+function hideClientDetails() {
+    $('.client-detail-text').remove();
 }
 
 // 수정 필요
@@ -75,7 +85,7 @@ function makeCurEstimateList(){
                 "<p class='info-list-title'>분야</p>"+
                 "<span class='info-list-content'>"+row["field"].toString()+" - "+row["keyword"]+"</span>"+
                 "<p class='info-list-title'>내용</p>"+
-                "<span onmouseover=\"displayClientDetails('"+details+"')\" class='info-list-content'>"+summarizedDetails+"</span>"+
+                "<span onmouseover=\"displayClientDetails('"+escape(details)+"', '"+row["key"]+"')\" onmouseleave=\"hideClientDetails()\" class='info-list-content'>"+summarizedDetails+"</span>"+
                 "<p class='info-list-title'>요청일</p>"+
                 "<span class='info-list-content'>"+row["date"]+"</span>"+
             "</div>"
