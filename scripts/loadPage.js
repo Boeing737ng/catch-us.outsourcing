@@ -41,8 +41,10 @@ function noneLoading(){
 }
 
 function signOut(){
-    firebase.auth().signOut();
-    onLoadMainPage();
+    if(confirm("로그아웃 하시겠습니까?")){
+        firebase.auth().signOut();
+        onLoadMainPage();
+    }
 }
 
 function estimatePage(){
