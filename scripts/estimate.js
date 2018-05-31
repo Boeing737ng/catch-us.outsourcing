@@ -46,7 +46,11 @@ function getArea(){
     if($("input[name=area]").is(':checked')){
         return "지역 무관";
     }
-    return $("#sido_code option:selected").text()+" "+$("#sigoon_code option:selected").text()+" "+$("#dong_code option:selected").text()
+    areaStr = $("#sido_code option:selected").text()+" "+$("#sigoon_code option:selected").text()+" "+$("#dong_code option:selected").text();
+    if(areaStr.match("선택") != null){
+        return "area error";
+    }
+    return areaStr
 }
 
 function getCurrentDate(){
@@ -60,8 +64,22 @@ function getCurrentDate(){
 }
 
 function uploadEstimate(){
+    var estimateInfo = getEstimateInfo();
+    console.log(estimateInfo);
+    if(estimateInfo["area"] == "area error"){
+        alert("지역을 선택해 주세요.");
+        return;
+    } else if(estimateInfo["field"].length < 2){
+        alert("분야를 선택해 주세요.");
+        return;
+    } else if(estimateInfo["details"].length < 2){
+        alert("중요 키워드를 작성해 주세요.");
+        return;
+    } else if(estimateInfo["keyword"].length < 2){
+        alert("출원 상세내용을 선택해 주세요.");
+        return;
+    }
     showLoading();
-
     firebase.database().ref("Estimates/"+ Date.now()).set(
         getEstimateInfo()
     ).then(
@@ -85,3 +103,12 @@ function uploadEstimate(){
     //     }
     // );
 }
+
+$(".field").click(function(){
+    if($(this).hasClass("selected-field")){
+        $(this).removeClass("selected-field");
+    }
+    else {
+        $(this).addClass("selected-field");
+    }
+});
