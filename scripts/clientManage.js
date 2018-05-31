@@ -56,12 +56,17 @@ function loadEstimateList(){
     });
 }
 
+function displayClientDetails(details) {
+    console.log(details);
+}
+
 // 수정 필요
 function makeCurEstimateList(){
     estimateList.forEach(function(row){
         var details = row["details"];
+        var summarizedDetails = "";
         if(details.length > 21){
-            details = details.substring(0, 21) + " . . .";
+            summarizedDetails = details.substring(0, 21) + " . . .";
         }
         $("#estimate-list").append(
             "<div id='"+row["key"]+"' onclick=\"matchedExpertList("+row["key"]+")\" class='estimates'>"+
@@ -70,7 +75,7 @@ function makeCurEstimateList(){
                 "<p class='info-list-title'>분야</p>"+
                 "<span class='info-list-content'>"+row["field"].toString()+" - "+row["keyword"]+"</span>"+
                 "<p class='info-list-title'>내용</p>"+
-                "<span class='info-list-content'>"+details+"</span>"+
+                "<span onmouseover=\"displayClientDetails('"+details+"')\" class='info-list-content'>"+summarizedDetails+"</span>"+
                 "<p class='info-list-title'>요청일</p>"+
                 "<span class='info-list-content'>"+row["date"]+"</span>"+
             "</div>"
