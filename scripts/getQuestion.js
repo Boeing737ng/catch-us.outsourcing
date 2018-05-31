@@ -74,7 +74,7 @@ function makeQuestionTable(page){
         $("#question-table").append(
             "<tr class=\'questions\'>"+
                 "<td>"+idx+"</td>"+
-                "<td><a href=\'./question?qidx="+row["key"]+"\'>"+row["title"]+"</a></td>"+
+                "<td><a href=\'./question.html?qidx="+row["key"]+"\'>"+row["title"]+"</a></td>"+
                 "<td>"+row["email"]+"</td>"+
                 "<td>"+row["date"]+"</td>"+
             "</tr>"
