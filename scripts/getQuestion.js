@@ -58,7 +58,7 @@ function makeAdminQuestionTable(){
         $("#question-table").append(
             "<tr class='admin'>"+
                 "<td>공지</td>"+
-                "<td><a href=\'./question?qidx="+row["key"]+"\'>"+row["title"]+"</a></td>"+
+                "<td><a href=\'./question.html?qidx="+row["key"]+"\'>"+row["title"]+"</a></td>"+
                 "<td>"+row["email"]+"</td>"+
                 "<td>"+row["date"]+"</td>"+
             "</tr>"
