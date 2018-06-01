@@ -269,7 +269,8 @@ footer span {
     padding-left: 5px;
     margin-top: 10px;
     display: block;
-    color: #4C4C4C;
+    color: #A6A6A6;
+    text-decoration: underline;
 }
 .image-wrapper {
     width: 120px;
