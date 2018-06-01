@@ -333,10 +333,20 @@ footer span {
     width: 1300px;
     height: calc(100% - 70px);
 }
-.add-button, #submit-selected-expert ,#show-previous-page {
+.add-button, #submit-selected-expert, #show-previous-page, #matched-show-previous-page, #append-expert {
     position: absolute;
     height: 23px;
     right: 10px;
+    top: 20px;
+    background-color: #FFF;
+    border: 1px solid #BFBFBF;
+    border-radius: 4px;
+}
+
+#back-matched-expert{
+    position: absolute;
+    height: 23px;
+    right: 70px;
     top: 20px;
     background-color: #FFF;
     border: 1px solid #BFBFBF;
@@ -427,7 +437,7 @@ textarea#details {
     max-height: 300px;
     border-radius: 3px;
 }
-#expert-list, #expert-detail, #estimate-info, #edit-request-wrapper {
+#expert-list, #matched-expert-list, #expert-detail, #matched-expert-detail, #estimate-info, #edit-request-wrapper {
     display: none;
     overflow-y: scroll;
     padding: 0px 30px 30px;
@@ -437,7 +447,7 @@ textarea#details {
     -ms-overflow-style: none;
     text-align: left;
 }
-#expert-detail {
+#expert-detail, #matched-expert-detail {
     padding-top: 17px;
     height: calc(100% - 61px);
 }
@@ -488,7 +498,15 @@ textarea#details {
     color: #5D5D5D;
     text-decoration: underline;
 }
-.view-details:hover {
+.matched-view-details {
+    position: absolute;
+    top: 15px;
+    right: 12px;
+    font-size: 12px;
+    color: #5D5D5D;
+    text-decoration: underline;
+}
+.view-details:hover, .matched-view-details:hover {
     cursor: pointer;
     font-weight: bold;
 }

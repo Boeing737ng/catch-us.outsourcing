@@ -31,14 +31,29 @@
                     <div id="estimate-list"></div>
                 </div>
             </div>
-            <div class="side-view-right">
-                <h4>전문 변리사</h4>
-                <div class="expert-count">전문가 <span id="expert-num">0</span>명 대기중</div>
-                <div id="expert-list">
-                    <button id='submit-selected-expert'>전송하기</button>
+
+            <div class="side-view-right not-mached-expert">
+                <div>
+                    <h4>매칭 가능한 전문 변리사</h4>
+                    <div class="expert-count">전문가 <span id="expert-num">0</span>명 대기중</div>
+                    <div id="expert-list">
+                            <button id='back-matched-expert'>뒤로가기</button>
+                        <button id='submit-selected-expert'>전송하기</button>
+                    </div>
                 </div>
                 <div id="expert-detail">
                     <button id="show-previous-page" onclick="backToExpert()">뒤로가기</button>
+                </div>
+            </div>
+
+            <div class="side-view-right mached-expert">
+                <h4>매칭 된 전문 변리사</h4>
+                <div class="expert-count">전문가 <span id="matched-expert-num">0</span>명 매칭</div>
+                <div id="matched-expert-list">
+                    <button id='append-expert'>추가 매칭 하기</button>
+                </div>
+                <div id="matched-expert-detail">
+                    <button id="matched-show-previous-page" onclick="backToMatchedExpert()">뒤로가기</button>
                 </div>
             </div>
         </section>

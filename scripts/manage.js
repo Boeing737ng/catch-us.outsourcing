@@ -3,6 +3,11 @@ var curExpertList = {};
 var selectedExpertlist = {};
 var selectedKey = "";
 
+$(".not-mached-expert").hide();
+$(".mached-expert").show();
+$("#matched-expert-list").show();
+$("#expert-detail").hide();
+
 firebase.auth().onAuthStateChanged(function (user) {
     showLoading();
     if (user) {
@@ -26,6 +31,20 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 $("#submit-selected-expert").click(function(){
     uploadSelectedExperts();
+});
+
+$("#append-expert").click(function(){
+    $(".mached-expert").hide();
+    $(".not-mached-expert").show();
+    $("#expert-list").show();
+    $("#expert-detail").hide();
+});
+
+$("#back-matched-expert").click(function(){
+    $(".not-mached-expert").hide();
+    $(".mached-expert").show();
+    $("#matched-expert-list").show();
+    $("#expert-detail").hide();
 });
 
 function uploadSelectedExperts(){
@@ -152,8 +171,10 @@ function getExpertList(){
 
 function makeCurExpertTable(key){
     curExpertList = {};
-    $("#expert-list").show();
-    $("#expert-detail").hide();
+    $(".not-mached-expert").hide();
+    $(".mached-expert").show();
+    $("#matched-expert-list").show();
+    $("#mated-expert-detail").hide();
     $(".experts").remove();
 
     selectedKey = key;
@@ -166,10 +187,11 @@ function makeCurExpertTable(key){
         getExpertList().then(function(snapshot){
             curExpertList = snapshot.val();
             // console.log(curExpertList);
+            var matchingExpertNum = 0;
             var matchedExpertNum = 0;
             for(uid in curExpertList){
                 if($.inArray( uid, matchedExpertList ) == -1){
-                    matchedExpertNum++;
+                    matchingExpertNum++;
                     expertInfo = curExpertList[uid]["personalInfo"];
                     $("#expert-list").append(
                         "<div class='experts'>"+
@@ -194,11 +216,30 @@ function makeCurExpertTable(key){
                                 "<span>"+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</span>"+
                             "</div>"+
                         "</div>"
-        
                     );
-                };
+                }else{
+                    matchedExpertNum++;
+                    expertInfo = curExpertList[uid]["personalInfo"];
+                    $("#matched-expert-list").append(
+                        "<div class='experts'>"+
+                            "<div class='expert-info-wrapper' id=\""+uid+"\">"+
+                                "<div class='expert-image-wrapper'>"+
+                                    "<img src=\""+expertInfo["profileUrl"]+"\">"+
+                                "</div>"+
+                                "<a class='matched-view-details' onclick=\"makeCurExpertDetailTable('"+uid+"', 'matched')\">상세 보기</a>"+
+                                "<p class='expert-name'>"+expertInfo["name"]+ ' 변리사' +"</p>"+
+                                "<hr>"+
+                                "<p>주요 분야</p>"+
+                                "<span>"+expertInfo["field"].toString()+"</span>"+
+                                "<p>소속</p>"+
+                                "<span>"+expertInfo["affiliation"]+" ("+expertInfo["address"]+")</span>"+
+                            "</div>"+
+                        "</div>"
+                    );
+                }
             }
-            $("#expert-num")[0].innerHTML = matchedExpertNum;
+            $("#matched-expert-num")[0].innerHTML = matchedExpertNum;
+            $("#expert-num")[0].innerHTML = matchingExpertNum;
         },function(error){
             console.log("makeCurExpertTable first err : "+error);
         })
@@ -208,17 +249,23 @@ function makeCurExpertTable(key){
     
 }
 
-function makeCurExpertDetailTable(uid){
+function makeCurExpertDetailTable(uid, matched){
     var expert_detail = document.getElementById("expert-detail");
+    var expert_detail_id = "#expert-detail";
+    var expert_matched_list = "#expert-list";
+    if(matched == "matched"){
+        expert_detail_id = "#matched-expert-detail";
+        expert_matched_list = "#matched-expert-list"
+    }
     expert_detail.removeChild(expert_detail.lastChild); // does not remove the button to move previous page
-    $("#expert-list").hide();
-    $("#expert-detail").show();
+    $(expert_matched_list).hide();
+    $(expert_detail_id).show();
     $(".cur-expert").remove();
     var UserList = firebase.database().ref("/Users/"+uid);
     UserList.once('value').then(function(snapshot){
         curExpertInfo = snapshot.val();
         expertPersonalInfo = curExpertInfo["personalInfo"];
-        $("#expert-detail").append(
+        $(expert_detail_id).append(
             "<div class='expert-detail-info'>"+
                 "<section class='detail-left'>"+
                     "<img src=\""+expertPersonalInfo["profileUrl"]+"\">"+
@@ -250,4 +297,9 @@ function makeCurExpertDetailTable(uid){
 function backToExpert(){
     $("#expert-detail").hide();
     $("#expert-list").show();
+}
+
+function backToMatchedExpert(){
+    $("#matched-expert-detail").hide();
+    $("#matched-expert-list").show();
 }
