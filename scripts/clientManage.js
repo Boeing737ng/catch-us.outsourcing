@@ -64,7 +64,7 @@ function hideClientDetails() {
 function makeCurEstimateList(){
     estimateList.forEach(function(row){
         var details = row["details"];
-        var summarizedDetails = "";
+        var summarizedDetails = details;
         if(details.length > 21){
             summarizedDetails = details.substring(0, 21) + " . . .";
         }
