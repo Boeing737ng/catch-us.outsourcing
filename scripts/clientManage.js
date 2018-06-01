@@ -27,7 +27,6 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function getUserEstimate(){
-    // var estimateObj = firebase.database().ref("Users/"+currentUid+"/Estimates");
     var estimateObj = firebase.database().ref("Estimates/");
     return estimateObj.orderByChild("uid").equalTo(currentUid).once('value');
 }
@@ -39,14 +38,6 @@ function loadEstimateList(){
             estimateValues = estimateObj[key];
             estimateRow = estimateValues;
             estimateRow["key"] = key;
-            // estimateRow = {
-            //     key : key,
-            //     area : estimateValues["area"], 
-            //     date : estimateValues["date"], 
-            //     details : estimateValues["details"],
-            //     field : estimateValues["field"],
-            //     keyword : estimateValues["keyword"]
-            // };
             estimateList.unshift(estimateRow);
         }
         makeCurEstimateList();
@@ -70,7 +61,6 @@ function hideClientDetails() {
     $('.client-detail-text').remove();
 }
 
-// 수정 필요
 function makeCurEstimateList(){
     estimateList.forEach(function(row){
         var details = row["details"];

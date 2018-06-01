@@ -1,9 +1,7 @@
 var currentUid = '';
-// var questionList = [];
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         currentUid = user.uid;
-        // loadQuestionList();
     } else {
         alert("로그인이 필요합니다.");
         onLoadMainPage();
@@ -60,26 +58,3 @@ function getCurrentDate(){
 function getCurrentEmail(){
     return firebase.auth().currentUser.email;
 }
-
-// function getQuestionList(){
-//     var questionsObj = firebase.database().ref("/Questions");
-//     return questionsObj.orderByKey().once('value');
-// }
-
-// function loadQuestionList(){
-//     getQuestionList().then(function(snapshot){
-//         questionObj = snapshot.val();
-//         // console.log(questionObj)
-//         for(key in questionObj){
-//             questionValues = Object.values(questionObj[key])[0];
-//             // console.log(Object.values(questionObj[key])[0]);
-//             questionRow = [
-//                 key,
-//                 questionValues["title"], 
-//                 questionValues["email"], 
-//                 questionValues["date"]
-//             ];
-//             questionList.push(questionRow);
-//         }
-//     });
-// }
