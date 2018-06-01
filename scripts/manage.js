@@ -110,7 +110,7 @@ function hideClientDetails() {
 function makeEstimateTable(){
     EstimatesList.forEach(function(row){
         var details = row["details"];
-        var summarizedDetails = "";
+        var summarizedDetails = details;
         var matchList = row["matchList"];
         var matchedNum = 0;
         var matchingNum = 0;

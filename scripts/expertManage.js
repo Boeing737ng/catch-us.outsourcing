@@ -75,7 +75,7 @@ function makeMatchedEstimateTable(){
             answer = "<div class='pendding-request'>미완료</div>";
         }
         var details = row["details"];
-        var summarizedDetails = "";
+        var summarizedDetails = details;
         if(details.length > 21){
             summarizedDetails = details.substring(0, 21) + " . . .";
         }
