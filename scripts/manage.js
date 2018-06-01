@@ -149,7 +149,8 @@ function makeEstimateTable(){
             if(matchList[key]["outputResult"] == null){
                 matchingNum++;
             }else{
-                matchedNum++;
+                // console.log("null");
+                matchingNum++;
             }
         }
         var totalMatchNum = matchedNum + matchingNum;
