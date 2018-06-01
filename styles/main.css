@@ -747,6 +747,13 @@ section.detail-left p, section.detail-right p:first-child {
     color: #5F5F5F;
     font-weight: 600;
 }
+.no-matched-expert-alert p {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 50px;
+    color: #5F5F5F;
+    font-weight: 600;
+}
 /********** Estimate ends **********/
 
 /********** Board **********/

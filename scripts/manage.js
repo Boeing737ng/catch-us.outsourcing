@@ -240,10 +240,8 @@ function makeCurExpertTable(key){
             }
             if(matchedExpertNum == 0){
                 $("#matched-expert-list").append(
-                    "<div class='experts'>"+
-                        "<div class='expert-info-wrapper' id=\""+uid+"\">"+
-                            "<p>매칭 된 내역이 없습니다. 추가 매칭을 원하시면 추가 매칭 하기를 눌러주세요.</p>"+
-                        "</div>"+    
+                    "<div class='no-matched-expert-alert' id=\""+uid+"\">"+
+                        "<p>매칭 된 변리사가 없습니다. 매칭을 원하시면 상단 추가 매칭 버튼을 눌러주세요.</p>"+
                     "</div>"
                 );
             }
