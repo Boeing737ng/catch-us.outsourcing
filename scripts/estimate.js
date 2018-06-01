@@ -69,7 +69,7 @@ function uploadEstimate(){
     if(estimateInfo["area"] == "area error"){
         alert("지역을 선택해 주세요.");
         return;
-    } else if(estimateInfo["field"].length < 2){
+    } else if(estimateInfo["field"].length < 1){
         alert("분야를 선택해 주세요.");
         return;
     } else if(estimateInfo["details"].length < 2){

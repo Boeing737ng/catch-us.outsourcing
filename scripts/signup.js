@@ -29,8 +29,8 @@ function clientSignup(){
             writeClientData(user.user.uid, clientInfo)
             .then(
                 function(){
-                alert("회원가입이 완료되었습니다.");
-                onLoadMainPage();
+                    alert("회원가입이 완료되었습니다.");
+                    onLoadMainPage();
                 }, 
                 function(error){
                     console.log("clientSignup second err : ", errer);
