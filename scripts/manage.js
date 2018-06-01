@@ -238,6 +238,15 @@ function makeCurExpertTable(key){
                     );
                 }
             }
+            if(matchedExpertNum == 0){
+                $("#matched-expert-list").append(
+                    "<div class='experts'>"+
+                        "<div class='expert-info-wrapper' id=\""+uid+"\">"+
+                            "<p>매칭 된 내역이 없습니다. 추가 매칭을 원하시면 추가 매칭 하기를 눌러주세요.</p>"+
+                        "</div>"+    
+                    "</div>"
+                );
+            }
             $("#matched-expert-num")[0].innerHTML = matchedExpertNum;
             $("#expert-num")[0].innerHTML = matchingExpertNum;
         },function(error){
