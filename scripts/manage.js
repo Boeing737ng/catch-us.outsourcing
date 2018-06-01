@@ -140,11 +140,31 @@ function makeEstimateTable(){
     EstimatesList.forEach(function(row){
         var details = row["details"];
         var summarizedDetails = "";
+        var matchList = row["matchList"];
+        var matchedNum = 0;
+        var matchingNum = 0;
+        // console.log("전체 매칭 인원", Object.keys(matchList).length);
+        for(key in matchList){
+            // console.log(matchList[key]["outputResult"])
+            if(matchList[key]["outputResult"] == null){
+                console.log("null");
+                matchingNum++;
+            }else{
+                console.log("not null")
+                matchedNum++;
+            }
+        }
+        var totalMatchNum = matchedNum + matchingNum;
         if(details.length > 21){
             summarizedDetails = details.substring(0, 21) + " . . .";
         }
         $("#estimate-list").append(
             "<div id='"+row["key"]+"' class='estimates' onclick=\"makeCurExpertTable("+row["key"]+")\">"+
+                "<div style='float:right'>"+
+                    "<span class='match-num'>전문가 답변 완료 수 : "+matchedNum+"</span>"+
+                    "<br>"+
+                    "<span class='match-num'>전문가 답변 미완료 수 : "+matchingNum+"</span>"+
+                "</div>"+
                 "<p class='info-list-title'>지역</p>"+
                 "<span class='info-list-content'>"+row["area"]+"</span>"+
                 "<p class='info-list-title'>분야</p>"+
