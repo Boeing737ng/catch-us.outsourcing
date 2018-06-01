@@ -176,7 +176,8 @@ function makeCurExpertTable(key){
     $("#matched-expert-list").show();
     $("#mated-expert-detail").hide();
     $(".experts").remove();
-
+    
+    $(".no-matched-expert-alert").remove();
     selectedKey = key;
     firebase.database().ref("/Estimates/"+key+"/matchList").once('value').then(function(matchedExpert){
         var matchedExpertList = [];
