@@ -25,13 +25,13 @@
             <h3>Q & A</h3>
         </section>
         <section class="text-area" style="display:none">
-            <div id="meta-data-wrapper" class="read-question">
+            <div id="meta-data-wrapper" class="read-question admin-permissions">
                 <span>작성자: </span><span id="writer-email"></span>
                 <br>
                 <span>날짜: </span><span id="uploaded-date"></span>
             </div>
-            <pre id="selected-question-title" class="read-question" type="text"></pre>
-            <pre name="" id="selected-question-content" class="read-question"></pre>
+            <pre id="selected-question-title" class="read-question admin-permission" type="text"></pre>
+            <pre name="" id="selected-question-content" class="read-question admin-permission"></pre>
             <div class="modify-question">
                 <input id="question-title" type="text" placeholder="제목" >
                 <br>
@@ -40,7 +40,7 @@
             </div>
             <button class="back-to-question-list" onclick="onLoadBoardPage()">목록으로</button>
             <button class="back-to-question-list modify-question" onclick="modifyQuestion()">수정하기</button>
-            <button class="back-to-question-list modify-question" onclick="removeQuestion()">삭제하기</button>
+            <button class="back-to-question-list modify-question admin-permission" onclick="removeQuestion()">삭제하기</button>
         </section>
     </div>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>

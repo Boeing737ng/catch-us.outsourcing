@@ -1,9 +1,21 @@
-
+var isAdmin = false;
 firebase.auth().onAuthStateChanged(function (user) {
     showLoading();
     if (user) {
         currentUid = user.uid;
-        makeQuestion();
+        firebase.database().ref("Users/"+user.uid+"/personalInfo/type").once('value').then(
+            function(snapshot){
+                if(snapshot.val() == "Admin"){
+                    isAdmin = true;
+                }
+                makeQuestion();
+            },
+            function(error){
+                console.log("onAuthStateChanged err : "+error);
+                noneLoading();
+            }
+        );
+        
     } else {
         console.log("로그인이 필요합니다.");
         onLoadMainPage();
@@ -49,18 +61,31 @@ function makeQuestion(){
 
 function makeQuestionLayout(title, email, date, content, isModify){
     $(".text-area").show();
+    console.log(isAdmin)
     if(isModify){
         $(".read-question").hide();
+        $(".admin-permission").hide();
         $(".modify-question").show();
         $("#question-title")[0].value = title;
         $("#question-content")[0].value = content;
     }else{
-        $(".read-question").show();
-        $(".modify-question").hide();
-        document.getElementById("selected-question-title").textContent = title;
-        document.getElementById("selected-question-content").textContent = content;
-        document.getElementById("writer-email").textContent = email;
-        document.getElementById("uploaded-date").textContent = date;
+        if(isAdmin){
+            $(".read-question").hide();
+            $(".modify-question").hide();
+            $(".admin-permission").show();
+            document.getElementById("selected-question-title").textContent = title;
+            document.getElementById("selected-question-content").textContent = content;
+            document.getElementById("writer-email").textContent = email;
+            document.getElementById("uploaded-date").textContent = date;
+        }else{
+            $(".modify-question").hide();
+            $(".admin-permission").hide();
+            $(".read-question").show();
+            document.getElementById("selected-question-title").textContent = title;
+            document.getElementById("selected-question-content").textContent = content;
+            document.getElementById("writer-email").textContent = email;
+            document.getElementById("uploaded-date").textContent = date;
+        }
     }
 }
 
