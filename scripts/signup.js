@@ -242,3 +242,12 @@ $("#expert-button").click(function() {
     document.getElementById("client-signup").style.display = "none";
     document.getElementById("expert-signup").style.display = "block";
 });
+
+$(".field").click(function(){
+    if($(this).hasClass("selected-field")){
+        $(this).removeClass("selected-field");
+    }
+    else {
+        $(this).addClass("selected-field");
+    }
+});
