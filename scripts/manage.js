@@ -179,6 +179,7 @@ function makeCurExpertTable(key){
     
     $(".no-matched-expert-alert").remove();
     selectedKey = key;
+    showLoading();
     firebase.database().ref("/Estimates/"+key+"/matchList").once('value').then(function(matchedExpert){
         var matchedExpertList = [];
         if(matchedExpert.val() != null){
@@ -246,6 +247,7 @@ function makeCurExpertTable(key){
                     "</div>"
                 );
             }
+            noneLoading();
             $("#matched-expert-num")[0].innerHTML = matchedExpertNum;
             $("#expert-num")[0].innerHTML = matchingExpertNum;
         },function(error){
@@ -254,7 +256,7 @@ function makeCurExpertTable(key){
     }, function(error){
         console.log("makeCurExpertTable second err : "+error);
     })
-    
+   
 }
 
 function makeCurExpertDetailTable(uid, matched){
