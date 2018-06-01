@@ -481,12 +481,12 @@ textarea#details {
     height: 100%;
 }
 .expert-image-wrapper img {
-    width: 100px;
+    width: 90px;
     height: 120px;
     border-radius: 5px;
 }
 .expert-name {
-    padding-left: 12px;
+    padding-left: 5px;
     font-weight: 500;
     margin-top: 5px;
     margin-bottom: 25px;
