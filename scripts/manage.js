@@ -143,18 +143,13 @@ function makeEstimateTable(){
         var matchList = row["matchList"];
         var matchedNum = 0;
         var matchingNum = 0;
-        // console.log("전체 매칭 인원", Object.keys(matchList).length);
         for(key in matchList){
-            // console.log(matchList[key]["outputResult"])
             if(matchList[key]["outputResult"] == null){
-                // console.log("null");
                 matchingNum++;
             }else{
-                // console.log("not null")
                 matchedNum++;
             }
         }
-        var totalMatchNum = matchedNum + matchingNum;
         if(details.length > 21){
             summarizedDetails = details.substring(0, 21) + " . . .";
         }
