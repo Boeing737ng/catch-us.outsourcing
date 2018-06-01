@@ -256,6 +256,7 @@ function makeCurExpertDetailTable(uid, matched){
     if(matched == "matched"){
         expert_detail_id = "#matched-expert-detail";
         expert_matched_list = "#matched-expert-list"
+        expert_detail = document.getElementById("matched-expert-detail");
     }
     expert_detail.removeChild(expert_detail.lastChild); // does not remove the button to move previous page
     $(expert_matched_list).hide();
