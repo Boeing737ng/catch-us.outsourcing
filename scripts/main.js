@@ -60,15 +60,7 @@ function readURL(input) {
         }
 }
 
-$("#client-button").click(function() {
-    document.getElementById("client-signup").style.display = "block";
-    document.getElementById("expert-signup").style.display = "none";
-});
 
-$("#expert-button").click(function() {
-    document.getElementById("client-signup").style.display = "none";
-    document.getElementById("expert-signup").style.display = "block";
-});
 $("#expert-profile").change(function() {
     readURL(this);
 });
