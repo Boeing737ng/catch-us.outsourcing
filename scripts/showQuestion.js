@@ -1,9 +1,4 @@
-// $(document).ready(
-//     function(){
-//         showLoading();
-//         makeQuestion();
-//     }
-// );
+
 firebase.auth().onAuthStateChanged(function (user) {
     showLoading();
     if (user) {
@@ -38,7 +33,6 @@ function makeQuestion(){
                 return;
             }
             var isModify = Object.keys(snapshotVal)[0] == currentUid;
-            // var questionData = Object.values(snapshotVal)[0];
             for(value in snapshotVal){
                 questionData = snapshotVal[value];
             }

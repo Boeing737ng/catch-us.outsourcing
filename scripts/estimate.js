@@ -91,17 +91,6 @@ function uploadEstimate(){
             nonLoading();
         }
     );
-
-    // firebase.database().ref("Users/"+ currentUid +"/Estimates/"+ Date.now()).set(
-    //     getEstimateInfo()
-    // ).then(
-    //     function(){
-    //         onLoadClitentPage();
-    //     },
-    //     function(error){
-    //         console.log("uploadEstimate err : "+error);
-    //     }
-    // );
 }
 
 $(".field").click(function(){

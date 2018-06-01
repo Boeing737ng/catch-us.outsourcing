@@ -81,7 +81,6 @@ function expertSignup(){
     var expertInfo = getExpertInfo();
     var personalInfo = expertInfo["personalInfo"]
     showLoading();
-    // TODO :: 입력 데이터 정규화 검사 추가 수정 필요
     if(!expertInfo["passwordCheck"]){
         alert("비밀번호를 확인해주세요.");
         $("#expert-pwd")[0].focus();
@@ -132,7 +131,6 @@ function expertSignup(){
         expertInfo["password"]
     ).then(
         function(user){
-            // $('#expert-profile').get(0).files[0]
             upLoadProfile(user.user.uid).then(
                 function(snapshot){
                     
@@ -202,7 +200,6 @@ function getExpertInfo(){
             agentNum : $("#expert-agent-num")[0].value,
             field : getSelectedField(),
             photo : $("#expert-profile")[0].value,
-            // profileUrl : '',
             additionalInfo : {
                 Career : $("#expert-career")[0].value,
                 Reward : $("#expert-reward")[0].value,
