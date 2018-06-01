@@ -147,10 +147,10 @@ function makeEstimateTable(){
         for(key in matchList){
             // console.log(matchList[key]["outputResult"])
             if(matchList[key]["outputResult"] == null){
-                console.log("null");
+                // console.log("null");
                 matchingNum++;
             }else{
-                console.log("not null")
+                // console.log("not null")
                 matchedNum++;
             }
         }
