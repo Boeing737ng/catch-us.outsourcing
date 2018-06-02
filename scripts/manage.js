@@ -294,8 +294,8 @@ function makeCurExpertDetailTable(uid, matched){
             "<div class='expert-detail-info'>"+
                 "<section class='detail-left'>"+
                     "<img src=\""+expertPersonalInfo["profileUrl"]+"\">"+
-                    "<p>"+expertPersonalInfo["name"]+" 변리사</p>"+
-                    "<p>(경력"+ expertCareer +"년)</p>"+
+                    "<p class='detailed-expert-name'>"+expertPersonalInfo["name"]+" 변리사</p>"+
+                    "<p class='career-year'>(경력"+ expertCareer +"년)</p>"+
                 "</section>"+
                 "<section class='detail-right'>"+
                     "<p>주요 분야</p>"+

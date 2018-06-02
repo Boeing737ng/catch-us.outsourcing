@@ -155,7 +155,8 @@ function showExpertInfo(uid, applyNum, registerNum){
             "<div class='expert-detail-info'>"+
                 "<section class='detail-left'>"+
                     "<img src=\""+expertInfo["profileUrl"]+"\">"+
-                    "<p class='detailed-expert-name'>"+expertInfo["name"]+" 변리사 (경력 "+expertCareer+"년)</p>"+
+                    "<p class='detailed-expert-name'>"+expertInfo["name"]+" 변리사</p>"+
+                    "<p class='career-year'>(경력"+ expertCareer +"년)</p>"+
                     "<div class='expert-additional-data'>"+
                         "<div class='expert-professionalism'>해당 분야 관련 전문성</div>"+
                         "<span>출원 건수 : "+applyNum+"</span>"+
