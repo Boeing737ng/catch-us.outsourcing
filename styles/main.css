@@ -22,6 +22,7 @@ a {
 }
 pre {
     white-space: pre-wrap;
+    font-family: "Nanum Gothic";
 }
 .light-font {
     font-weight: 300;
@@ -40,16 +41,20 @@ pre {
 *::-webkit-scrollbar { 
     width: 0 !important 
 }
-input::-webkit-input-placeholder {
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #B1B1B1;
     font-size: 13px;
 }
-input::-moz-placeholder{
+input::-moz-placeholder, textarea::-webkit-input-placeholder {
+    color: #B1B1B1;
     font-size: 13px;
 }
-input:-ms-input-placeholder {
+input:-ms-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #B1B1B1;
     font-size: 13px;
 }
-input:-moz-placeholder {
+input:-moz-placeholder, textarea::-webkit-input-placeholders {
+    color: #B1B1B1;
     font-size: 13px;
 }
 /*********** header **********/
@@ -439,6 +444,7 @@ input#key-word {
     font-size: 12px;
 }
 textarea#details {
+    padding: 5px;
     width: 100%;
     min-width: 100%;
     max-width: 100%;
@@ -622,7 +628,7 @@ section.detail-left p, section.detail-right p:first-child {
 
 .matched-expert pre {
     color: #5F5F5F;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .matched-expert-left, .matched-expert-content {
@@ -972,6 +978,7 @@ button.back-to-question-list {
     display: block;
     margin-bottom: 20px;
     padding-left: 5px;
+    width: fit-content;
 }
 #prev-page-button, #next-page-button {
     border: none;
