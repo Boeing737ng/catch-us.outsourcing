@@ -46,11 +46,20 @@ function getArea(){
     if($("input[name=area]").is(':checked')){
         return "지역 무관";
     }
-    areaStr = $("#sido_code option:selected").text()+" "+$("#sigoon_code option:selected").text()+" "+$("#dong_code option:selected").text();
-    if(areaStr.match("선택") != null){
+    var sido = $("#sido_code option:selected").text();
+    var sigoon = $("#sigoon_code option:selected").text();
+    var dong = $("#dong_code option:selected").text();
+    if(sido === "선택") {
         return "area error";
     }
-    return areaStr
+    if(sigoon === "선택") {
+        sigoon = "";
+    }
+    if(dong === "선택") {
+        dong = "";
+    }
+    areaStr = sido+" "+sigoon+" "+dong;
+    return areaStr.replace(/\s+$/, '');
 }
 
 function getCurrentDate(){
