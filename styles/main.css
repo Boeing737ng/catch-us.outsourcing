@@ -118,7 +118,7 @@ button.signup-button {
 
 section.service-info {
     width: 100%;
-    margin: 60px auto 150px;
+    margin: 30px auto 150px;
 }
 section.alert-message {
     width: 100%;
@@ -127,9 +127,9 @@ section.alert-message {
     margin-top: 30px;
 }
 section.alert-message pre {
-    width: 800px;
     margin: auto;
-    font-size: 15px;
+    text-align: center;
+    font-size: 12px;
 }
 p.service-info-summary {
     text-align: center;
@@ -154,7 +154,7 @@ p.service-info-summary {
 .info-header {
     font-size: 16px;
     display: block;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .info-body {
     margin: auto;
