@@ -93,9 +93,11 @@ function matchedExpertList(key){
         $("#expert-list").show();
         $("#expert-info").hide();
         var noExpert = true;
+        var matchedExpertNum = 0;
         for(key in expertList){
             var expertValue = expertList[key];
             if(expertValue["outputResult"] != null){
+                matchedExpertNum++;
                 noExpert = false
                 $("#expert-list").append(
                     "<div id='"+key+"' onclick=\"showExpertInfo('"+key+"', "+expertValue["applyNum"]+", "+expertValue["registerNum"]+")\" class='matched-expert'>"+
@@ -110,6 +112,7 @@ function matchedExpertList(key){
                 );
             }
         }
+        $("#expert-num")[0].innerHTML = matchedExpertNum;
         if(noExpert){
             $("#expert-list").append(
                 "<div class='no-matched-expert-alert'>"+
