@@ -140,6 +140,7 @@ function showExpertInfo(uid, applyNum, registerNum){
                     "<img src=\""+expertInfo["profileUrl"]+"\">"+
                     "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
                     "<div class='expert-additional-data'>"+
+                        "<div class='expert-professionalism'>해당 분야 관련 전문성</div>"+
                         "<span>출원 건수 : "+applyNum+"</span>"+
                         "<span>등록률 : "+registerNum+" (%)</span>"+
                     "</div>"+
