@@ -83,6 +83,20 @@ function makeCurEstimateList(){
     });
 }
 
+function getExpertCareer(uid) {
+    var expertCareer = 0;
+    firebase.database().ref("Users/"+uid).once('value').then(function(snapshot){
+        var curExpertInfo =  snapshot.val();
+        var expertQualificatinoDate = curExpertInfo["personalInfo"]["qualificationDate"];
+        var currentYear = (new Date()).getFullYear();
+        expertCareer = currentYear - parseInt(expertQualificatinoDate.substring(0,4));
+    });
+    if(expertCareer > 99 || expertCareer < 0) {
+        expertCareer = 0;
+    }
+    return expertCareer;
+}
+
 function matchedExpertList(key){
     backMatchedExpertList();
     firebase.database().ref("Estimates/"+key+"/matchList").once('value').then(function(snapshot){
@@ -96,14 +110,16 @@ function matchedExpertList(key){
         var matchedExpertNum = 0;
         for(key in expertList){
             var expertValue = expertList[key];
+            var expertCareer = 0;
             if(expertValue["outputResult"] != null){
                 matchedExpertNum++;
                 noExpert = false
+                expertCareer = getExpertCareer(key);
                 $("#expert-list").append(
                     "<div id='"+key+"' onclick=\"showExpertInfo('"+key+"', "+expertValue["applyNum"]+", "+expertValue["registerNum"]+")\" class='matched-expert'>"+
                         "<section class='matched-expert-left'>"+
                             "<img src=\""+expertValue["profileUrl"]+"\">"+
-                            "<p>"+expertValue["name"]+" 변리사</p>"+
+                            "<p>"+expertValue["name"]+" 변리사 (경력 "+expertCareer+"년)</p>"+
                         "</section>"+
                         "<section class='matched-expert-content'>"+
                             "<pre>"+expertValue["outputResult"]+"</pre>"+
@@ -134,11 +150,12 @@ function showExpertInfo(uid, applyNum, registerNum){
     firebase.database().ref("Users/"+uid).once('value').then(function(snapshot){
         var curExpertInto =  snapshot.val();
         var expertInfo = curExpertInto["personalInfo"];
+        var expertCareer = getExpertCareer(uid);
         $("#expert-detail").append(
             "<div class='expert-detail-info'>"+
                 "<section class='detail-left'>"+
                     "<img src=\""+expertInfo["profileUrl"]+"\">"+
-                    "<p>"+expertInfo["name"]+ ' 변리사' +"</p>"+
+                    "<p class='detailed-expert-name'>"+expertInfo["name"]+" 변리사 (경력 "+expertCareer+"년)</p>"+
                     "<div class='expert-additional-data'>"+
                         "<div class='expert-professionalism'>해당 분야 관련 전문성</div>"+
                         "<span>출원 건수 : "+applyNum+"</span>"+
