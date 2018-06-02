@@ -248,8 +248,9 @@ footer span {
     vertical-align: top;
 }
 .signup-field .select-field {
-    width: 100%;
+    width: 85%;
     margin: 10px auto 50px;
+    text-align: left;
 }
 .file-wrapper {
     width: 80%;
@@ -499,12 +500,13 @@ textarea#details {
     margin-bottom: 25px;
 }
 .expert-info-wrapper span {
-    color: #8C8C8C;
+    color: #5F5F5F;
     font-size: 12px;
 }
 .expert-info-wrapper p {
+    font-weight: 600;
     color: #5F5F5F;
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 7px;
 }
 .view-details {
@@ -592,21 +594,24 @@ section.detail-right p {
     font-size: 15px;
     margin-top: 40px;
     margin-bottom: 5px;
+    font-weight: 600;
 }
 section.detail-left p, section.detail-right p:first-child {
+    font-weight: 600;
     color: #5F5F5F;
     font-size: 15px;
     margin-top: 10px;
+    margin-bottom: 7px;
 }
 
 .expert-detail-info span {
-    color: #8C8C8C;
+    color: #5F5F5F;
     font-size: 13px;
-    padding-left: 5px;
+    padding-left: 10px;
 }
 
 .expert-detail-info pre {
-    color: #8C8C8C;
+    color: #5F5F5F;
     font-size: 13px;
     padding-left: 5px;
     margin: 0;
@@ -621,17 +626,10 @@ section.detail-left p, section.detail-right p:first-child {
     max-height: 190px;
     background-color: #FFF;
 }
-
-.matched-expert p {
-    color: #5F5F5F;
-    font-size: 15px;
-}
-
-.matched-expert pre {
+.matched-expert p, .matched-expert pre {
     color: #5F5F5F;
     font-size: 13px;
 }
-
 .matched-expert-left, .matched-expert-content {
     display: inline-block;
     height: 100%;
@@ -651,22 +649,26 @@ section.detail-left p, section.detail-right p:first-child {
     width: calc(78% - 30px);
     max-width: calc(78% - 30px);
     overflow: scroll;
+    border-left: 1px solid #BFBFBF;
 }
 .expert-count {
     position: absolute;
     top: 30px;
     left: 40px;
-    font-size: 14px;
+    font-size: 13px;
+    background-color: #FFF;
+    padding: 2px 10px;
+    border: 1px solid #BFBFBF;
     color: #5F5F5F;
 }
 .expert-additional-data {
     text-align: left;
-    padding-left: 30px;
-    margin-top: 60px;
+    padding: 5px;
+    margin-top: 30px;
 }
 .expert-additional-data span{
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 .completed-request, .pendding-request {
     position: absolute;
@@ -760,6 +762,23 @@ section.detail-left p, section.detail-right p:first-child {
     margin-top: 50px;
     color: #5F5F5F;
     font-weight: 600;
+}
+.expert-professionalism {
+    font-size: 13px;
+    background-color: #F0F0F0;
+    padding: 5px 10px;
+    margin-bottom: 12px;
+    color: #5F5F5F;
+}
+.detailed-expert-name {
+    color: #5F5F5F;
+    font-size: 13px !important;
+    margin-top: 10px;
+}
+.career-year {
+    font-weight: 400 !important;
+    margin: 0 !important;
+    font-size: 13px !important;
 }
 /********** Estimate ends **********/
 
@@ -968,13 +987,14 @@ button.back-to-question-list {
 
 .info-list-title {
     color: #5F5F5F;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 0;
     margin-bottom: 5px;
+    font-weight: 600;
 }
 
 .info-list-content {
-    color: #8C8C8C;
+    color: #5F5F5F;
     font-size: 12px;
     display: block;
     margin-bottom: 20px;
