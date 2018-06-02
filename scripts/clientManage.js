@@ -89,6 +89,7 @@ function matchedExpertList(key){
         var expertList = snapshot.val();
         console.log(expertList)
         $(".matched-expert").remove();
+        $(".no-matched-expert-alert").remove();
         $("#expert-list").show();
         $("#expert-info").hide();
         var noExpert = true;
@@ -111,10 +112,8 @@ function matchedExpertList(key){
         }
         if(noExpert){
             $("#expert-list").append(
-                "<div class='matched-expert'>"+
-                    "<section class='matched-expert-content'>"+
-                        "<pre>아직 매칭된 변리사가 없습니다.</pre>"+
-                    "</section>"+
+                "<div class='no-matched-expert-alert'>"+
+                    "<p>고객에게 적합한 전문 변리사를 매칭중입니다. 견적 문의로부터 3일 이내로 전문 변리사로부터 견적을 산출받게 됩니다.</p>"+
                 "</div>"
             );
         }
