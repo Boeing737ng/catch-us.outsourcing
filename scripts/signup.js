@@ -15,7 +15,7 @@ function clientSignup(){
         noneLoading();
         return;
     }else if(clientInfo["personalInfo"]["nickname"].length > 6 || clientInfo["personalInfo"]["nickname"].length < 2){
-        alert("2이상 6이하의 닉네임을 사용해주세요.");
+        alert("2~6글자의 닉네임을 사용해주세요.");
         $("#client-nickname")[0].focus();
         noneLoading();
         return;
