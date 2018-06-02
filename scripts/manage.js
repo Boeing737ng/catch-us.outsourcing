@@ -48,12 +48,13 @@ $("#back-matched-expert").click(function(){
 });
 
 function uploadSelectedExperts(){
-    var curExpertTableList = $('.expert-info-wrapper');
+    var curExpertTableList = $('.unmatched-expert-info-wrapper');
     showLoading();
     selectedExpertlist = {};
     var selectedExpertNum = 0;
     for(var idx = 0; idx<curExpertTableList.length; idx++){
         var curExpert = $(curExpertTableList[idx]);
+        console.log(curExpert.find(".select-expert"));
         if(curExpert.find(".select-expert")[0].checked){
             var applyNum = curExpert.find("input[name='apply-number']")[0].value.replace(/ /gi, '');
             var registerNum = curExpert.find("input[name='register-number']")[0].value.replace(/ /gi, '');
@@ -202,7 +203,7 @@ function makeCurExpertTable(key){
                     }
                     $("#expert-list").append(
                         "<div class='experts'>"+
-                            "<div class='expert-info-wrapper' id=\""+uid+"\">"+
+                            "<div class='unmatched-expert-info-wrapper' id=\""+uid+"\">"+
                                 "<div class='expert-image-wrapper'>"+
                                     "<img src=\""+expertInfo["profileUrl"]+"\">"+
                                 "</div>"+
@@ -233,7 +234,7 @@ function makeCurExpertTable(key){
                     }
                     $("#matched-expert-list").append(
                         "<div class='experts'>"+
-                            "<div class='expert-info-wrapper' id=\""+uid+"\">"+
+                            "<div class='matched-expert-info-wrapper' id=\""+uid+"\">"+
                                 "<div class='expert-image-wrapper'>"+
                                     "<img src=\""+expertInfo["profileUrl"]+"\">"+
                                 "</div>"+
