@@ -118,7 +118,23 @@ button.signup-button {
 
 section.service-info {
     width: 100%;
-    margin: 85px auto 150px;
+    margin: 60px auto 150px;
+}
+section.alert-message {
+    width: 100%;
+    background-color: #DEE6F1;
+    padding: 11px;
+    margin-top: 30px;
+}
+section.alert-message pre {
+    width: 800px;
+    margin: auto;
+    font-size: 15px;
+}
+p.service-info-summary {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 50px;
 }
 .info-wrapper {
     text-align: center;
@@ -142,11 +158,11 @@ section.service-info {
 }
 .info-body {
     margin: auto;
-    color: #fff;
+    color: #000;
     width: 220px;
     height: 220px;
     border-radius: 50%;
-    background-color: #051E5A;
+    background-color: #EAEAEA;
 }
 .info-text {
     font-size: 14px;
@@ -358,6 +374,9 @@ footer span {
     background-color: #FFF;
     border: 1px solid #BFBFBF;
     border-radius: 4px;
+}
+#append-expert {
+    display: none;
 }
 
 #back-matched-expert, #submit-selected-expert{

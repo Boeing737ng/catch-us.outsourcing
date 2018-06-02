@@ -172,6 +172,7 @@ function getExpertList(){
 
 function makeCurExpertTable(key){
     curExpertList = {};
+    $("#append-expert").show();
     $(".not-mached-expert").hide();
     $(".mached-expert").show();
     $("#matched-expert-list").show();
