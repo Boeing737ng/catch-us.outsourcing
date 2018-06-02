@@ -79,7 +79,8 @@ function getClientInfo(){
 // 전문가 회원가입
 function expertSignup(){
     var expertInfo = getExpertInfo();
-    var personalInfo = expertInfo["personalInfo"]
+    var personalInfo = expertInfo["personalInfo"];
+    var regExp = /^\d{4}-\d{2}-\d{2}$/;
     showLoading();
     if(!expertInfo["passwordCheck"]){
         alert("비밀번호를 확인해주세요.");
@@ -106,8 +107,8 @@ function expertSignup(){
         $("#expert-address")[0].focus();
         noneLoading();
         return;
-    }else if(personalInfo["qualificationDate"].length < 2){
-        alert("자격취득일을 확인해주세요.");   
+    }else if(personalInfo["qualificationDate"].length < 2 || !regExp.test(personalInfo["qualificationDate"])){
+        alert("자격취득일을 확인해주세요.");
         $("#expert-qualification")[0].focus();
         noneLoading();
         return;
