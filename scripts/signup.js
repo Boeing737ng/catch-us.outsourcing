@@ -1,11 +1,10 @@
 var storageRef = firebase.storage().ref();
 var name = "";
-// 기본 회원가입
+
 function firebaseSignup(email, password){
     return firebase.auth().createUserWithEmailAndPassword(email, password);
 }
 
-// 의뢰인 회원가입
 function clientSignup(){
     var clientInfo = getClientInfo();
     showLoading();
@@ -76,7 +75,6 @@ function getClientInfo(){
     return singUpInfo
 }
 
-// 전문가 회원가입
 function expertSignup(){
     var expertInfo = getExpertInfo();
     var personalInfo = expertInfo["personalInfo"];

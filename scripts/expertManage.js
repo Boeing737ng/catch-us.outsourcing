@@ -95,7 +95,6 @@ function makeMatchedEstimateTable(){
     });
 }
 
-// 수정 필요
 function showEstimateInfo(key){
     currentKey = key;
     $("#estimate-info").remove("#cur-estimate");
