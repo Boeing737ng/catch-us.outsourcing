@@ -35,11 +35,11 @@ textarea {
     margin-bottom: 50px;
 }
 * {
-    
+    font-family: "Malgun Gothic", "굴림", "Gulim", "Arial";
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
-    font-family: "Nanum Gothic";
+    /* font-family: "Nanum Gothic"; */
 }
 *::-webkit-scrollbar { 
     width: 0 !important 
