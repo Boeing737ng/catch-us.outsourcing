@@ -13,8 +13,8 @@ function clientSignup(){
         $("#client-pwd")[0].focus();
         noneLoading();
         return;
-    }else if(clientInfo["personalInfo"]["nickname"].length > 6 || clientInfo["personalInfo"]["nickname"].length < 2){
-        alert("2~6글자의 닉네임을 사용해주세요.");
+    }else if(clientInfo["personalInfo"]["nickname"].length > 8 || clientInfo["personalInfo"]["nickname"].length < 2){
+        alert("2~8글자의 닉네임을 사용해주세요.");
         $("#client-nickname")[0].focus();
         noneLoading();
         return;
