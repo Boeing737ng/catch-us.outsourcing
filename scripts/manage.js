@@ -18,6 +18,9 @@ firebase.auth().onAuthStateChanged(function (user) {
                     onLoadMainPage();
                 }
                 getEstimateList();
+                if(sessionStorage.getItem("prev_estimate")) {
+                    makeCurExpertTable(sessionStorage.getItem("prev_estimate"));
+                }
             },
             function(error){
                 console.log("onAuthStateChanged err : "+error)
@@ -90,6 +93,8 @@ function uploadSelectedExperts(){
             nonLoading();
         }
     );
+    sessionStorage.setItem("prev_estimate", selectedKey);
+    location.reload();
 }
 
 function getEstimateList(){
@@ -201,7 +206,7 @@ function makeCurExpertTable(key){
         var matchedExpertList = [];
         if(matchedExpert.val() != null){
             matchedExpertList = Object.keys(matchedExpert.val());
-            console.log(matchedExpertList);
+            //console.log(matchedExpertList);
         }
         getExpertList().then(function(snapshot){
             curExpertList = snapshot.val();
