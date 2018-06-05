@@ -4,7 +4,6 @@ html,body {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: "Nanum Gothic";
 }
 html {
     min-width: 1300px;
@@ -22,7 +21,6 @@ a {
 }
 pre {
     white-space: pre-wrap;
-    font-family: "Nanum Gothic";
 }
 .light-font {
     font-weight: 300;
@@ -34,9 +32,11 @@ pre {
     margin-bottom: 50px;
 }
 * {
+    
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
+    font-family: "Nanum Gothic";
 }
 *::-webkit-scrollbar { 
     width: 0 !important 
@@ -241,7 +241,7 @@ footer span {
     padding: 5px 0 5px 5px;
     border: none;
     border-bottom: 1px solid #051E5A;
-    font-size: 15px;
+    font-size: 13px;
 }
 .layout-wrapper {
     overflow: auto;
@@ -781,11 +781,12 @@ section.detail-left p, section.detail-right p:first-child {
     font-weight: 600;
 }
 .expert-professionalism {
-    font-size: 13px;
+    font-size: 12px;
     background-color: #F0F0F0;
     padding: 5px 10px;
-    margin-bottom: 12px;
+    margin: 0px auto 12px;
     color: #5F5F5F;
+    width: fit-content;
 }
 .detailed-expert-name {
     color: #5F5F5F;
@@ -1021,6 +1022,12 @@ button.back-to-question-list {
     display: block;
     margin-bottom: 20px;
     padding-left: 5px;
+    width: fit-content;
+}
+.info-list-email-wrapper {
+    position: absolute;
+    bottom: 12px;
+    right: 10px;
     width: fit-content;
 }
 #prev-page-button, #next-page-button {
