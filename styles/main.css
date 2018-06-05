@@ -340,7 +340,6 @@ footer span {
     margin: 17px auto;
     background-color: #FFF;
     padding: 12px;
-    overflow-y: scroll;
 }
 .estimates:hover, .matched-expert:hover {
     cursor: pointer;
@@ -626,9 +625,11 @@ section.detail-left p, section.detail-right p:first-child {
 }
 
 .expert-detail-info span {
+    display: block;
     color: #5F5F5F;
     font-size: 13px;
     padding-left: 10px;
+    margin-bottom: 15px;
 }
 
 .expert-detail-info pre {
@@ -778,7 +779,7 @@ section.detail-left p, section.detail-right p:first-child {
     font-weight: 600;
 }
 .no-matched-expert-alert p {
-    font-size: 15px;
+    font-size: 14px;
     text-align: center;
     margin-top: 50px;
     color: #5F5F5F;
