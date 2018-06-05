@@ -129,38 +129,53 @@ function hideClientDetails() {
 
 function makeEstimateTable(){
     EstimatesList.forEach(function(row){
+        var uid = row["uid"];
+        var userEmail = "";
         var details = row["details"];
         var summarizedDetails = details;
         var matchList = row["matchList"];
+        var currentFieldID = "field-"+row["key"];
+        var currentEmailID = "email-"+row["key"];
         var matchedNum = 0;
         var matchingNum = 0;
-        for(key in matchList){
-            if(matchList[key]["outputResult"] == null){
-                matchingNum++;
-            }else{
-                matchedNum++;
+        firebase.database().ref("Users/"+uid).once('value').then(function(snapshot){
+            var curClientInfo =  snapshot.val();
+            userEmail = curClientInfo["email"];
+            for(key in matchList){
+                if(matchList[key]["outputResult"] == null){
+                    matchingNum++;
+                }else{
+                    matchedNum++;
+                }
             }
-        }
-        if(details.length > 21){
-            summarizedDetails = details.substring(0, 21) + " . . .";
-        }
-        $("#estimate-list").append(
-            "<div id='"+row["key"]+"' class='estimates' onclick=\"makeCurExpertTable("+row["key"]+")\">"+
-                "<div style='float:right'>"+
-                    "<span class='match-num'>전문가 답변 완료 수 : "+matchedNum+"</span>"+
-                    "<br>"+
-                    "<span class='match-num'>전문가 답변 미완료 수 : "+matchingNum+"</span>"+
-                "</div>"+
-                "<p class='info-list-title'>지역</p>"+
-                "<span class='info-list-content'>"+row["area"]+"</span>"+
-                "<p class='info-list-title'>분야</p>"+
-                "<span class='info-list-content'>"+row["field"].toString()+" - "+row["keyword"]+"</span>"+
-                "<p class='info-list-title'>내용</p>"+
-                "<span class='info-list-content' onmouseover=\"displayClientDetails('"+escape(details)+"', '"+row["key"]+"')\" onmouseleave=\"hideClientDetails()\">"+summarizedDetails+"</span>"+
-                "<p class='info-list-title'>요청일</p>"+
-                "<span class='info-list-content'>"+row["date"]+"</span>"+
-            "</div>"
-        );
+            if(details.length > 21){
+                summarizedDetails = details.substring(0, 21) + " . . .";
+            }
+            $("#estimate-list").append(
+                "<div id='"+row["key"]+"' class='estimates' onclick=\"makeCurExpertTable("+row["key"]+")\">"+
+                    "<div style='float:right'>"+
+                        "<span class='match-num'>전문가 답변 완료 수 : "+matchedNum+"</span>"+
+                        "<br>"+
+                        "<span class='match-num'>전문가 답변 미완료 수 : "+matchingNum+"</span>"+
+                    "</div>"+
+                    "<p class='info-list-title'>지역</p>"+
+                    "<span class='info-list-content'>"+row["area"]+"</span>"+
+                    "<p class='info-list-title'>분야</p>"+
+                    "<span id="+currentFieldID+" class='info-list-content'>"+row["field"].toString()+" - "+row["keyword"]+"</span>"+
+                    "<p class='info-list-title'>내용</p>"+
+                    "<span class='info-list-content' onmouseover=\"displayClientDetails('"+escape(details)+"', '"+row["key"]+"')\" onmouseleave=\"hideClientDetails()\">"+summarizedDetails+"</span>"+
+                    "<p class='info-list-title'>요청일</p>"+
+                    "<span class='info-list-content'>"+row["date"]+"</span>"+
+                    "<div id="+currentEmailID+" class='info-list-email-wrapper'>"+
+                        "<p class='info-list-title'>이메일 주소</p>"+
+                        "<span class='info-list-content'>"+userEmail+"</span>"+
+                    "</div>"+
+                "</div>"
+            );
+            if($("#"+currentFieldID).height() > 15) {
+                $("#"+currentEmailID).css("bottom","-3px");
+            }
+        });
     });
 }
 
