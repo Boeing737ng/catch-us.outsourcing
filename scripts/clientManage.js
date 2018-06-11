@@ -83,20 +83,6 @@ function makeCurEstimateList(){
     });
 }
 
-function getExpertCareer(uid) {
-    var expertCareer = 0;
-    firebase.database().ref("Users/"+uid).once('value').then(function(snapshot){
-        var curExpertInfo =  snapshot.val();
-        var expertQualificationDate = curExpertInfo["personalInfo"]["qualificationDate"];
-        var currentYear = (new Date()).getFullYear();
-        expertCareer = currentYear - parseInt(expertQualificationDate.substring(0,4));
-    });
-    if(expertCareer > 99 || expertCareer < 0) {
-        expertCareer = 0;
-    }
-    return expertCareer;
-}
-
 function matchedExpertList(key){
     backMatchedExpertList();
     firebase.database().ref("Estimates/"+key+"/matchList").once('value').then(function(snapshot){
@@ -110,22 +96,31 @@ function matchedExpertList(key){
         var matchedExpertNum = 0;
         for(key in expertList){
             var expertValue = expertList[key];
-            var expertCareer = 0;
             if(expertValue["outputResult"] != null){
                 matchedExpertNum++;
                 noExpert = false
-                expertCareer = getExpertCareer(key);
-                $("#expert-list").append(
-                    "<div id='"+key+"' onclick=\"showExpertInfo('"+key+"', "+expertValue["applyNum"]+", "+expertValue["registerNum"]+")\" class='matched-expert'>"+
-                        "<section class='matched-expert-left'>"+
-                            "<img src=\""+expertValue["profileUrl"]+"\">"+
-                            "<p>"+expertValue["name"]+" 변리사 (경력 "+expertCareer+"년)</p>"+
-                        "</section>"+
-                        "<section class='matched-expert-content'>"+
-                            "<pre>"+expertValue["outputResult"]+"</pre>"+
-                        "</section>"+
-                    "</div>"
-                );
+                firebase.database().ref("Users/"+key).once('value').then(function(snapshot){
+                    var expertCareer = 0;
+                    var curExpertInfo =  snapshot.val();
+                    var expertCareerDate = curExpertInfo["personalInfo"]["qualificationDate"];
+                    var careerYear = (new Date()).getFullYear() - parseInt(expertCareerDate.substring(0,4));
+                    var careerMonthRatio = ((((new Date()).getMonth() + 1) - parseInt(expertCareerDate.substring(5,7))) / 12).toFixed(1);
+                    expertCareer = careerYear + parseFloat(careerMonthRatio);
+                    if(expertCareer > 99 || expertCareer < 0) {
+                        expertCareer = 0;
+                    }
+                    $("#expert-list").append(
+                        "<div id='"+key+"' onclick=\"showExpertInfo('"+key+"', "+expertValue["applyNum"]+", "+expertValue["registerNum"]+")\" class='matched-expert'>"+
+                            "<section class='matched-expert-left'>"+
+                                "<img src=\""+expertValue["profileUrl"]+"\">"+
+                                "<p>"+expertValue["name"]+" 변리사 (경력: "+expertCareer+"년)</p>"+
+                            "</section>"+
+                            "<section class='matched-expert-content'>"+
+                                "<pre>"+expertValue["outputResult"]+"</pre>"+
+                            "</section>"+
+                        "</div>"
+                    );
+                });
             }
         }
         $("#expert-num")[0].innerHTML = matchedExpertNum;
@@ -148,15 +143,22 @@ function showExpertInfo(uid, applyNum, registerNum){
     $("#expert-detail").show();
     $("#expert-info-wrapper").remove();
     firebase.database().ref("Users/"+uid).once('value').then(function(snapshot){
+        var expertCareer = 0;
         var curExpertInto =  snapshot.val();
         var expertInfo = curExpertInto["personalInfo"];
-        var expertCareer = getExpertCareer(uid);
+        var expertCareerDate = expertInfo["qualificationDate"];
+        var careerYear = (new Date()).getFullYear() - parseInt(expertCareerDate.substring(0,4));
+        var careerMonthRatio = ((((new Date()).getMonth() + 1) - parseInt(expertCareerDate.substring(5,7))) / 12).toFixed(1);
+        expertCareer = careerYear + parseFloat(careerMonthRatio);
+        if(expertCareer > 99 || expertCareer < 0) {
+            expertCareer = 0;
+        }
         $("#expert-detail").append(
             "<div class='expert-detail-info'>"+
                 "<section class='detail-left'>"+
                     "<img src=\""+expertInfo["profileUrl"]+"\">"+
                     "<p class='detailed-expert-name'>"+expertInfo["name"]+" 변리사</p>"+
-                    "<p class='career-year'>(경력"+ expertCareer +"년)</p>"+
+                    "<p class='career-year'>(경력: "+ expertCareer +"년)</p>"+
                     "<div class='expert-additional-data'>"+
                         "<div class='expert-professionalism'>해당 분야 관련 전문성</div>"+
                         "<span>출원 건수 : "+applyNum+"</span>"+

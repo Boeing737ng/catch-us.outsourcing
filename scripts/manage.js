@@ -214,13 +214,16 @@ function makeCurExpertTable(key){
             var matchedExpertNum = 0;
             for(uid in curExpertList){
                 var expertCareer = 0;
+                expertInfo = curExpertList[uid]["personalInfo"];
+                var expertCareerDate = expertInfo["qualificationDate"];
+                var careerYear = (new Date()).getFullYear() - parseInt(expertCareerDate.substring(0,4));
+                var careerMonthRatio = ((((new Date()).getMonth() + 1) - parseInt(expertCareerDate.substring(5,7))) / 12).toFixed(1);
+                expertCareer = careerYear + parseFloat(careerMonthRatio);
+                if(expertCareer > 99 || expertCareer < 0) {
+                    expertCareer = 0;
+                }
                 if($.inArray( uid, matchedExpertList ) == -1){
                     matchingExpertNum++;
-                    expertInfo = curExpertList[uid]["personalInfo"];
-                    expertCareer = (new Date()).getFullYear() -  parseInt(expertInfo["qualificationDate"]);
-                    if(expertCareer > 99 || expertCareer < 0) {
-                        expertCareer = 0;
-                    }
                     $("#expert-list").append(
                         "<div class='experts'>"+
                             "<div class='unmatched-expert-info-wrapper' id=\""+uid+"\">"+
@@ -236,7 +239,7 @@ function makeCurExpertTable(key){
                                     "<input name='apply-number' type='text' placeholder='출원 건수'>"+
                                     "<input name='register-number' type='text' placeholder='등록률 (%)'>"+
                                 "</div>"+
-                                "<p class='expert-name'>"+expertInfo["name"]+" 변리사 (경력 "+expertCareer+"년)</p>"+
+                                "<p class='expert-name'>"+expertInfo["name"]+" 변리사 (경력: "+expertCareer+"년)</p>"+
                                 "<hr>"+
                                 "<p>주요 분야</p>"+
                                 "<span>"+expertInfo["field"].toString()+"</span>"+
@@ -247,11 +250,6 @@ function makeCurExpertTable(key){
                     );
                 }else{
                     matchedExpertNum++;
-                    expertInfo = curExpertList[uid]["personalInfo"];
-                    expertCareer = (new Date()).getFullYear() -  parseInt(expertInfo["qualificationDate"]);
-                    if(expertCareer > 99 || expertCareer < 0) {
-                        expertCareer = 0;
-                    }
                     $("#matched-expert-list").append(
                         "<div class='experts'>"+
                             "<div class='matched-expert-info-wrapper' id=\""+uid+"\">"+
@@ -259,7 +257,7 @@ function makeCurExpertTable(key){
                                     "<img src=\""+expertInfo["profileUrl"]+"\">"+
                                 "</div>"+
                                 "<a class='matched-view-details' onclick=\"makeCurExpertDetailTable('"+uid+"', 'matched')\">상세 보기</a>"+
-                                "<p class='expert-name'>"+expertInfo["name"]+" 변리사 (경력 "+expertCareer+"년)</p>"+
+                                "<p class='expert-name'>"+expertInfo["name"]+" 변리사 (경력: "+expertCareer+"년)</p>"+
                                 "<hr>"+
                                 "<p>주요 분야</p>"+
                                 "<span>"+expertInfo["field"].toString()+"</span>"+
@@ -303,11 +301,15 @@ function makeCurExpertDetailTable(uid, matched){
     $(expert_detail_id).show();
     $(".cur-expert").remove();
     var UserList = firebase.database().ref("/Users/"+uid);
+    var expertCareer = 0;
     UserList.once('value').then(function(snapshot){
-        var expertCareer = 0;
         curExpertInfo = snapshot.val();
         expertPersonalInfo = curExpertInfo["personalInfo"];
-        expertCareer = (new Date()).getFullYear() -  parseInt(expertPersonalInfo["qualificationDate"]);
+        var expertCareerDate = expertPersonalInfo["qualificationDate"];
+        var careerYear = (new Date()).getFullYear() - parseInt(expertCareerDate.substring(0,4));
+        var careerMonthRatio = ((((new Date()).getMonth() + 1) - parseInt(expertCareerDate.substring(5,7))) / 12).toFixed(1);
+        expertCareer = careerYear + parseFloat(careerMonthRatio);
+        console.log(expertPersonalInfo["name"], expertCareerDate,expertCareer);
         if(expertCareer > 99 || expertCareer < 0) {
             expertCareer = 0;
         }
@@ -316,7 +318,7 @@ function makeCurExpertDetailTable(uid, matched){
                 "<section class='detail-left'>"+
                     "<img src=\""+expertPersonalInfo["profileUrl"]+"\">"+
                     "<p class='detailed-expert-name'>"+expertPersonalInfo["name"]+" 변리사</p>"+
-                    "<p class='career-year'>(경력"+ expertCareer +"년)</p>"+
+                    "<p class='career-year'>(경력: "+ expertCareer +"년)</p>"+
                 "</section>"+
                 "<section class='detail-right'>"+
                     "<p>주요 분야</p>"+
