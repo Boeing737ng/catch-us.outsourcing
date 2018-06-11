@@ -75,9 +75,23 @@ function getClientInfo(){
     return singUpInfo
 }
 
+function isValidDate(dateString) {
+    var dateString = dateString.split('-');
+    var userDate = new Date(parseInt(dateString[0]), parseInt(dateString[1]) - 1, parseInt(dateString[2]));
+    var currentDate = new Date();
+    var todayForComparison = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), 0, -currentDate.getTimezoneOffset());
+    if(userDate < currentDate) {
+        return userDate && (userDate.getMonth() + 1) == dateString[1];
+    }
+    else {
+        return false;
+    }
+}
+
 function expertSignup(){
     var expertInfo = getExpertInfo();
     var personalInfo = expertInfo["personalInfo"];
+    var isDate = isValidDate(personalInfo["qualificationDate"]);
     var regExp = /^\d{4}-\d{2}-\d{2}$/;
     showLoading();
     if(!expertInfo["passwordCheck"]){
@@ -105,7 +119,7 @@ function expertSignup(){
         $("#expert-address")[0].focus();
         noneLoading();
         return;
-    }else if(personalInfo["qualificationDate"].length < 2 || !regExp.test(personalInfo["qualificationDate"])){
+    }else if(personalInfo["qualificationDate"].length < 2 || !regExp.test(personalInfo["qualificationDate"]) || !isDate){
         alert("자격취득일을 확인해주세요.");
         $("#expert-qualification")[0].focus();
         noneLoading();
