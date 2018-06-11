@@ -87,9 +87,9 @@ function getExpertCareer(uid) {
     var expertCareer = 0;
     firebase.database().ref("Users/"+uid).once('value').then(function(snapshot){
         var curExpertInfo =  snapshot.val();
-        var expertQualificatinoDate = curExpertInfo["personalInfo"]["qualificationDate"];
+        var expertQualificationDate = curExpertInfo["personalInfo"]["qualificationDate"];
         var currentYear = (new Date()).getFullYear();
-        expertCareer = currentYear - parseInt(expertQualificatinoDate.substring(0,4));
+        expertCareer = currentYear - parseInt(expertQualificationDate.substring(0,4));
     });
     if(expertCareer > 99 || expertCareer < 0) {
         expertCareer = 0;
