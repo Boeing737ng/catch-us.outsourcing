@@ -270,7 +270,7 @@ function makeCurExpertTable(key){
             }
             if(matchedExpertNum == 0){
                 $("#matched-expert-list").append(
-                    "<div class='no-matched-expert-alert' id=\""+uid+"\">"+
+                    "<div class='no-matched-expert-alert'>"+
                         "<p>매칭 된 변리사가 없습니다. 매칭을 원하시면 상단 추가 매칭 버튼을 눌러주세요.</p>"+
                     "</div>"
                 );
